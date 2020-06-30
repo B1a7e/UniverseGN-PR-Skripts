@@ -1,3 +1,5 @@
+#NOT ADDED TO THE SERVER
+
 command /bartender [<integer>]:
     permission: god.core
     usage: &5&l(!) &dUsage: &r&l/bartender (amount)
