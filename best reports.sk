@@ -1,0 +1,64 @@
+
+command /report [<offline player>] [<text>]:
+	trigger:
+		if arg-2 is not set:
+			send "&c&l(!) &7You must supply a player and reason!"
+			stop
+		if arg-1 is equal to player:
+			send "&c&l(!) &7You cannot report yourself!"
+			stop
+		if {report.cooldown.%player%} is false:
+			add "&cReport by: &7%player% &cPlayer Reported: &7%arg-1% &cReason: &7%arg-2%" to {reports::*}
+			send "&c&l(!) &7Your report has been sent to all staff online" to player
+			loop all players:
+				if loop-player have permission "staff.core":
+					send "&7===== &cReport &7=====" to loop-player
+					send "&cReport by: &7%player%" to loop-player
+					send "&cPlayer reported: &7%arg 1%" to loop-player
+					send "&cReason: &7%arg 2%" to loop-player
+					send "&7===== &cReport &7=====" to loop-player
+			set {report.cooldown.%player%} to true
+			wait 5 seconds
+			set {report.cooldown.%player%} to false
+		if {report.cooldown.%player%} is true:
+			send "&c&l(!) &7Please wait before reporting again"
+
+
+command /reports:
+    permission: staff.core
+    trigger:
+        if player has permission "staff.core":
+            open virtual chest with 5 rows named "&cReports:" to player
+            wait 1 ticks
+            format gui slot 0 of player with anvil named "&cClear all Reports" with lore "&cPermission: &7Mod+" to run:
+                if player has permission "mod.core":
+                    clear {reports::*}  
+                    close player's inventory
+                    make player execute command "reports"
+            loop {reports::*}:
+                set {_a} to loop-index
+                set {_a} to {_a} + 1
+                set {_i} to loop-value
+                format gui slot {_a} of player with glowing paper named "%{_i}%" with lore "&cRight Click to delete this report" and "&cPermission: &7Mod+" to run:
+                    if player has permission "mod.core":
+                        remove "%{_i}%" from {reports::*}  
+                        wait 2 ticks
+                        close player's inventory
+                        make player execute command "reports"
+            
+
+
+
+
+
+
+
+
+
+
+
+
+on join:
+	set {report.cooldown.%player%} to false
+
+
