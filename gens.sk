@@ -1,3 +1,5 @@
+#This version of the gens got remodeled in the other server
+
 command /genreset [<offline player>]:
     permission: god.core
     trigger:
