@@ -1,0 +1,58 @@
+command /genreset [<offline player>]:
+    permission: god.core
+    trigger:
+        if arg-1 is set:
+            clear {genlocations::%arg-1's uuid%::*}
+            set {gens::%arg-1's uuid%} to 0 
+            execute command "/scoreboardrl %arg-1%"
+
+# TIER 1 REEEEEEE
+
+
+
+on block place of dead brain coral block:
+    if {gens::%player's uuid%} is more than or equal to {maxgens::%player's uuid%}:
+        cancel event
+        send "&5&l(!) &7You have no more empty gen slots!"
+        stop
+    if {gens::%player's uuid%} is less than {maxgens::%player's uuid%}:
+        add 1 to {gens::%player's uuid%}
+        send "&5&l(!) &dYou placed a &5&lGenerator &r%{gens::%player's uuid%}%/%{maxgens::%player's uuid%}%&d!"
+        add location of event-block to {genlocations::%player's uuid%::*}
+        while player is online:
+            if {genlocations::%player's uuid%::*} contains location of event-block:
+                wait 5 minutes
+                add 100000 to {token::%player's uuid%}
+            if {genlocations::%player's uuid%::*} does not contain location of event-block: 
+                stop
+
+
+
+
+on leftclick:
+    if clicked block is dead brain coral block:
+        if player is sneaking:
+            if {genlocations::%player's uuid%::*} contains location of event-block:
+                remove location of event-block from {genlocations::%player's uuid%::*}
+                remove 1 from {gens::%player's uuid%}
+                send "&5&l(!) &dYou broke a &5&lGenerator &r%{gens::%player's uuid%}%/%{maxgens::%player's uuid%}%&d!"
+                set clicked block to air
+                execute command "/gengive %player% 1"
+
+on block break of dead brain coral block:
+    cancel event
+    send title "&c&lShift leftclick to break!" to player
+
+
+
+on join:
+    if {maxgens::%player's uuid%} is not set:
+        set {maxgens::%Player's uuid%} to 10
+
+
+
+
+command /gengive [<player>] [<integer>]:
+    permission: op
+    trigger:
+        give arg-1 arg-2 of dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"

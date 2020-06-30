@@ -1,0 +1,12 @@
+on break of sponge:
+    cancel drops
+    set {_rtokens} to random number between 250000 and 500000
+    add {_rtokens} to {token::%player's uuid%}
+    send actionbar "&5&l(!) &dYou found &r&l%formatNum({_rtokens})% &dtokens in a lucky block." to player
+    execute command "scoreboardrl %player%"
+
+
+
+on join:
+    if {cooldownsponge::%player%} is set:
+        clear {cooldownsponge::%player%}

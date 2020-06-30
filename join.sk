@@ -1,0 +1,20 @@
+on connect:
+    set {online} to number of all players
+    if {online} is more than 55:
+        if player does not have permission "staff.core" or "milkyway.core":
+            kick the player due to "The max player slots is 50 (Saved for staff and stopping lag)"
+
+
+on join:
+    if {plotsperms::%player%} is not set:
+        execute command "pex user %player% add plots.permpack.basic"
+        execute command "pex user %player% add plots.plot.1"
+        set {plotperms::%player%} to 1
+        
+
+
+
+
+
+
+   

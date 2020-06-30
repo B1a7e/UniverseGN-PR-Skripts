@@ -1,0 +1,1001 @@
+command /rankup:
+    trigger:
+        if {prestige::%player's uuid%} is more than 0:
+            if {level::%player's uuid%} is "A":
+                if {balance::%player's uuid%} is more than or equal to 100000*{prestige::%player's uuid%}:
+                    set {level::%player's uuid%} to "B"
+                    remove 100000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 100000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lB &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %100000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "B":
+                if {balance::%player's uuid%} is more than or equal to 200000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "C"
+                    remove 200000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 200000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lC &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %200000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "C":
+                if {balance::%player's uuid%} is more than or equal to 300000*{prestige::%player's uuid%}:
+                    set {level::%player's uuid%} to "D"
+                    remove 300000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 300000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lD &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %300000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "D":            
+                if {balance::%player's uuid%} is more than or equal to 400000*{prestige::%player's uuid%}:
+
+                    set {level::%player's uuid%} to "E"
+                    remove 400000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 400000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lE &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %400000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "E":
+                if {balance::%player's uuid%} is more than or equal to 500000*{prestige::%player's uuid%}:
+
+                    set {level::%player's uuid%} to "F"
+                    remove 500000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 500000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lF &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %500000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "F":
+                if {balance::%player's uuid%} is more than or equal to 600000*{prestige::%player's uuid%}:
+
+                    set {level::%player's uuid%} to "G"
+                    remove 600000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 600000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lG &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %600000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "G":
+                if {balance::%player's uuid%} is more than or equal to 700000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "H"
+                    remove 700000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 700000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lH &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %700000*{prestige::%player's uuid%}%&d)"
+            if {level::%player's uuid%} is "H":
+                if {balance::%player's uuid%} is more than or equal to 800000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "I"
+                    remove 800000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 800000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lI &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %800000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "I":
+                if {balance::%player's uuid%} is more than or equal to 900000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "J"
+                    remove 900000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 900000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lJ &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}    
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %900000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "J":
+                if {balance::%player's uuid%} is more than or equal to 1000000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "K"
+                    remove 1000000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1000000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lK &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1000000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "K":
+                if {balance::%player's uuid%} is more than or equal to 1100000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "L"
+                    remove 1100000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1100000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lL &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1100000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "L":
+                if {balance::%player's uuid%} is more than or equal to 1200000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "M"
+                    remove 1200000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1200000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lM &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1200000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "M":
+                if {balance::%player's uuid%} is more than or equal to 1300000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "N"
+                    remove 1300000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1300000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lN &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1300000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "N":
+                if {balance::%player's uuid%} is more than or equal to 1400000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "O"
+                    remove 1400000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1400000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lO &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %14000000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "O":
+                if {balance::%player's uuid%} is more than or equal to 1500000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "P"
+                    remove 1500000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1500000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lG &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1500000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "P":
+                if {balance::%player's uuid%} is more than or equal to 1600000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "Q"
+                    remove 1600000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1600000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lQ &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1600000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "Q":
+                if {balance::%player's uuid%} is more than or equal to 1700000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "R"
+                    remove 1700000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1700000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lR &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1700000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "R":
+                if {balance::%player's uuid%} is more than or equal to 1800000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "S"
+                    remove 1800000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1800000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lS &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}    
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1800000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "S":
+                if {balance::%player's uuid%} is more than or equal to 1900000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "T"
+                    remove 1900000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1900000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lT &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %1900000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "T":
+                if {balance::%player's uuid%} is more than or equal to 2000000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "U"
+                    remove 2000000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2000000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lU &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %2000000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "U":
+                if {balance::%player's uuid%} is more than or equal to 2100000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "V"
+                    remove 2100000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2100000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lV &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %2100000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "V":
+                if {balance::%player's uuid%} is more than or equal to 2200000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "W"
+                    remove 2200000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2200000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lW &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %2200000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "W":
+                if {balance::%player's uuid%} is more than or equal to 2300000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "X"
+                    remove 2300000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2300000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lX &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %2300000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "X":
+                if {balance::%player's uuid%} is more than or equal to 2400000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "Y"
+                    remove 2400000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2400000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lY &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %2400000*{prestige::%player's uuid%}%&d)"
+                    stop
+            if {level::%player's uuid%} is "Y":
+                if {balance::%player's uuid%} is more than or equal to 2500000*{prestige::%player's uuid%}:
+                
+                    set {level::%player's uuid%} to "Z"
+                    remove 2500000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2500000*{prestige::%player's uuid%}
+                    send "&5(!) &dYou have leveled up to &r&lZ &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}    
+                    if {autoprestige::%player's uuid%} is "true":
+                        make player execute command "/prestige"
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: %2500000*{prestige::%player's uuid%}%&d)"
+                    stop
+        if {prestige::%player's uuid%} is 0:
+            if {level::%player's uuid%} is "A":
+                if {balance::%player's uuid%} is more than or equal to 100000:
+                    set {level::%player's uuid%} to "B"
+                    remove 100000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 100000
+                    send "&5(!) &dYou have leveled up to &r&lB &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 100000&d)"
+                    stop
+            if {level::%player's uuid%} is "B":
+                if {balance::%player's uuid%} is more than or equal to 200000:
+                
+                    set {level::%player's uuid%} to "C"
+                    remove 200000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 200000
+                    send "&5(!) &dYou have leveled up to &r&lC &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 200000&d)"
+                    stop
+            if {level::%player's uuid%} is "C":
+                if {balance::%player's uuid%} is more than or equal to 300000:
+                    set {level::%player's uuid%} to "D"
+                    remove 300000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 300000
+                    send "&5(!) &dYou have leveled up to &r&lD &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 300000&d)"
+                    stop
+            if {level::%player's uuid%} is "D":            
+                if {balance::%player's uuid%} is more than or equal to 400000:
+
+                    set {level::%player's uuid%} to "E"
+                    remove 400000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 400000
+                    send "&5(!) &dYou have leveled up to &r&lE &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 400000&d)"
+                    stop
+            if {level::%player's uuid%} is "E":
+                if {balance::%player's uuid%} is more than or equal to 500000:
+
+                    set {level::%player's uuid%} to "F"
+                    remove 500000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 500000
+                    send "&5(!) &dYou have leveled up to &r&lF &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 500000&d)"
+                    stop
+
+
+
+            if {level::%player's uuid%} is "F":
+                if {balance::%player's uuid%} is more than or equal to 600000:
+
+                    set {level::%player's uuid%} to "G"
+                    remove 600000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 600000
+                    send "&5(!) &dYou have leveled up to &r&lG &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 600000&d)"
+                    stop
+            if {level::%player's uuid%} is "G":
+                if {balance::%player's uuid%} is more than or equal to 700000:
+                
+                    set {level::%player's uuid%} to "H"
+                    remove 700000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 700000
+                    send "&5(!) &dYou have leveled up to &r&lH &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 700000&d)"
+            if {level::%player's uuid%} is "H":
+                if {balance::%player's uuid%} is more than or equal to 800000:
+                
+                    set {level::%player's uuid%} to "I"
+                    remove 800000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 800000
+                    send "&5(!) &dYou have leveled up to &r&lI &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 800000&d)"
+                    stop
+            if {level::%player's uuid%} is "I":
+                if {balance::%player's uuid%} is more than or equal to 900000:
+                
+                    set {level::%player's uuid%} to "J"
+                    remove 900000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 900000
+                    send "&5(!) &dYou have leveled up to &r&lJ &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}    
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 900000&d)"
+                    stop
+            if {level::%player's uuid%} is "J":
+                if {balance::%player's uuid%} is more than or equal to 1000000:
+                
+                    set {level::%player's uuid%} to "K"
+                    remove 1000000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1000000
+                    send "&5(!) &dYou have leveled up to &r&lK &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1000000&d)"
+                    stop
+            if {level::%player's uuid%} is "K":
+                if {balance::%player's uuid%} is more than or equal to 1100000:
+                
+                    set {level::%player's uuid%} to "L"
+                    remove 1100000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1100000
+                    send "&5(!) &dYou have leveled up to &r&lL &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1100000&d)"
+                    stop
+            if {level::%player's uuid%} is "L":
+                if {balance::%player's uuid%} is more than or equal to 1200000:
+                
+                    set {level::%player's uuid%} to "M"
+                    remove 1200000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1200000
+                    send "&5(!) &dYou have leveled up to &r&lM &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1200000&d)"
+                    stop
+            if {level::%player's uuid%} is "M":
+                if {balance::%player's uuid%} is more than or equal to 1300000:
+                
+                    set {level::%player's uuid%} to "N"
+                    remove 1300000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1300000
+                    send "&5(!) &dYou have leveled up to &r&lN &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1300000&d)"
+                    stop
+            if {level::%player's uuid%} is "N":
+                if {balance::%player's uuid%} is more than or equal to 1400000:
+                
+                    set {level::%player's uuid%} to "O"
+                    remove 1400000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1400000
+                    send "&5(!) &dYou have leveled up to &r&lO &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1400000&d)"
+                    stop
+            if {level::%player's uuid%} is "O":
+                if {balance::%player's uuid%} is more than or equal to 1500000:
+                
+                    set {level::%player's uuid%} to "P"
+                    remove 1500000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1500000
+                    send "&5(!) &dYou have leveled up to &r&lG &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1500000&d)"
+                    stop
+            if {level::%player's uuid%} is "P":
+                if {balance::%player's uuid%} is more than or equal to 1600000:
+                
+                    set {level::%player's uuid%} to "Q"
+                    remove 1600000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1600000
+                    send "&5(!) &dYou have leveled up to &r&lQ &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1600000&d)"
+                    stop
+            if {level::%player's uuid%} is "Q":
+                if {balance::%player's uuid%} is more than or equal to 1700000:
+                
+                    set {level::%player's uuid%} to "R"
+                    remove 1700000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1700000
+                    send "&5(!) &dYou have leveled up to &r&lR &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1700000&d)"
+                    stop
+            if {level::%player's uuid%} is "R":
+                if {balance::%player's uuid%} is more than or equal to 1800000:
+                
+                    set {level::%player's uuid%} to "S"
+                    remove 1800000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1800000
+                    send "&5(!) &dYou have leveled up to &r&lS &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}    
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1800000&d)"
+                    stop
+            if {level::%player's uuid%} is "S":
+                if {balance::%player's uuid%} is more than or equal to 1900000:
+                
+                    set {level::%player's uuid%} to "T"
+                    remove 1900000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 1900000
+                    send "&5(!) &dYou have leveled up to &r&lT &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 1900000&d)"
+                    stop
+            if {level::%player's uuid%} is "T":
+                if {balance::%player's uuid%} is more than or equal to 2000000:
+                
+                    set {level::%player's uuid%} to "U"
+                    remove 2000000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2000000
+                    send "&5(!) &dYou have leveled up to &r&lU &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 2000000&d)"
+                    stop
+            if {level::%player's uuid%} is "U":
+                if {balance::%player's uuid%} is more than or equal to 2100000:
+                
+                    set {level::%player's uuid%} to "V"
+                    remove 2100000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2100000
+                    send "&5(!) &dYou have leveled up to &r&lV &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 2100000&d)"
+                    stop
+            if {level::%player's uuid%} is "V":
+                if {balance::%player's uuid%} is more than or equal to 2200000:
+                
+                    set {level::%player's uuid%} to "W"
+                    remove 2200000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2200000
+                    send "&5(!) &dYou have leveled up to &r&lW &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 2200000&d)"
+                    stop
+            if {level::%player's uuid%} is "W":
+                if {balance::%player's uuid%} is more than or equal to 2300000:
+                
+                    set {level::%player's uuid%} to "X"
+                    remove 2300000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2300000
+                    send "&5(!) &dYou have leveled up to &r&lX &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 2300000&d)"
+                    stop
+            if {level::%player's uuid%} is "X":
+                if {balance::%player's uuid%} is more than or equal to 2400000:
+                
+                    set {level::%player's uuid%} to "Y"
+                    remove 2400000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2400000
+                    send "&5(!) &dYou have leveled up to &r&lY &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 2400000&d)"
+                    stop
+            if {level::%player's uuid%} is "Y":
+                if {balance::%player's uuid%} is more than or equal to 2500000:
+                
+                    set {level::%player's uuid%} to "Z"
+                    remove 2500000 from {balance::%player's uuid%}
+                    set {rankupcost::%player's uuid%} to 2500000
+                    send "&5(!) &dYou have leveled up to &r&lZ &d(Cost: &5$%{rankupcost::%player's uuid%}%&d)"
+                    execute command "/scoreboardrl %player%"
+                    clear {rankupcost::%player's uuid%}   
+                    if {autoprestige::%player's uuid%} is "true":
+                        make player execute command "/prestige" 
+                    stop
+                else:
+                    send "&5&l(!) &dInsufficient Funds! (Needed: 2500000&d)"
+                    stop
+
+command /rankupmax:
+    aliases: /rum, /rmax
+    trigger:
+        while {level::%player's uuid%} is not "Z":
+            wait 1 tick
+            if {prestige::%player's uuid%} is more than 0:
+                if {level::%player's uuid%} is "A":
+                    if {balance::%player's uuid%} is more than or equal to 100000*{prestige::%player's uuid%}:
+                        set {level::%player's uuid%} to "B"
+                        remove 100000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 100000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %100000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "B":
+                    if {balance::%player's uuid%} is more than or equal to 200000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "C"
+                        remove 200000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 200000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %200000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "C":
+                    if {balance::%player's uuid%} is more than or equal to 300000*{prestige::%player's uuid%}:
+                        set {level::%player's uuid%} to "D"
+                        remove 300000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 300000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %300000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "D":            
+                    if {balance::%player's uuid%} is more than or equal to 400000*{prestige::%player's uuid%}:
+
+                        set {level::%player's uuid%} to "E"
+                        remove 400000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 400000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %400000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "E":
+                    if {balance::%player's uuid%} is more than or equal to 500000*{prestige::%player's uuid%}:
+
+                        set {level::%player's uuid%} to "F"
+                        remove 500000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 500000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %500000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "F":
+                    if {balance::%player's uuid%} is more than or equal to 600000*{prestige::%player's uuid%}:
+
+                        set {level::%player's uuid%} to "G"
+                        remove 600000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 600000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %600000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "G":
+                    if {balance::%player's uuid%} is more than or equal to 700000*{prestige::%player's uuid%}:
+                        set {level::%player's uuid%} to "H"
+                        remove 700000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 700000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %700000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "H":
+                    if {balance::%player's uuid%} is more than or equal to 800000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "I"
+                        remove 800000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 800000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %800000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "I":
+                    if {balance::%player's uuid%} is more than or equal to 900000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "J"
+                        remove 900000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 900000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}    
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %900000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "J":
+                    if {balance::%player's uuid%} is more than or equal to 1000000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "K"
+                        remove 1000000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1000000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1000000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "K":
+                    if {balance::%player's uuid%} is more than or equal to 1100000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "L"
+                        remove 1100000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1100000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1100000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "L":
+                    if {balance::%player's uuid%} is more than or equal to 1200000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "M"
+                        remove 1200000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1200000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1200000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "M":
+                    if {balance::%player's uuid%} is more than or equal to 1300000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "N"
+                        remove 1300000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1300000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1300000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "N":
+                    if {balance::%player's uuid%} is more than or equal to 1400000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "O"
+                        remove 1400000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1400000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %14000000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "O":
+                    if {balance::%player's uuid%} is more than or equal to 1500000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "P"
+                        remove 1500000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1500000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1500000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "P":
+                    if {balance::%player's uuid%} is more than or equal to 1600000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "Q"
+                        remove 1600000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1600000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1600000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "Q":
+                    if {balance::%player's uuid%} is more than or equal to 1700000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "R"
+                        remove 1700000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1700000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1700000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "R":
+                    if {balance::%player's uuid%} is more than or equal to 1800000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "S"
+                        remove 1800000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1800000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}    
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1800000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "S":
+                    if {balance::%player's uuid%} is more than or equal to 1900000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "T"
+                        remove 1900000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 1900000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %1900000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "T":
+                    if {balance::%player's uuid%} is more than or equal to 2000000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "U"
+                        remove 2000000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 2000000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %2000000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "U":
+                    if {balance::%player's uuid%} is more than or equal to 2100000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "V"
+                        remove 2100000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 2100000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %2100000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "V":
+                    if {balance::%player's uuid%} is more than or equal to 2200000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "W"
+                        remove 2200000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 2200000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %2200000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "W":
+                    if {balance::%player's uuid%} is more than or equal to 2300000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "X"
+                        remove 2300000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 2300000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %2300000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "X":
+                    if {balance::%player's uuid%} is more than or equal to 2400000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "Y"
+                        remove 2400000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 2400000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %2400000*{prestige::%player's uuid%}%&d)"
+                        stop
+                if {level::%player's uuid%} is "Y":
+                    if {balance::%player's uuid%} is more than or equal to 2500000*{prestige::%player's uuid%}:
+                
+                        set {level::%player's uuid%} to "Z"
+                        remove 2500000*{prestige::%player's uuid%} from {balance::%player's uuid%}
+                        set {rankupcost::%player's uuid%} to 2500000*{prestige::%player's uuid%}
+                        execute command "/scoreboardrl %player%"
+                        clear {rankupcost::%player's uuid%}    
+                        send "&5&l(!) &dYou are now rank &r&lZ"
+                    if {autoprestige::%player's uuid%} is "true":
+                        make player execute command "/prestige"
+                    else:
+                        send "&5&l(!) &dYou are now rank &r&l%{level::%player's uuid%}%"
+                        send "&5&l(!) &dInsufficient Funds! (Needed: %2500000*{prestige::%player's uuid%}%&d)"
+                        stop
+
+
+
+
+command /level [<offline player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if arg-1 is not set: 
+            send "&7&l----- &5&lLevel Manager &7&l ----- %nl% &5&l(!) &d/level (player) (level)%nl%&7&l----- &5&lLevel Manager &7&l -----"
+        if arg-1 is set:
+            if arg-2 is not set:
+                send "&7&l----- &5&lLevel Manager &7&l ----- %nl% &5&l(!) &d/level (player) (level)%nl%&7&l----- &5&lLevel Manager &7&l -----"
+            if arg-2 is set:
+                set {level::%arg-1's uuid%} to uppercase arg-2
+                send "&5(!) &dYou have set &r%arg-1%&d's &dlevel to &r&l%arg-2%"
+        
+
+
+command /setprestige [<offline player>] [<integer>]:
+    permission: admin.core
+    trigger:
+        if arg-1 is not set: 
+            send "&7&l----- &5&lPrestige Manager &7&l ----- %nl% &5&l(!) &d/prestige (player) (number)%nl%&7&l----- &5&lPrestige Manager &7&l -----"
+        if arg-1 is set:
+            if arg-2 is not set:
+                send "&7&l----- &5&lPrestige Manager &7&l ----- %nl% &5&l(!) &d/prestige (player) (number)%nl%&7&l----- &5&lPrestige Manager &7&l -----"
+            if arg-2 is set:
+                set {prestige::%arg-1's uuid%} to arg-2
+                send "&5(!) &dYou have set &r%arg-1%&d's &dprestige to &r&l%arg-2%"
+
+
+
+on join:
+    if {level::%player's uuid%} is not set:
+        set {level::%player's uuid%} to "A"
+    if {level::%player's uuid%} is 0:
+        set {level::%player's uuid%} to "A"
+    if {prestige::%player's uuid%} is not set:
+        set {prestige::%player's uuid%} to 0

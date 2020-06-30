@@ -1,0 +1,3 @@
+on skript load:
+    clear {globalboostermoney}
+    clear {globalboostertoken}

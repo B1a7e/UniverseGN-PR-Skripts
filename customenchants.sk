@@ -1,0 +1,605 @@
+
+command /efficiency [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of efficiency of tool of arg-1 is more than or equal to 100:
+            send "&5&l(!) &dYour efficiency is maxed out!" to arg-1
+            stop
+        if arg-2 is "100":
+            if level of efficiency of tool of arg-1 is more than 0:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {cost1::%arg-1's uuid%} to level of efficiency of tool of arg 1 - 15
+            set {cost::%arg-1%} to 5000+500*{cost1::%arg-1's uuid%}*100
+            set {cost::%arg-1%} to {cost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {cost::%arg-1%}:
+                remove {cost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {Efficiency.%arg-1's uuid%} to "Efficiency %level of efficiency of tool of arg 1 + 100%"
+                set 7th line of lore of arg-1's tool to "&7%{Efficiency.%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{Efficiency.%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded efficiency to &r%{Efficiency.%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {cost::%arg-1%}
+                clear {cost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{cost::%arg-1%}%&d)" to arg-1
+                clear {cost::%arg-1%}
+                clear {cost1::%arg-1%}
+        if arg-2 is "10":
+            if level of efficiency of tool of arg-1 is more than 90:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {cost1::%arg-1's uuid%} to level of efficiency of tool of arg 1 - 15
+            set {cost::%arg-1%} to 5000+500*{cost1::%arg-1's uuid%}
+            set {cost::%arg-1%} to {cost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {cost::%arg-1%}:
+                remove {cost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {Efficiency.%arg-1's uuid%} to "Efficiency %level of efficiency of tool of arg 1 + 10%"
+                set 7th line of lore of arg-1's tool to "&7%{Efficiency.%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{Efficiency.%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded efficiency to &r%{Efficiency.%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {cost::%arg-1%}
+                clear {cost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{cost::%arg-1%}%&d)" to arg-1
+                clear {cost::%arg-1%}
+                clear {cost1::%arg-1%}
+                stop
+        if arg-2 is not set:
+            set {cost1::%arg-1's uuid%} to level of efficiency of tool of arg 1 - 15
+            set {cost::%arg-1%} to 5000+500*{cost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {cost::%arg-1%}:
+                remove {cost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {Efficiency.%arg-1's uuid%} to "Efficiency %level of efficiency of tool of arg 1 + 1%"
+                set 7th line of lore of arg-1's tool to "&7%{Efficiency.%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{Efficiency.%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded efficiency to &r%{Efficiency.%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {cost::%arg-1%}
+                clear {cost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{cost::%arg-1%}%&d)" to arg-1
+                clear {cost::%arg-1%}
+                clear {cost1::%arg-1%}
+
+command /fortune [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of fortune of tool of arg-1 is more than or equal to 15000:
+            send "&5&l(!) &dYour fortune is maxed out!" to arg-1
+            stop
+        if arg-2 is "100":
+            if level of fortune of tool of arg-1 is more than 14900:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {fortunecost1::%arg-1's uuid%} to level of fortune of tool of arg 1 - 15
+            set {fortunecost::%arg-1%} to 5500+650*{fortunecost1::%arg-1's uuid%}
+            set {fortunecost::%arg-1%} to {fortunecost::%arg-1%}*100
+            if {token::%arg-1's uuid%} is greater or equal to {fortunecost::%arg-1%}:
+                remove {fortunecost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {fortune::%arg-1's uuid%} to "Fortune %level of fortune of tool of arg 1 + 100%"
+                set 8th line of lore of arg-1's tool to "&7%{fortune::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{fortune::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded fortune to &r%{fortune::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {fortunecost::%arg-1%}
+                clear {fortunecost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{fortunecost::%arg-1%}%&d)" to arg-1
+                clear {fortunecost::%arg-1%}
+                clear {fortunecost1::%arg-1%}
+        if arg-2 is "10":
+            if level of fortune of tool of arg-1 is more than 14990:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {fortunecost1::%arg-1's uuid%} to level of fortune of tool of arg 1 - 15
+            set {fortunecost::%arg-1%} to 7500+750*{fortunecost1::%arg-1's uuid%}
+            set {fortunecost::%arg-1%} to {fortunecost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {fortunecost::%arg-1%}:
+                remove {fortunecost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {fortune::%arg-1's uuid%} to "Fortune %level of fortune of tool of arg 1 + 10%"
+                set 8th line of lore of arg-1's tool to "&7%{fortune::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{fortune::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded fortune to &r%{fortune::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {fortunecost::%arg-1%}
+                clear {fortunecost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{fortunecost::%arg-1%}%&d)" to arg-1
+                clear {fortunecost::%arg-1%}
+                clear {fortunecost1::%arg-1%}
+        if arg-2 is not set:
+            set {fortunecost1::%arg-1's uuid%} to level of fortune of tool of arg 1 - 15
+            set {fortunecost::%arg-1%} to 7500+750*{fortunecost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {fortunecost::%arg-1%}:
+                remove {fortunecost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {fortune::%arg-1's uuid%} to "Fortune %level of fortune of tool of arg 1 + 1%"
+                set 8th line of lore of arg-1's tool to "&7%{fortune::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{fortune::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded fortune to &r%{fortune::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {fortunecost::%arg-1%}
+                clear {fortunecost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{fortunecost::%arg-1%}%&d)" to arg-1
+                clear {fortunecost::%arg-1%}
+                clear {fortunecost1::%arg-1%}
+
+
+
+command /explosive [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of mending of tool of arg-1 is more than or equal to 5000:
+            send "&5&l(!) &dYour explosive is maxed out!" to arg-1
+            stop
+        if arg-2 is "100":
+            if level of mending of tool of arg-1 is more than 4900:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {explosivecost1::%arg-1's uuid%} to level of mending of tool of arg 1
+            set {explosivecost::%arg-1%} to 7500+750*{explosivecost1::%arg-1's uuid%}
+            set {explosivecost::%arg-1%} to {explosivecost::%arg-1%}*100
+            if {token::%arg-1's uuid%} is greater or equal to {explosivecost::%arg-1%}:
+                remove {explosivecost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {explosive::%arg-1's uuid%} to "Explosive %level of mending of tool of arg 1 + 100%"
+                set {explosivem::%arg-1's uuid%} to "Mending %level of mending of tool of arg 1 + 100%"
+
+                set 9th line of lore of arg-1's tool to "&7%{explosive::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{explosivem::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded explosive to &r%{explosive::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {explosivecost::%arg-1%}
+                clear {explosivecost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{explosivecost::%arg-1%}%&d)" to arg-1
+                clear {explosivecost::%arg-1%}
+                clear {explosivecost1::%arg-1%}
+        if arg-2 is "10":
+            if level of mending of tool of arg-1 is more than 4990:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {explosivecost1::%arg-1's uuid%} to level of mending of tool of arg 1
+            set {explosivecost::%arg-1%} to 7500+750*{explosivecost1::%arg-1's uuid%}
+            set {explosivecost::%arg-1%} to {explosivecost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {explosivecost::%arg-1%}:
+                remove {explosivecost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {explosive::%arg-1's uuid%} to "Explosive %level of mending of tool of arg 1 + 10%"
+                set {explosivem::%arg-1's uuid%} to "Mending %level of mending of tool of arg 1 + 10%"
+
+                set 9th line of lore of arg-1's tool to "&7%{explosive::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{explosivem::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded explosive to &r%{explosive::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {explosivecost::%arg-1%}
+                clear {explosivecost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{explosivecost::%arg-1%}%&d)" to arg-1
+                clear {explosivecost::%arg-1%}
+                clear {explosivecost1::%arg-1%}
+        if arg-2 is not set:
+            set {explosivecost1::%arg-1's uuid%} to level of mending of tool of arg 1
+            set {explosivecost::%arg-1%} to 7500+750*{explosivecost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {explosivecost::%arg-1%}:
+                remove {explosivecost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {explosive::%arg-1's uuid%} to "Explosive %level of mending of tool of arg 1 + 1%"
+                set {explosivem::%arg-1's uuid%} to "Mending %level of mending of tool of arg 1 + 1%"
+
+                set 9th line of lore of arg-1's tool to "&7%{explosive::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{explosivem::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded explosive to &r%{explosive::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {explosivecost::%arg-1%}
+                clear {explosivecost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{explosivecost::%arg-1%}%&d)" to arg-1
+                clear {explosivecost::%arg-1%}
+                clear {explosivecost1::%arg-1%}
+
+
+
+command /charity [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of riptide of tool of arg-1 is more than or equal to 10:
+            send "&5&l(!) &dYour charity is maxed out!" to arg-1
+            stop
+        if arg-2 is "10":
+            if level of riptide of tool of arg-1 is more than 0:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {charitycost1::%arg-1's uuid%} to level of riptide of tool of arg 1
+            set {charitycost::%arg-1%} to 8000+2500*{charitycost1::%arg-1's uuid%}
+            set {charitycost::%arg-1%} to {charitycost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {charitycost::%arg-1%}:
+                remove {charitycost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {charity::%arg-1's uuid%} to "Charity %level of riptide of tool of arg 1 + 10%"
+                set {charitym::%arg-1's uuid%} to "Riptide %level of riptide of tool of arg 1 + 10%"
+
+                set 10th line of lore of arg-1's tool to "&7%{charity::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{charitym::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded charity to &r%{charity::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {charitycost::%arg-1%}
+                clear {charitycost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{charitycost::%arg-1%}%&d)" to arg-1
+                clear {charitycost::%arg-1%}
+                clear {charitycost1::%arg-1%}
+        if arg-2 is not set:
+            set {charitycost1::%arg-1's uuid%} to level of riptide of tool of arg 1
+            set {charitycost::%arg-1%} to 8000+2500*{charitycost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {charitycost::%arg-1%}:
+                remove {charitycost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {charity::%arg-1's uuid%} to "Charity %level of riptide of tool of arg 1 + 1%"
+                set {charitym::%arg-1's uuid%} to "riptide %level of riptide of tool of arg 1 + 1%"
+
+                set 10th line of lore of arg-1's tool to "&7%{charity::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{charitym::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded charity to &r%{charity::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {charitycost::%arg-1%}
+                clear {charitycost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{charitycost::%arg-1%}%&d)" to arg-1
+                clear {charitycost::%arg-1%}
+                clear {charitycost1::%arg-1%}
+
+
+
+command /lucky [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of unbreaking of tool of arg-1 is more than or equal to 10000:
+            send "&5&l(!) &dYour lucky is maxed out!" to arg-1
+            stop
+        if arg-2 is "100":
+            if level of unbreaking of tool of arg-1 is more than 9900:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {luckycost1::%arg-1's uuid%} to level of unbreaking of tool of arg 1
+            set {luckycost::%arg-1%} to 20000+7000*{luckycost1::%arg-1's uuid%}
+            set {luckycost::%arg-1%} to {luckycost::%arg-1%}*100
+            if {token::%arg-1's uuid%} is greater or equal to {luckycost::%arg-1%}:
+                remove {luckycost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {lucky::%arg-1's uuid%} to "Lucky %level of unbreaking of tool of arg 1 + 100%"
+                set {luckym::%arg-1's uuid%} to "Unbreaking %level of unbreaking of tool of arg 1 + 100%"
+
+                set 11th line of lore of arg-1's tool to "&7%{lucky::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{luckym::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded lucky to &r%{lucky::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {luckycost::%arg-1%}
+                clear {luckycost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{luckycost::%arg-1%}%&d)" to arg-1
+                clear {luckycost::%arg-1%}
+                clear {luckycost1::%arg-1%}
+                clear {explosivecost1::%arg-1%}
+        if arg-2 is "10":
+            if level of unbreaking of tool of arg-1 is more than 9990:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {luckycost1::%arg-1's uuid%} to level of unbreaking of tool of arg 1
+            set {luckycost::%arg-1%} to 20000+7000*{luckycost1::%arg-1's uuid%}
+            set {luckycost::%arg-1%} to {luckycost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {luckycost::%arg-1%}:
+                remove {luckycost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {lucky::%arg-1's uuid%} to "Lucky %level of unbreaking of tool of arg 1 + 10%"
+                set {luckym::%arg-1's uuid%} to "Unbreaking %level of unbreaking of tool of arg 1 + 10%"
+
+                set 11th line of lore of arg-1's tool to "&7%{lucky::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{luckym::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded lucky to &r%{lucky::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {luckycost::%arg-1%}
+                clear {luckycost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{luckycost::%arg-1%}%&d)" to arg-1
+                clear {luckycost::%arg-1%}
+                clear {luckycost1::%arg-1%}
+        if arg-2 is not set:
+            set {luckycost1::%arg-1's uuid%} to level of unbreaking of tool of arg 1
+            set {luckycost::%arg-1%} to 20000+7000*{luckycost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {luckycost::%arg-1%}:
+                remove {luckycost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {lucky::%arg-1's uuid%} to "Lucky %level of unbreaking of tool of arg 1 + 1%"
+                set {luckym::%arg-1's uuid%} to "Unbreaking %level of unbreaking of tool of arg 1 + 1%"
+
+                set 11th line of lore of arg-1's tool to "&7%{lucky::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{luckym::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded lucky to &r%{lucky::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {luckycost::%arg-1%}
+                clear {luckycost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{luckycost::%arg-1%}%&d)" to arg-1
+                clear {luckycost::%arg-1%}
+                clear {luckycost1::%arg-1%}
+
+
+
+command /cratefinder [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of infinity of tool of arg-1 is more than or equal to 100:
+            send "&5&l(!) &dYour crate finder is maxed out!" to arg-1
+            stop
+        if arg-2 is "100":
+            if level of infinity of tool of arg-1 is more than 0:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {cratefindercost1::%arg-1's uuid%} to level of infinity of tool of arg 1
+            set {cratefindercost::%arg-1%} to 30000+1500*{cratefindercost1::%arg-1's uuid%}
+            set {cratefindercost::%arg-1%} to {cratefindercost::%arg-1%}*100
+            if {token::%arg-1's uuid%} is greater or equal to {cratefindercost::%arg-1%}:
+                remove {cratefindercost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {cratefinder::%arg-1's uuid%} to "Crate Finder %level of infinity of tool of arg 1 + 100%"
+                set {cratefinderm::%arg-1's uuid%} to "infinity %level of infinity of tool of arg 1 + 100%"
+
+                set 12th line of lore of arg-1's tool to "&7%{cratefinder::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{cratefinderm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded crate finder to &r%{cratefinder::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {cratefindercost::%arg-1%}
+                clear {cratefindercost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{cratefindercost::%arg-1%}%&d)" to arg-1
+                clear {cratefindercost::%arg-1%}
+                clear {cratefindercost1::%arg-1%}
+        if arg-2 is "10":
+            if level of infinity of tool of arg-1 is more than 90:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {cratefindercost1::%arg-1's uuid%} to level of infinity of tool of arg 1
+            set {cratefindercost::%arg-1%} to 30000+1500*{cratefindercost1::%arg-1's uuid%}
+            set {cratefindercost::%arg-1%} to {cratefindercost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {cratefindercost::%arg-1%}:
+                remove {cratefindercost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {cratefinder::%arg-1's uuid%} to "Crate Finder %level of infinity of tool of arg 1 + 10%"
+                set {cratefinderm::%arg-1's uuid%} to "infinity %level of infinity of tool of arg 1 + 10%"
+
+                set 12th line of lore of arg-1's tool to "&7%{cratefinder::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{cratefinderm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded crate finder to &r%{cratefinder::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {cratefindercost::%arg-1%}
+                clear {cratefindercost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{cratefindercost::%arg-1%}%&d)" to arg-1
+                clear {cratefindercost::%arg-1%}
+                clear {cratefindercost1::%arg-1%}
+        if arg-2 is not set:
+            set {cratefindercost1::%arg-1's uuid%} to level of infinity of tool of arg 1
+            set {cratefindercost::%arg-1%} to 30000+1500*{cratefindercost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {cratefindercost::%arg-1%}:
+                remove {cratefindercost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {cratefinder::%arg-1's uuid%} to "Crate Finder %level of infinity of tool of arg 1 + 1%"
+                set {cratefinderm::%arg-1's uuid%} to "infinity %level of infinity of tool of arg 1 + 1%"
+
+                set 12th line of lore of arg-1's tool to "&7%{cratefinder::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{cratefinderm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded crate finder to &r%{cratefinder::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {cratefindercost::%arg-1%}
+                clear {cratefindercost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{cratefindercost::%arg-1%}%&d)" to arg-1
+                clear {cratefindercost::%arg-1%}
+                clear {cratefindercost1::%arg-1%}
+
+command /tokengreed [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of lure of tool of arg-1 is more than or equal to 10000:
+            send "&5&l(!) &dYour token greed is maxed out!" to arg-1
+            stop
+        if arg-2 is "100":
+            if level of lure of tool of arg-1 is more than 9900:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {tokengreedcost1::%arg-1's uuid%} to level of lure of tool of arg 1
+            set {tokengreedcost::%arg-1%} to 1500+1000*{tokengreedcost1::%arg-1's uuid%}
+            set {tokengreedcost::%arg-1%} to {tokengreedcost::%arg-1%}*100
+            if {token::%arg-1's uuid%} is greater or equal to {tokengreedcost::%arg-1%}:
+                remove {tokengreedcost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {tokengreed::%arg-1's uuid%} to "Token Greed %level of lure of tool of arg 1 + 100%"
+                set {tokengreedm::%arg-1's uuid%} to "lure %level of lure of tool of arg 1 + 100%"
+
+                set 13th line of lore of arg-1's tool to "&7%{tokengreed::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{tokengreedm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded token greed to &r%{tokengreed::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {tokengreedcost::%arg-1%}
+                clear {tokengreedcost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{tokengreedcost::%arg-1%}%&d)" to arg-1
+                clear {tokengreedcost::%arg-1%}
+                clear {tokengreedcost1::%arg-1%}
+        if arg-2 is "10":
+            if level of lure of tool of arg-1 is more than 9990:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {tokengreedcost1::%arg-1's uuid%} to level of lure of tool of arg 1
+            set {tokengreedcost::%arg-1%} to 1500+1000*{tokengreedcost1::%arg-1's uuid%}
+            set {tokengreedcost::%arg-1%} to {tokengreedcost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {tokengreedcost::%arg-1%}:
+                remove {tokengreedcost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {tokengreed::%arg-1's uuid%} to "Token Greed %level of lure of tool of arg 1 + 10%"
+                set {tokengreedm::%arg-1's uuid%} to "lure %level of lure of tool of arg 1 + 10%"
+
+                set 13th line of lore of arg-1's tool to "&7%{tokengreed::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{tokengreedm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded token greed to &r%{tokengreed::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {tokengreedcost::%arg-1%}
+                clear {tokengreedcost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{tokengreedcost::%arg-1%}%&d)" to arg-1
+                clear {tokengreedcost::%arg-1%}
+                clear {tokengreedcost1::%arg-1%}
+        if arg-2 is not set:
+            set {tokengreedcost1::%arg-1's uuid%} to level of lure of tool of arg 1
+            set {tokengreedcost::%arg-1%} to 1500+1000*{tokengreedcost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {tokengreedcost::%arg-1%}:
+                remove {tokengreedcost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {tokengreed::%arg-1's uuid%} to "Token Greed %level of lure of tool of arg 1 + 1%"
+                set {tokengreedm::%arg-1's uuid%} to "lure %level of lure of tool of arg 1 + 1%"
+
+                set 13th line of lore of arg-1's tool to "&7%{tokengreed::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{tokengreedm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded token greed to &r%{tokengreed::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {tokengreedcost::%arg-1%}
+                clear {tokengreedcost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{tokengreedcost::%arg-1%}%&d)" to arg-1
+                clear {tokengreedcost::%arg-1%}
+                clear {tokengreedcost1::%arg-1%}
+
+
+
+command /merchant [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of smite of tool of arg-1 is more than or equal to 50000:
+            send "&5&l(!) &dYour merchant is maxed out!" to arg-1
+            stop
+        if arg-2 is "100":
+            if level of smite of tool of arg-1 is more than 49900:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {merchantcost1::%arg-1's uuid%} to level of smite of tool of arg 1
+            set {merchantcost::%arg-1%} to 10000+2000*{merchantost1::%arg-1's uuid%}
+            set {merchantcost::%arg-1%} to {merchantcost::%arg-1%}*100
+            if {token::%arg-1's uuid%} is greater or equal to {merchantcost::%arg-1%}:
+                remove {merchantcost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {merchant::%arg-1's uuid%} to "Merchant %level of smite of tool of arg 1 + 100%"
+                set {merchantm::%arg-1's uuid%} to "smite %level of smite of tool of arg 1 + 100%"
+
+                set 14th line of lore of arg-1's tool to "&7%{merchant::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{merchantm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded merchant to &r%{merchant::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {merchantcost::%arg-1%}
+                clear {merchantcost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{merchantcost::%arg-1%}%&d)" to arg-1
+                clear {merchantcost::%arg-1%}
+                clear {merchantcost1::%arg-1%}
+        if arg-2 is "10":
+            if level of smite of tool of arg-1 is more than 49990:
+                send "&5&l(!) &dPlease do a smaller amount" to arg-1
+                stop
+            set {merchantcost1::%arg-1's uuid%} to level of smite of tool of arg 1
+            set {merchantcost::%arg-1%} to 10000+2000*{merchantost1::%arg-1's uuid%}
+            set {merchantcost::%arg-1%} to {merchantcost::%arg-1%}*10
+            if {token::%arg-1's uuid%} is greater or equal to {merchantcost::%arg-1%}:
+                remove {merchantcost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {merchant::%arg-1's uuid%} to "Merchant %level of smite of tool of arg 1 + 10%"
+                set {merchantm::%arg-1's uuid%} to "smite %level of smite of tool of arg 1 + 10%"
+
+                set 14th line of lore of arg-1's tool to "&7%{merchant::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{merchantm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded merchant to &r%{merchant::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {merchantcost::%arg-1%}
+                clear {merchantcost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{merchantcost::%arg-1%}%&d)" to arg-1
+                clear {merchantcost::%arg-1%}
+                clear {merchantcost1::%arg-1%}
+        if arg-2 is not set:
+            set {merchantcost1::%arg-1's uuid%} to level of smite of tool of arg 1
+            set {merchantcost::%arg-1%} to 10000+2000*{merchantost1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {merchantcost::%arg-1%}:
+                remove {merchantcost::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {merchant::%arg-1's uuid%} to "Merchant %level of smite of tool of arg 1 + 1%"
+                set {merchantm::%arg-1's uuid%} to "smite %level of smite of tool of arg 1 + 1%"
+
+                set 14th line of lore of arg-1's tool to "&7%{merchant::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{merchantm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded merchant to &r%{merchant::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {merchantcost::%arg-1%}
+                clear {merchantcost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{merchantcost::%arg-1%}%&d)" to arg-1
+                clear {merchantcost::%arg-1%}
+                clear {merchantcost1::%arg-1%}
+
+
+
+command /jackhammer [<player>] [<text>]:
+    permission: admin.core
+    trigger:
+        if level of punch of tool of arg-1 is more than or equal to 3:
+            send "&5&l(!) &dYour jackhammer is maxed out!" to arg-1
+            stop
+        if arg-2 is not set:
+            set {jackhammer1::%arg-1's uuid%} to level of punch of tool of arg 1
+            set {jackhammer::%arg-1%} to 500000+500000*{jackhammer1::%arg-1's uuid%}
+            if {token::%arg-1's uuid%} is greater or equal to {jackhammer::%arg-1%}:
+                remove {jackhammer::%arg-1%} from {token::%arg-1's uuid%}
+                execute command "/scoreboardrl %arg-1%"
+                set {jackhammer::%arg-1's uuid%} to "Jackhammer %level of punch of tool of arg 1 + 1%"
+                set {jackhammerm::%arg-1's uuid%} to "punch %level of punch of tool of arg 1 + 1%"
+
+                set 15th line of lore of arg-1's tool to "&7%{jackhammer::%arg-1's uuid%}%"
+                enchant arg-1's tool with "%{jackhammerm::%arg-1's uuid%}%" parsed as enchantment type
+                message "&5&l(!)&d You have upgraded jackhammer to &r%{jackhammer::%arg-1's uuid%}%&d!" to arg-1
+                make arg-1 execute command "/upgradepickaxe"
+                clear {jackhammercost::%arg-1%}
+                clear {jackhammercost1::%arg-1%}
+            else:
+                close inventory of arg-1
+                message "&5&l(!) &dInsufficient Funds! (Needed %{jackhammercost::%arg-1%}%&d)" to arg-1
+                clear {jackhammercost::%arg-1%}
+                clear {jackhammercost1::%arg-1%}

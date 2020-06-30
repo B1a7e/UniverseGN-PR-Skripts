@@ -1,0 +1,11 @@
+command /stats [<offline player>]:
+    trigger:
+        if arg-1 is not set:
+            send "&7----- &5&lStats &7----- %nl% &d %nl%&5&l(!) &dRank: %{prefix::%player's uuid%}% %nl%&5&l(!) &dPrestige: %{prestige::%arg-1's uuid%}% %nl%&5&l(!) &dBalance: %formatNum({balance::%player's uuid%})% %nl%&5&l(!) &dTokens: %formatreeTokens({token::%player's uuid%})% %nl%&5&l(!) &dMultiplier: %{multiplier::%player's uuid%}%&dx %nl%&5&l(!) &dBlocks Broken: %{totalblocksbroken::%player's uuid%}% %nl% &e %nl%&7-----&5&l Stats &r&7-----"
+        else:
+            send "&7----- &5&lStats &7----- %nl% &d %nl%&5&l(!) &dRank: %{prefix::%arg-1's uuid%}% %nl%&5&l(!) &dPrestige: %{prestige::%arg-1's uuid%}% %nl%&5&l(!) &dBalance: %formatNum({balance::%arg-1's uuid%})% %nl%&5&l(!) &dTokens: %formatreeTokens({token::%arg-1's uuid%})% %nl%&5&l(!) &dMultiplier: %{multiplier::%arg-1's uuid%}%&dx %nl%&5&l(!) &dBlocks Broken: %{totalblocksbroken::%arg-1's uuid%}% %nl% &e %nl%&7-----&5&l Stats &r&7-----"
+
+
+
+
+

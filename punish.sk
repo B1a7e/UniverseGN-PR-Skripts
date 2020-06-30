@@ -1,0 +1,161 @@
+# Version 1.0 made by MLG_PancakeZ
+
+options:
+	prefix: &d&lUniversal&5&lPR &8»
+
+
+#-------------[DO NOT CHANGE ANYTHING BELOW THIS LINE]-------------
+
+	ban_permission: ban.core
+
+	tempban_permission: tempban.core
+
+	kick_permission: staff.core
+
+	unban_permission: unbans.core
+
+	baninfo_permission: staff.core
+
+	notify_permission: staff.core
+
+
+command /ban [<offline player>] [<Text>]:
+	trigger:
+		if player has permission "{@ban_permission}":
+			if arg 1 is set:
+				if arg 2 is set:
+					if arg-1 is equal to "DangerArena69":
+						send "&5&l(!) &dYou cannot ban this player!" to player
+						stop
+					if arg-1 is equal to "B1a7e":
+						send "&5&l(!) &dYou cannot ban this player!" to player
+						stop
+					else:
+						set {banned.%arg 1%} to true
+						set {ban.time.%arg 1%} to now
+						set {ban.reason.%arg 1%} to argument-2
+						set {ban.expire.%arg 1%} to "Never"
+						set {ban.bannedby.%arg 1%} to player	
+						set {BanIP.%arg 1%} to "False"
+						kick arg 1 due to "&7Banned for &c%arg 2% &7by &c%player%"
+						ban arg 1 due to "&7Banned for &c%arg 2% &7by &c%player%"
+						loop all players:
+							loop-player has permission "{@notify_permission}"
+							send "{@prefix} &c%player% &7banned &c%arg 1% &7Reason: &c%arg 2%" to loop-player
+				else if arg-2 is not set:
+					set {banned.%arg 1%} to true
+					set {ban.time.%arg 1%} to now
+					set {ban.reason.%arg 1%} to "none"
+					set {ban.expire.%arg 1%} to "Never"
+					set {ban.bannedby.%arg 1%} to player
+					set {BanIP.%arg 1%} to "False"
+					kick arg 1 due to "&7Banned for &c%arg 2% &7by &c%player%"
+					ban arg 1 due to "&7Banned for &c%arg 2% &7by &c%player%"
+					loop all players:
+						loop-player has permission "{@notify_permission}"
+						send "{@prefix} &c%player% &7banned &c%arg 1% &7Reason: &cNone" to loop-player
+			else:
+				send "{@prefix} &c/Ban <Player> <Reason>"
+		else:
+			send "{@prefix} &cNo permission"
+
+command /unban [<offlineplayer>]:
+	trigger:
+		if executor is console:
+			unban arg-1
+			unban ip of arg 1
+			set {banned.%arg 1%} to false
+			loop all players:
+				loop-player has permission "{@notify_permission}"
+				send "{@prefix} &cConsole &7unbanned &c%arg 1%" to loop-player
+		if player has permission "@unban_permission":
+			if arg 1 is set:
+				if {banned.%arg 1%} is true:
+					unban arg-1
+					unban ip of arg 1
+					set {banned.%arg 1%} to false
+					loop all players:
+						loop-player has permission "{@notify_permission}"
+						send "{@prefix} &c%player% &7unbanned &c%arg 1%" to loop-player
+				else:
+					send "{@prefix} &cThis player isn't banned"
+			else:
+				send "{@prefix} &c/Unban <Player>"
+		else:
+			send "{@prefix} &cNo permission"
+
+command /kick [<Offlineplayer>] [<Text>]:
+	trigger:
+		if player has permission "{@kick_permission}":
+			if arg 1 is set:
+				if arg 2 is set:
+					if arg-1 is equal to "DangerArena69":
+						send "&5&l(!) &dYou cannot kick this player!" to player
+						stop
+					if arg-1 is equal to "B1a7e":
+						send "&5&l(!) &dYou cannot kick this player!" to player
+						stop
+					else:
+						kick arg 1 due to "&7Kicked for &c%arg 2% &7by &c%player%"
+						loop all players:
+							loop-player has permission "{@notify_permission}"
+							send "{@prefix} &c%player% &7kicked &c%arg 1% &7Reason: &c%arg 2%" to loop-player
+				else:
+					send "{@prefix} &c/kick <Player> <Reason>"
+			else:
+				send "{@prefix} &c/kick <Player> <Reason>"
+		else:
+			send "{@prefix} &cNo permission"
+
+command /baninfo [<offlineplayer>]:
+	trigger:
+		if player has permission "{@baninfo_permission}":
+			if arg is set:
+				if {banned.%arg 1%} is true:
+					send "&7&m------------------------"
+					send "&c&lBanned player&7: %arg 1%"
+					send "&c&lBanned by&7: %{ban.bannedby.%arg 1%}%"
+					send "&c&lBan reason&7: %{ban.reason.%arg 1%}%"
+					send "&c&lTime of Ban (EST -4) &7: %{ban.time.%arg 1%}%"
+					send "&c&lIP Banned &7: %{BanIP.%arg 1%}%"
+					send "&c&lExpiration&7: %{ban.expire.%arg 1%}%"
+					send "&7&m------------------------"
+				else:
+					send "{@prefix} &cThis player is not banned"
+			else:
+				send "{@prefix} &c/Baninfo <Player>"
+		else:
+			send "{@prefix} &cNo Permission"
+
+
+command /warn [<player>] [<text>]:
+    permission: staff.core
+    permission message: &cYou do not have the correct permission to execute this command!
+    trigger:
+        if arg-1 is set:
+            if arg-1 is "DangerArena69" or "B1a7e":
+                send "You cannot kick this player!" to player
+            else:
+                add 1 to {warning::%arg-1's uuid%}
+            if arg-2 is set:
+                broadcast "&5%arg-1% &dhas been warned by &6%player% &dfor &r&l%arg-2% &d[&d%{warning::%arg-1's uuid%}%&d]"
+            else:
+                broadcast "&5%arg-1% &dhas been warned by &6%player% &dfor &r&l%arg-2% &d[&d%{warning::%arg-1's uuid%}%&d]"
+            if {warning::%arg-1's uuid%} is 3:
+                set {warning::%arg-1's uuid%} to 0
+                execute command "mute %arg-1% 90minutes You have had too many warnings! (3)"
+        else:
+            send "&cUsage: /warn <player> <reason>"
+command /unwarn [<player>]:
+    permission: warn.use
+    permission message: &cYou do not have the correct permission to execute this command!
+    trigger:
+        if arg isn't set:
+            send "&cUsage: /unwarn <player>"
+        else:
+            if {warning::%arg's uuid%} > 0:
+                remove 1 from {warning::%arg's uuid%}
+            broadcast ""
+            broadcast ""
+            broadcast "&5%arg% &dhas been un-warned by &5%player%&7!"
+            broadcast ""

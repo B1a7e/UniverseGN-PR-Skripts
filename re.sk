@@ -1,0 +1,73 @@
+spawn:
+  location: plots, -48.544, 66.145, -46.593
+  lines:
+  - '&7Welcome to &a&lGens&c&lPlus'
+  - '&7 Do &a&l/start &7 to start'
+  - '&7 Do &c&l/plot auto &7to claim a plot'
+  - '&7To sell items, do &a&l/items'
+ParkourI:
+  location: ul_spawn, 44.553, 31.200, 33.546
+  lines:
+  - '&aParkour I'
+  - '&aEasy'
+ParkourII:
+  location: ul_spawn, 33.508, 31.200, 22.365
+  lines:
+  - '&2Parkour II'
+  - '&2Medium'
+ParkourIII:
+  location: ul_spawn, 22.575, 31.200, 33.545
+  lines:
+  - '&eParkour III'
+  - '&eHard'
+ParkourIV:
+  location: ul_spawn, 33.452, 31.200, 44.518
+  lines:
+  - '&4Parkour IV'
+  - '&4Super Hard'
+common:
+  location: plots, -65.565, 65.500, -14.345
+  lines:
+  - '&a&lCommon &7Crate'
+uncommon:
+  location: plots, -88.334, 65.500, -15.559
+  lines:
+  - '&8&lUncommon &7Crate'
+rare:
+  location: plots, -69.614, 65.500, -13.631
+  lines:
+  - '&9&lRare &7Crate'
+epic:
+  location: plots, -85.232, 65.500, -13.239
+  lines:
+  - '&d&lEpic &7Crate'
+gem:
+  location: plots, -81.506, 65.500, -12.337
+  lines:
+  - '&a&lGem &7Crate'
+speical:
+  location: plots, -77.486, 65.500, -11.551
+  lines:
+  - '&f&k11 &r&f&lSpecial &f&k11 &r&7Crate'
+crates2:
+  location: plots, -48.512, 65.200, -31.444
+  lines:
+  - '&c&l Crates Over Here!'
+  - '&7------------>'
+crates:
+  location: plots, -76.922, 65.295, -20.397
+  lines:
+  - '&c&lCrates'
+  - '&a Right click the selected crate for a reward!
+Common:
+  location: plots, -65.367, 65.500, -14.584
+  lines:
+  - '&a&lCommon &7Crate'
+legendary:
+  location: plots, -73.438, 65.500, -12.707
+  lines:
+  - '&6&lLegendary &7Crate'
+special:
+  location: plots, -77.534, 65.500, -11.412
+  lines:
+  - '&f&k11 &r&fSpecial &f&k11 &7Crate'

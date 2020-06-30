@@ -1,0 +1,135 @@
+command /rebirth:
+    trigger:
+        if {prestige::%player's uuid%} is less than 1000:
+            send "&5&l(!) &dYou must be &2P1000+ &dto do that!"
+            send "&5&l(!) &dRebirth gives a rebirth point and a &5&lUniverse &7Key!"
+            send "&5&l(!) &dUse these rebirth points in the rebirth shop to buy amazing rewards!"
+        if {prestige::%player's uuid%} is more than 999:
+            set {prestige::%player's uuid%} to 0
+            set {level::%Player's uuid%} to "A"
+            set {balance::%player's uuid%} to 0
+            add 1 to {rebirth::%player's uuid%}
+            add 1 to {rebirthpoints::%player's uuid%}
+            broadcast "&8"
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &dhas is now &d&lRebirth %{rebirth::%player's uuid%}%&d!"
+            broadcast "&8"
+            set tablist name of player to "%{prefix::%player's uuid%}% &7%player% &7[&2%{prestige::%player's uuid%}%&7] &7 &7[&d&l%{rebirth::%player's uuid%}%&7]"
+
+
+
+command /setrebirth [<offline player>] [<number>]:
+    permission: op.core
+    trigger:
+        if arg-2 is set:
+            if arg-2 is 0:
+                clear {rebirth::%arg-1's uuid%}
+                send "&5&l(!) &dYou set &r&l%arg-1%&r&l's &d&lRebirth &dto &d&l0&d!"
+                set tablist name of arg-1 to "%{prefix::%arg-1's uuid%}% &7%arg-1% &7[&2%{prestige::%arg-1's uuid%}%&7] &7 &7[&d&l%{rebirth::%arg-1's uuid%}%&7]"
+            if arg-2 is more than 0:
+                set {rebirth::%arg-1's uuid%} to arg-2
+                send "&5&l(!) &dYou set &r&l%arg-1%&r&l's &d&lRebirth &dto &d&l%arg-2%&d!"
+                set tablist name of arg-1 to "%{prefix::%arg-1's uuid%}% &7%arg-1% &7[&2%{prestige::%arg-1's uuid%}%&7] &7 &7[&d&l%{rebirth::%arg-1's uuid%}%&7]"
+
+
+
+
+
+command /setrebirthpoints [<offline player>] [<number>]:
+    aliases: /srp
+    permission: op.core
+    trigger:
+        if arg-2 is set:
+            if arg-2 is more than -1:
+                set {rebirthpoints::%arg-1's uuid%} to arg-2
+                send "&5&l(!) &dYou set &r&l%arg-1%&r&l's &d&lRebirth Points &dto &d&l%arg-2%&d!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+command /rebirthshop:
+    aliases: /rs
+    trigger:
+        if {rebirthpoints::%player's uuid%} is not set:
+            set {rebirthpoints::%Player's uuid%} to 0
+        open virtual chest with 3 rows named "&d&lRebirth &7Shop&7:" to player
+        wait 2 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format gui slot loop-number of player with black glass pane named "&8"
+        loop integers between 10 and 16:
+            format gui slot loop-number of player with white stained glass pane named "&8"
+        format gui slot 0 of player with red stained glass pane named "&7Your Rebirth Points&7: &d%{rebirthpoints::%player's uuid%}%" to do nothing
+        format gui slot 10 of player with sunflower named "&r&l5x &dMultiplier" with lore "&dCost: &7 1 Rebirth Point" to run:
+            if {rebirthpoints::%player's uuid%} is more than 0:
+                remove 1 from {rebirthpoints::%player's uuid%}
+                add 5 to {multiplier::%player's uuid%}
+                send "&5&l(!) &dYou bought &r&l5x &dMultiplier in the Rebirth Shop!"
+                execute command "scoreboardrl %player%"
+                make player execute command "rebirthshop"
+                stop
+            if {rebirthpoints::%player's uuid%} is less than 1:
+                send "&5&l(!) &dYou don't have enough for that!"
+                close inventory of player
+        format gui slot 16 of player with magma cream named "&r&l200 Million &dTokens" with lore "&dCost: &7 1 Rebirth Point" to run:
+            if {rebirthpoints::%player's uuid%} is more than 0:
+                remove 1 from {rebirthpoints::%player's uuid%}
+                add 200000000 to {token::%player's uuid%}
+                send "&5&l(!) &dYou bought &r&l200 Million &dTokens in the Rebirth Shop!"
+                execute command "scoreboardrl %player%"
+                make player execute command "rebirthshop"
+                stop
+            if {rebirthpoints::%player's uuid%} is less than 1:
+                send "&5&l(!) &dYou don't have enough for that!"
+                close inventory of player
+        format gui slot 12 of player with paper named "&b&lWormhole &dRank" with lore "&dCost: &73 Rebirth Points" to run:
+            if {rebirthpoints::%player's uuid%} is more than 2:
+                if player does not have permission "wormhole.core":
+                    remove 3 from {rebirthpoints::%player's uuid%}
+                    execute command "rank %player% Wormhole"
+                    send "&5&l(!) &dYou bought &b&lWormhole &dRank in the Rebirth Shop!"
+                    execute command "scoreboardrl %player%"
+                    make player execute command "rebirthshop"
+                    add player to {tempranks::*}
+                    stop
+                if player has permission "wormhole.core":
+                    send "&5&l(!) &dYou already have &b&lWormhole &dor a higher rank!"
+            if {rebirthpoints::%player's uuid%} is less than 3:
+                send "&5&l(!) &dYou don't have enough for that!"
+                close inventory of player
+        format gui slot 14 of player with paper named "&r&lMilkyWay &dRank" with lore "&dCost: &77 Rebirth Points" to run:
+            if {rebirthpoints::%player's uuid%} is more than 6:
+                if player does not have permission "milkyway.core":
+                    remove 7 from {rebirthpoints::%player's uuid%}
+                    execute command "rank %player% milkyway"
+                    send "&5&l(!) &dYou bought &r&lMilkyWay &dRank in the Rebirth Shop!"
+                    execute command "scoreboardrl %player%"
+                    make player execute command "rebirthshop"
+                    add player to {tempranks::*}
+                    stop
+                if player has permission "milkyway.core":
+                    send "&5&l(!) &dYou already have &r&lMilkyWay &dor a higher rank!"
+            if {rebirthpoints::%player's uuid%} is less than 7:
+                send "&5&l(!) &dYou don't have enough for that!"
+                close inventory of player
+
+
+
+
+command /temprank:
+    permission: god.core
+    trigger:
+        send "&5&l(!) &dPeople who won ranks or bought them in Rebirth Shop:" to player
+        send "&d%{tempranks::*}%" to player

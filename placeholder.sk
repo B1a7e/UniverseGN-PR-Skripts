@@ -1,0 +1,3 @@
+on placeholder request with prefix "skript":
+  if the identifier is "prestige":
+    set the result to "%{prestige::%player's uuid%}%"

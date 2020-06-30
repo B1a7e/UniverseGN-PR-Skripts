@@ -1,0 +1,161 @@
+options:
+    prefix: &d&lUniverse&5&lPR &8»
+
+
+command /clearchat:
+    aliases: /cc
+    permission: staff.core
+    trigger:
+        loop 250 times:
+            broadcast ""
+        broadcast "{@prefix} &7Chat has been cleared by &d%player%&7!" 
+
+on join:
+    if player does not have permission "item2chat.use":
+        execute command "/pex user %player% add item2chat.use"
+    if {uniquejoins} is not set:
+        set {uniquejoins} to 0
+    if {firstjoin::%player's uuid%} is not set:
+        set {firstjoiN::%player's uuid%} to 0
+        add 1 to {uniquejoins}
+    
+        set join message to "&5&l[&d&l+&5&l] &7%player% &7has first joined &d(##%{uniquejoins}%&d)"
+        stop
+    if {firstjoin::%player's uuid%} is set:
+        set join message to "&5&l[&d&l+&5&l] &7%player%"
+
+on quit:
+    set quit message to "&5&l[&d&l-&5&l] &7%player%"
+
+ 
+command /mutechat:
+    permission: staff.core
+    aliases: /mc
+    trigger:
+        if {mutechat} is not set:
+            set {mutechat} to "true"
+            broadcast "{@prefix} &7Chat has been muted by &d%player%!"
+            stop
+        if {mutechat} is "true":
+            clear {mutechat}
+            broadcast "{@prefix} &7Chat has been unmuted by &d%player%!"
+
+command /bc [<text>]:
+    aliases: /broadcast
+    permission: broadcast.use
+    permission message: {@prefix} &d No permission
+    trigger:
+        if arg 1 is not set:
+            send "{@prefix} &cCorrect usage: &7/broadcast <message>"
+        else:
+            broadcast "{@prefix} &d%coloured arg-1%"
+
+command /sc [<text>]:
+    permission: staff.core
+    aliases: /staffchat
+    trigger:
+        if arg-1 is not set:
+            send "type something idiot"
+            stop
+        loop all players:
+            if loop-player has permission "staff.core":
+                send "&8[&5&lSTAFF&8] &c%player%&d: &b%arg-1%" to loop-value
+
+command /modc [<text>]:
+    permission: mod.core
+    aliases: /modchat
+    trigger:
+        if arg-1 is not set:
+            send "type something idiot"
+            stop
+        loop all players:
+            if loop-player has permission "mod.core":
+                send "&8[&e&lMOD&8] &c%player%&d: &b%arg-1%" to loop-value
+
+
+
+
+command /ac [<text>]:
+    permission: admin.core
+    aliases: /adminchat
+    trigger:
+        if arg-1 is not set:
+            send "type something idiot"
+            stop
+        loop all players:
+            if loop-player has permission "admin.core":
+                send "&8[&3&lADMIN&8] &c%player%&d: &b%arg-1%" to loop-value
+
+on chat:
+    if the chat message contains "[balance]":
+        replace all "[balance]" in the chat message with "&a$%formatNum({balance::%player's uuid%})%&r"
+    if the chat message contains "[money]":
+        replace all "[money]" in the chat message with "&a$%formatNum({balance::%player's uuid%})%&r"
+    if the chat message contains "[tokens]":
+        replace all "[tokens]" in the chat message with "&d%formatNum({token::%player's uuid%})%&r"
+    if the chat message contains "[token]":
+        replace all "[token]" in the chat message with "&d%formatNum({token::%player's uuid%})%&r"
+
+
+
+on chat:
+    if the chat message contains "nigger" or "nigga" or "niggas" or "niggers" or "n1ggers" or "n1ggas":
+        cancel event
+        send "&5&l(!) &dYou may not say that!"  
+        execute command "mute %player% 1h Racism"
+
+
+
+
+
+
+
+
+on chat:
+    if {mutechat} is "true":
+        if player has permission "staff.core":
+            set chat format to "%{prefix::%player's uuid%}% &7%player% &8» &f%message%"
+        if player does not have permission "staff.core":
+            send "{@prefix} &7Chat is muted"
+            cancel event
+            stop
+    if {chat} is not set:
+        if {rebirth::%player's uuid%} is not set:
+            If {prestige::%player's uuid%} is more than 0:
+                set chat format to "&7[P%{prestige::%player's uuid%}%&7] [%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player's display name% &8» &f%message%"
+            If {prestige::%player's uuid%} is 0:
+                set chat format to "&7[%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player's display name% &8» &f%message%"
+        if {rebirth::%player's uuid%} is set:
+            If {prestige::%player's uuid%} is more than 0:
+                set chat format to "&7[R%{rebirth::%player's uuid%}%&7] &7[P%{prestige::%player's uuid%}%&7] [%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player's display name% &8» &f%message%"
+            If {prestige::%player's uuid%} is 0:
+                set chat format to "&7[R%{rebirth::%player's uuid%}%&7] &7[%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player's display name% &8» &f%message%"
+
+
+
+
+
+
+
+
+
+
+
+
+command /rump:
+    trigger:
+        open chest with 3 rows named "&3Rank Level Up" to player
+        wait 5 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format gui slot 0 of player with black stained glass pane named "&f" to do nothing
+        format gui slot 11 of player with nether star named "&5&lAuto Prestige" with lore "&fAutomatically prestige once" and "&fyou reach rank Z" and "&7" and "&cRequires Rank: &8&lVoid"  and "&7" and "&f&lClick to enable!" to run:
+            execute player command "/autoprestige" 
+            execute player command "/rump"
+        format gui slot 12 of player with black stained glass pane named "&f" to do nothing
+        format gui slot 13 of player with nether star named "&5&lRankupmax" with lore "&fEvery rankupmax increases" and "&fthe cost of prestige" and "&7" and "&f&lClick to confirm Rankupmax" to run:
+            execute player command "/rankupmax"
+            execute player command "/rump"
+        format gui slot 14 of player with black stained glass pane named "&f" to do nothing
+        format gui slot 15 of player with nether star named "&5&lPrestige" with lore "&fEvery prestige increases" and "&fthe cost of prestige" and "&7" and "&dReward: &f0.25x Multiplier" and "&7" and "&f&lClick to confirm Prestige" to run:
+            execute player command "/prestige"
+            execute player command "/rump"

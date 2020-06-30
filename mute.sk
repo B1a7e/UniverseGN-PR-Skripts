@@ -1,0 +1,114 @@
+
+command /mute [<offline player>] [<integer>] [<text>] [<text>]:
+    permission: staff.core
+    trigger:
+        if arg-1 is not set:
+            send "&5&l(!) &dExample: /mute DangerArena69 1 hour This is test <3"
+        if arg-2 is more than -1:
+            if arg-1 is equal to player:
+                send "&5&l(!) &dYou cannot mute yourself!"
+            if arg-3 is "second" or "seconds" or "hour" or "hours" or "minute" or "minutes" or "days" or "day":
+                if arg-4 is not set:
+                    set {mutetime::%arg-1's uuid%} to "%arg-2% %arg-3%" parsed as a timespan
+                    add "&dN/A" to {mutes::%arg-1's uuid%::*}
+                    add player to {muted::*}
+                    loop all players:
+                        if loop-player has permission "staff.core": 
+                            send "&8[&5&lSTAFF&8] &r&l%arg-1% &dwas muted for &3%{mutetime::%arg-1's uuid%}% &dby &r&l%player% &dfor &r&lN/A" to loop-player
+                    send "{@prefix} You &dwere muted for &3%{mutetime::%arg-1's uuid%}% &dby &r&l%player% &dfor &r&l%arg-4%" to arg-1
+                if arg-4 is set:
+                    set {mutetime::%arg-1's uuid%} to "%arg-2% %arg-3%" parsed as a timespan
+                    add "&d%arg-4%" to {mutes::%arg-1's uuid%::*}
+                    add arg-1 to {muted::*}
+                    loop all players:
+                        if loop-player has permission "staff.core": 
+                            send "&8[&5&lSTAFF&8] &r&l%arg-1% &dwas muted for &3%{mutetime::%arg-1's uuid%}% &dby &r&l%player% &dfor &r&l%arg-4%" to loop-player
+                    send "{@prefix} &dYou &dwere muted for &3%{mutetime::%arg-1's uuid%}% &dby &r&l%player% &dfor &r&l%arg-4%" to arg-1
+
+
+
+every second:
+    loop {muted::*}:
+        if {mutetime::%loop-value's uuid%} is 0 seconds:
+            send "&5&l(!) &dYour mute has worn out!" to loop-value
+            remove loop-value from {muted::*} 
+            clear {mutetime::%loop-value's uuid%}
+            stop
+        subtract a second from {mutetime::%loop-value's uuid%}
+
+
+
+on chat:
+    if {muted::*} contains player:
+        cancel event
+        send "&5&l(!) &dYou are still muted for &r&l%{mutetime::%player's uuid%}%&d!"
+
+
+
+
+command /unmute [<offline player>]:
+    permission: staff.core
+    trigger:
+        if arg-1 is seT:
+            if {mutetime::%arg-1's uuid%} is set:
+                clear {mutetime::%arg-1's uuid%}
+                remove arg-1 from {muted::*} 
+                loop all players:
+                    if loop-player has permission "staff.core": 
+                        send "&8[&5&lSTAFF&8] &r&l%arg-1% &dwas unmuted by &r&l%player%&d!" to loop-player
+                stop
+            if {mutetime::%arg-1's uuid%} is not set:
+                send "&5&l(!) &dThey are not muted!"
+        if arg-1 is not seT:
+            send "&5&l(!) &dPlease specify what player to unmute!"
+
+
+
+
+
+
+
+
+
+
+
+
+
+command /autominer:
+    aliases: /am
+    trigger:
+        if {autominer::%player's uuid%} is set:
+            send "&5&l(!) &dYou are already in autominer"
+            stop
+        if player's tool is not diamond pickaxe:
+            send "&5&l(!) &dYou need to have a diamond pickaxe in your hand to do this!"
+        if player's tool is diamond pickaxe:
+            teleport player to {autominer-minespawn}
+            set {autominer::%player's uuid%} to "true" 
+            send "&5&l(!) &dYou have been teleported to &r&lAUTOMINER"
+            while {autominer::%player's uuid%} is "true":
+                wait 30 seconds
+
+
+                if "%region at player%" contains "autominer":
+
+                    if player's tool is diamond pickaxe:
+                        set {amountofautominer::%player%} to level of lure of tool of player*{multiplier::%player's uuid%}/2
+                        if {amountofautominer::%player%} is 0:
+                            send "&5&l(!) &dYour token greed must be more than 1 for this to work!" to player
+                        if {amountofautominer::%player%} is more than 159999:
+                            send "&5&l(!) &dThe max limit is 160k tokens per proc!" to player
+                            set {amountofautominer::%player%} to 160000
+                        add {amountofautominer::%player%} to {token::%player's uuid%}
+                        send "&5&l(!) &dYou gained &l%{amountofautominer::%player%}% &dtokens!" to player
+                        execute command "scoreboardrl %player%"
+                    if player's tool is not diamond pickaxe:
+                        send "&5&l(!) &dYou must have a diamond pickaxe in your hand to automine!" to player  
+                if "%region at player%" does not contain "autominer":
+                    wait 1 tick
+                    send "&5&l(!) &dYou left the autominer!"
+                    clear {autominer::%player's uuid%}
+
+
+on quit:
+    clear {autominer::%player's uuid%}

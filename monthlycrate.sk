@@ -1,0 +1,124 @@
+﻿command /monthlycrate [<text>] [<player>] [<text>] [<integer>]:
+    permission: admin.core
+    trigger: #/monthlycrate give (player) (season)
+        if arg-3 is set:
+            send "&5&l(!) &dYou gave &r&l%arg-2% &da monthly crate"
+            if arg-3 is "easter":
+                if arg-4 is not set:
+                    give arg-2 ender chest named "&b&lEaster &5&lMonthly Crate" with lore "&7" and "&7&l• &5&lRewards:" and "&7" and "&7&l• &r&l1x &dGenerator" and "&7&l• &r&l5x &5&lUniverse &7Keys" and "&7&l• &r&l10x &6&lLegendary &7Keys" and "&7&l• &r&l30,000,000x &dTokens" and "&7&l• &r&l50,000,000x &dTokens" and "&7&l• &r&l80,000,000x &dTokens" and "&7&l• &r&l100,000,000x &dTokens" and "&7&l• &r&l120,000,000x &dTokens" and "&7&l• &r&l10x &6&lLegendary &7Keys" and "&7&l• &r&lMilkyWay &dRank" and "&7" and "&7&l• &5&lFinal Rewards:" and "&7" and "&7&l• &r&l200,000,000x &dTokens" and "&7&l• &r&l450,000,000x &dTokens" and "&7&l• &r&l15x &5&lUniverse &7Keys" and "&7&l• &r&l30x &6&lLegendary &7Keys" and "&7&l• &9&lSpace &dRank"
+
+on rightclick:
+    name of player's tool is "&b&lEaster &5&lMonthly Crate":
+        cancel event
+        remove 1 of tool from player's tool
+        loop 5 times:
+            send "&5&l(!) &dRolling..."
+            wait 1 second
+            set {eastermonthly::%player%} to random integer between 1 and 1000
+            if {eastermonthly::%player%} is between 301 and 385:
+                execute command "/key give %player% legendary 10 crates"
+            if {eastermonthly::%player%} is between 1 and 300:
+                execute command "/token give %player% 30000000"
+                send "&5&l(!) &dYou won &r&l30,000,000 &dtokens!"
+            if {eastermonthly::%player%} is between 386 and 730:
+                execute command "/token give %player% 50000000"
+                send "&5&l(!) &dYou won &r&l50,000,000 &dtokens!"
+            if {eastermonthly::%player%} is between 731 and 881:
+                execute command "/token give %player% 100000000"
+                send "&5&l(!) &dYou won &r&l100,000,000 &dtokens!"
+            if {eastermonthly::%player%} is between 882 and 1007:
+                execute command "/token give %player% 120000000"
+                send "&5&l(!) &dYou won &r&l120,000,000 &dtokens!"
+            if {eastermonthly::%player%} is between 1008 and 1043:
+                execute command "/key give %player% universe 5 crates"
+            if {eastermonthly::%player%} is between 882 and 1007:
+                give player dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"
+                send "&5&l(!) &dYou won &r&l1x &dGenerator &dtokens!"
+            if {eastermonthly::%player%} is 1044:
+                broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &dhas won a &r&lMilkyWay &dRank from &b&lEaster &5&lMonthly Crate "
+                if player does not have permission "milkyway.core":
+                    execute command "/rank %player% milkyway"
+                    set {_player} to player
+                    add {_player} to {temprank::*}
+                if player has permission "milkyway.core":
+                    execute command "/key give %player% universe 7 crates"
+                    set {_player} to player
+                    add {_player} to {tempranks::*}
+            wait 15 ticks
+        send "&5&l(!) &dRolling your final reward..."
+        wait 2 second
+        set {eastermonthly::%player%} to random integer between 1 and 503
+        if {eastermonthly::%player%} is between 452 and 487:
+            execute command "/key give %player% legendary 30 crates"
+        if {eastermonthly::%player%} is between 488 and 502:
+            execute command "/key give %player% universal 15 crates"
+        if {eastermonthly::%player%} is between 1 and 250:
+            execute command "/token give %player% 200000000"
+            send "&5&l(!) &dYou won &r&l200,000,000 &dtokens!"
+        if {eastermonthly::%player%} is between 251 and 451:
+            execute command "/token give %player% 300000000"
+            send "&5&l(!) &dYou won &r&l300,000,000 &dtokens!"
+        if {eastermonthly::%player%} is 503:
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &dhas won a &9&lSpace &dRank from &b&lEaster &5&lMonthly Crate "
+            if player does not have permission "space.core":
+                execute command "/rank %player% space"
+                set {_player} to player
+                add {_player} to {temprank::*}
+            if player has permission "space.core":
+                execute command "/key give %player% universe 15 crates"
+                set {_player} to player
+                add {_player} to {tempranks::*}
+        
+command /tempranks:
+    permission: admin.core
+    trigger:
+        send "&5&l(!) &dWinners: %{temprank::*}%"
+        send "&5&l(!) &dWinners (had rank): %{temprank::*}%"
+
+
+command /rename [<text>]:
+    permission: space.core
+    trigger:
+        if player's tool is air:
+            send "&5&l(!) &dYou can't rename air!"
+            stop
+        if arg-1 is not set:
+            send "&5&l(!) &dWhat do you want to name this?"
+            stop
+        if arg-1 is set:
+            if player's tool is not air:
+                if player's tool is ender chest:
+                    send "&5&l(!) &dYou may not rename this item"
+                    stop
+                if player's tool is tripwire hook:
+                    send "&5&l(!) &dYou may not rename this item"
+                    stop
+                if player's tool is book:
+                    send "&5&l(!) &dYou may not rename this item"
+                    stop
+                if length of arg-2 is more than 32:
+                    send "&5&l(!) &dMax length is &l32"
+                else: 
+                    set name of player's tool to colored arg-1
+                    send "&5&l(!) &dRenamed" 
+
+command /relore [<text>]:
+    permission: fuckus.core
+    trigger:
+        if player's tool is air:
+            send "&5&l(!) &dYou can't relore air!"
+            stop
+        if arg-1 is not set:
+            send "&5&l(!) &dWhat do you want to name this?"
+            stop
+        if arg-1 is set:
+            if player's tool is not air:
+                set lore of player's tool to colored arg-1
+                send "&5&l(!) &dRelore" 
+
+
+on right click:
+    if lore of player's tool is "&dA special egg only found in &b&lEaster &5&lMonthly Crate":
+        cancel event
+        send "&5&l(!) &dDon't throw me &l:'("
+                   

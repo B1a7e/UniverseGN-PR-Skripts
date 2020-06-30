@@ -1,0 +1,191 @@
+
+command /upgradepickaxe:
+    trigger:
+        if world of player is "season2":
+            if level of knockback of tool of player is more than or equal to 10000:
+                set 17th line of lore of player's tool to "&7Lucky Block 10000"
+                enchant player's tool with "Knockback 10000" parsed as enchantment type
+            open virtual chest with 5 rows named "&bEnchants" to player
+            wait 2 ticks
+            loop integers between 0 and menu size of player's current inventory - 1:
+                format gui slot loop-number of player with black glass pane with no nbt named "&8"
+            loop integers between 31 and 34:
+                format gui slot loop-number of player with enchanted book with no nbt named "&7Coming soon..."
+            format gui slot 28 of player with firework star with no nbt named "&7Coming soon..." with lore "&7&l;)"
+            format gui slot 10 of player with player's tool to close
+            set {_cost1} to level of efficiency of tool of player - 15
+            set {_cost} to 5000+500*{_cost1}
+            set {_cost10} to {_cost}*10
+            set {_cost100} to {_cost}*100
+            format gui slot 12 of player with enchanted book with no nbt named "&d&lENCHANT: &7Efficiency" with lore "&d" and "&7Makes you mine blocks faster!" and "&d" and "&dToken Cost&7: %{_cost}%" and "&dToken Cost (10)&7: %{_cost10}%" and "&dToken Cost (100)&7: %{_cost100}%" and "&dCurrent&7: %level of efficiency of tool of player%" and "&dMax&7: 100" to run:
+                if click type is middle mouse button:
+                    execute command "efficiency %player% 100"
+                if click type is right mouse button:
+                    execute command "efficiency %player% 10"
+                if click type is left mouse button:
+                    execute command "efficiency %player%"
+            set {_fortunecost1} to level of fortune of tool of player - 15
+            set {_fortunecost} to 5500+650*{_fortunecost1}
+            set {_fortunecost10} to {_fortunecost}*10
+            set {_fortunecost100} to {_fortunecost}*100
+            format gui slot 13 of player with enchanted book with no nbt named "&d&lENCHANT: &7Fortune" with lore "&d" and "&7Makes you get more blocks!" and "&d" and "&dToken Cost&7: %{_fortunecost}%" and "&dToken Cost (10)&7: %{_fortunecost10}%" and "&dToken Cost (100)&7: %{_fortunecost100}%" and "&dCurrent&7: %level of fortune of tool of player%" and "&dMax&7: 15000" to run:
+                if click type is middle mouse button:
+                    execute command "fortune %player% 100"
+                if click type is right mouse button:
+                    execute command "fortune %player% 10"
+                if click type is left mouse button:
+            set {_charitycost1} to 10th line of lore of player's tool parsed as a number
+            set {_charitycost} to 8000+2500*{_charitycost1}
+            set {_charitycost10} to {_charitycost}*10
+            set {_charitycost100} to {_charitycost}*100
+            format gui slot 15 of player with enchanted book with no nbt named "&d&lENCHANT: &7Charity" with lore "&d" and "&7Gives everyone lots of money!" and "&d" and "&dToken Cost&7: %{_charitycost}%" and "&dToken Cost (10)&7: %{_charitycost10}%" and "&dCurrent&7: %level of riptide of tool of player%" and "&dMax&7: 10" to run:
+                if click type is right mouse button:
+                    execute command "charity %player% 10"
+                if click type is left mouse button:
+                    execute command "charity %player%"
+            set {_luckycost1} to 11th line of lore of player's tool parsed as a number
+            replace all "Lucky" in {_Luckycost1} with ""
+            set {_luckycost} to 20000+7000*{_luckycost1}
+            set {_luckycost10} to {_luckycost}*10
+            set {_luckycost100} to {_luckycost}*100
+            format gui slot 16 of player with enchanted book with no nbt named "&d&lENCHANT: &7Lucky" with lore "&d" and "&7Has a chance to give you massive amounts of tokens!" and "&d" and "&dToken Cost&7: %{_luckycost}%" and "&dToken Cost (10)&7: %{_luckycost10}%" and "&dToken Cost (100)&7: %{_luckycost100}%"  and "&dCurrent&7: %{luckycost1}%" and "&dMax&7: 10000"  to run:
+                if click type is middle mouse button:
+                    execute command "lucky %player% 100"
+                if click type is right mouse button:
+                    execute command "lucky %player% 10"
+                if click type is left mouse button:
+                    execute command "lucky %player%"
+            set {_cratefindercost1} to level of infinity of tool of player
+            replace all "Crate Finder" in {_cratefindercost1} with ""
+            set {_cratefindercost} to 30000+1500*{_cratefindercost1}
+            set {_cratefindercost10} to {_cratefindercost}*10
+            set {_cratefindercost100} to {_cratefindercost}*100
+            format gui slot 21 of player with enchanted book with no nbt named "&d&lENCHANT: &7Crate Finder" with lore "&d" and "&7Has a chance to give you crate keys!" and "&d" and "&dToken Cost&7: %{_cratefindercost}%" and "&dToken Cost (10)&7: %{_cratefindercost10}%" and "&dToken Cost (100)&7: %{_cratefindercost100}%" and "&dCurrent&7: %level of infinity of tool of player%" and "&dMax&7: 100" to run:
+                if click type is middle mouse button:
+                    execute command "cratefinder %player% 100"
+                if click type is right mouse button:
+                    execute command "cratefinder %player% 10"
+                if click type is left mouse button:
+                    execute command "cratefinder %player%"
+            set {_tokengreedcost1} to level of lure of player's tool
+            set {_tokengreedcost} to 1500+1000*{_tokengreedcost1}
+            set  {_tokengreedcost10} to {_tokengreedcost}*10
+            set  {_tokengreedcost100} to  {_tokengreedcost}*100
+            format gui slot 22 of player with enchanted book with no nbt named "&d&lENCHANT: &7Token Greed" with lore "&d" and "&7Gives you more tokens!" and "&d" and "&dToken Cost&7: %{_tokengreedcost}%" and "&dToken Cost (10)&7: %{_tokengreedcost10}%" and "&dToken Cost (100)&7: %{_tokengreedcost100}%" and "&dCurrent&7: %{_tokengreedcost1}%" and "&dMax&7: 10000" to run:
+                if click type is middle mouse button:
+                    execute command "tokengreed %player% 100"
+                if click type is right mouse button:
+                    execute command "tokengreed %player% 10"
+                if click type is left mouse button:
+                    execute command "tokengreed %player%"
+            set {_merchantcost1} to level of smite of player's tool
+            set {_merchantcost} to 10000+2000*{_merchantcost1}
+            set  {_merchantcost10} to {_merchantcost}*10
+            set  {_merchantcost100} to  {_merchantcost}*100
+            format gui slot 23 of player with enchanted book with no nbt named "&d&lENCHANT: &7Merchant" with lore "&d" and "&7Gives you money!" and "&d" and "&dToken Cost&7: %{_merchantcost}%" and "&dToken Cost (10)&7: %{_merchantcost10}%" and "&dToken Cost (100)&7: %{_merchantcost100}%" and "&dCurrent&7: %{_merchantcost1}%" and "&dMax&7: 50000" to run:
+                if click type is middle mouse button:
+                    execute command "merchant %player% 100"
+                if click type is right mouse button:
+                    execute command "merchant %player% 10"
+                if click type is left mouse button:
+                    execute command "merchant %player%"
+            set {_jackhammercost1} to level of punch of player's tool
+            if {_jackhammercost1} is not set:
+                set {_jackhammercost1} to 0
+            set {_jackhammercost} to 500000+500000*{_jackhammercost1}
+            format gui slot 24 of player with enchanted book with no nbt named "&d&lENCHANT: &7Jackhammer" with lore "&d" and "&7Has a chance to drill into the ground around you!" and "&d" and "&dToken Cost&7: %{_jackhammercost}%" and "&dCurrent&7: %{_jackhammercost1}%" and "&dMax&7: 5"  to run:
+                execute command "jackhammer %player%"
+            if 16th line of lore of player's tool is not set:
+                enchant player's tool with "power 0" parsed as an enchantment type
+            set {_blessingcost1} to level of power of tool of player
+            if {_blessingcost1} is not set:
+                set {_blessingcost1} to 0
+            set {_blessingcost} to 500000+100000*{_blessingcost1}
+            set {_blessingcost10} to {_blessingcost}*10
+            format gui slot 25 of player with enchanted book with no nbt named "&d&lENCHANT: &7Blessing" with lore "&d" and "&7Gives everyone lots of tokens!" and "&d" and "&dToken Cost&7: %{_blessingcost}%" and "&dToken Cost (10)&7: %{_blessingcost10}%" and "&dCurrent&7: %{_blessingcost1}%" and "&dMax&7: 10" to run:
+                if click type is right mouse button:
+                    execute command "blessing %player% 10"
+                if click type is left mouse button:
+                    execute command "blessing %player%"
+            if 17th line of lore of player's tool is not set:
+                enchant player's tool with "knockback 0" parsed as an enchantment type
+            set {_luckyblockcost1} to level of knockback of tool of player
+            set {_luckyblockcost} to 500000+100000*{_luckyblockcost1}
+            set  {_luckyblockcost10} to {_luckyblockcost}*10
+            set  {_luckyblockcost100} to  {_luckyblockcost}*100
+            format gui slot 30 of player with enchanted book with no nbt named "&d&lENCHANT: &7Lucky Block" with lore "&d" and "&7Has a chance to spawn a lucky block while mining!" and "&d" and "&dToken Cost&7: %{_luckyblockcost}%" and "&dToken Cost (10)&7: %{_luckyblockcost10}%" and "&dToken Cost (100)&7: %{_luckyblockcost100}%" and "&dCurrent&7: %{_luckyblockcost1}%" and "&dMax&7: 10000" to run:
+                if click type is middle mouse button:
+                    execute command "luckyblock %player% 100"
+                if click type is right mouse button:
+                    execute command "luckyblock %player% 10"
+                if click type is left mouse button:
+                    execute command "luckyblock %player%"
+            if 18th line of lore of player's tool is not set:
+                enchant player's tool with "looting 0" parsed as an enchantment type
+            set {_jackpotcost1} to level of looting of tool of player
+            set {_jackpotcost} to 500000+100000*{_jackpotcost1}
+            set  {_jackpotcost10} to {_jackpotcost}*10
+            set  {_jackpotcost100} to  {_jackpotcost}*100
+            format gui slot 31 of player with enchanted book with no nbt named "&d&lENCHANT: &7Jackpot" with lore "&d" and "&7Each level gives different rewards" and "&d" and "&dToken Cost&7: %{_jackpotcost}%" and "&dToken Cost (10)&7: %{_jackpotcost10}%" and "&dToken Cost (100)&7: %{_jackpotcost100}%" and "&dCurrent&7: %{_jackpotcost1}%" and "&dMax&7: 10" to run:
+                if click type is middle mouse button:
+                    execute command "jackpot %player% 100"
+                if click type is right mouse button:
+                    execute command "jackpot %player% 10"
+                if click type is left mouse button:
+                    execute command "jackpot %player%"
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+on right click holding diamond pickaxe:
+    make player execute command "/upgradepickaxe"
+
+
+command /balance:
+    aliases: /bal
+    trigger:
+        send "&r&lBalance&7: &a&l$%formatNum({balance::%player's uuid%})%"
+
+
+command /bal:
+    aliases: /balance
+    trigger:
+        send "&r&lBalance&7: &a&l$%formatNum({balance::%player's uuid%})%"
+
+command /pickaxe:
+    aliases: /pick, /start
+    trigger:
+        if player's inventory contains diamond pickaxe:
+            send "&5&l(!)&d You already have a pickaxe!"
+            stop
+        else:
+            set {_item} to Diamond Pickaxe
+            enchant {_item} with "Efficiency 10" parsed as enchantment type
+            enchant {_item} with "Fortune 10" parsed as enchantment type
+            enchant {_item} with "Mending 0" parsed as enchantment type
+            enchant {_item} with "riptide 0" parsed as enchantment type
+            enchant {_item} with "Unbreaking 0" parsed as enchantment type
+            enchant {_item} with "Flame 0" parsed as enchantment type
+            enchant {_item} with "Infinity 0" parsed as enchantment type
+            enchant {_item} with "Lure 0" parsed as enchantment type
+            enchant {_item} with "Smite 0" parsed as enchantment type
+
+
+            give player unbreakable {_item} with no nbt named "&d&lBlock Breaker" with lore "" and "&5&lPickaxe Stats:" and "" and "" and "" and "&r&lEnchantments:" and "&7Efficiency 10" and "&7Fortune 10" and "&7Explosive 0" and "&7Charity 0" and "&7Lucky 0" and "&7Crate Finder 0" and "&7Token Greed 0" and "&7Merchant 0" and "&7Jackhammer 0"
+            set {blocks::%player's uuid%} to "%level of flame of player's tool + 1 - 1%"
+            set 3rd line of lore of player's tool to "&7Blocks Mined: %{blocks::%player's uuid%}%"
+
+
+

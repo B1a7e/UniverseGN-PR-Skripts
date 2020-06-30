@@ -1,0 +1,49 @@
+command /scoreboardrl [<player>]: 
+    permission: scoreboard.reload
+    trigger:
+        wipe arg-1's sidebar
+        set name of sidebar of arg-1 to "&d&lUniverse&5&lPR &8| &d&lS1"
+        set score "&7" in sidebar of arg-1 to 14
+        set score "&7&l• &5&lStatistics"  in sidebar of arg-1 to 13
+        set score "&7&l•  &5Balance&8: &d$%formatNum({balance::%arg-1's uuid%})%" in sidebar of arg-1 to 12
+        set score "&7&l•  &5Tokens&8: &d%formatreeTokens({token::%arg-1's uuid%})%" in sidebar of arg-1 to 11
+        set score "&7&l•  &5Multiplier&8: &d%{multiplier::%arg-1's uuid%}%x" in sidebar of arg-1 to 10
+        set score "&7&l•  &5Blocks Mined: &d%{totalblocksbroken::%arg-1's uuid%}%" in sidebar of arg-1 to 9
+        if {ingang::%arg-1's uuid%} is "true":
+            set score "&7&l•  &5Gang: &r&l%{gang::%arg-1's uuid%}%" in sidebar of arg-1 to 8
+        set score "&7" in sidebar of arg-1 to 7
+        set score "&7&l•  &5&lGlobal" in sidebar of arg-1 to 6
+        set score "&7&l•  &5Global Blocks Mined: &d%formatNum({globalblocksbroken})%" in sidebar of arg-1 to 5
+        set score "&7&l•  &5Online&8: &d%number of all players%" in sidebar of arg-1 to 4
+        if {globalboostertoken} is set:
+            set score "&7&l•  &5Token Booster: &d%{globalboostertoken}% &dMinutes" in sidebar of arg-1 to 3
+        if {globalboostermoney} is set:
+            set score "&7&l•  &5Money Booster: &d%{globalboostermoney}% &dMinutes" in sidebar of arg-1 to 2
+        set score "&2" in sidebar of arg-1 to 1
+
+
+on explosion:
+    cancel event
+
+
+on script load:
+    loop all players:
+        execute command "/scoreboardrl %loop-player%"
+
+on join:
+    if {totalblocksbroken::%player's uuid%} is not set:
+        set {totalblocksbroken::%player's uuid%} to 0
+    loop all players in all worlds:
+        execute command "/scoreboardrl %loop-player%"
+
+
+
+on quit:
+    loop all players in all worlds:
+        execute command "/scoreboardrl %loop-player%"
+
+on block break:
+    if "%region at event-block%" contains "mine":
+        if world of player is "Worldd":
+            add 1 to {totalblocksbroken::%player's uuid%}
+            add 1 to {globalblocksbroken}

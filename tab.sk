@@ -1,0 +1,13 @@
+on join:
+    set tablist footer of player to "&7&m*             *             *             *&r %nl% &5IP&7: &dUniversePR.minehut.gg %nl% &5DISCORD&7: &d/discord"
+    set tablist header of player to "&5Welcome &d%player% %nl% &5Report hackers using &d/report %nl% &7&m*             *             *             *&r    "
+
+
+command /skin [<player>] [<player>]:
+  permission: skript.player
+  trigger:
+    if arg-1 is "set":
+      set {_player1} to arg-2
+      retrieve skin of {_player1} into {_teste}
+      set displayed skin of player to {_teste}
+      stop

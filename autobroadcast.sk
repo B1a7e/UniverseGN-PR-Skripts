@@ -1,0 +1,29 @@
+
+
+options:
+	prefix: &d&lUniverse&5&lPR &8»
+	intervalAmount: 3
+	intervalUnits: minutes
+	totalMessages: 6
+on load:
+	set {autobroadcast::message1} to "{@prefix} &dDo &5&l/buy &dto check out the amazing ranks!"
+	set {autobroadcast::message2} to "{@prefix} &d/discord&r&7 to keep updated with new&7 features!"
+	set {autobroadcast::message3} to "{@prefix} &5&l/warps &dto go to the plot word!!"
+	set {autobroadcast::message4} to "{@prefix} &7Do &d/gang create &7to make a gang!"
+	set {autobroadcast::message5} to "{@prefix} &dDo &5&l/buy &dto check out the cool perks"
+	set {autobroadcast::message6} to "{@prefix} &dDo &5&l/buy &dto check out the crates!"
+	set {autobroadcast::message7} to "{@prefix} &d/discord&r&7 to apply!"
+on load:
+	set {currentMessage} to 0
+	set {totalMessages} to 1
+	add {@totalMessages} to {totalMessages}
+
+every {@intervalAmount} {@intervalUnits}:
+	add 1 to {currentMessage}
+	if {currentMessage} is more than {totalMessages}:
+		set {currentMessage} to 1
+	wait 1 second
+	send "%{autobroadcast::message%{currentMessage}%}%" to all players
+
+on first join:
+    make player execute command "/pick"

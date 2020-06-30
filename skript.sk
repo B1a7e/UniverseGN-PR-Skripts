@@ -1,0 +1,33 @@
+command /mute [<offline player>] [<text>] [<text>]:
+    permission: staff.core
+    trigger:
+        if arg 1 is not set:
+            send "&5&l(!) &dPlease specify a player. (And a timespan Ex. &55 seconds)"
+        if arg 1 is set:
+            if "%arg 1%" is not "%player%":
+                if arg 1 has played before:
+                    if arg 2 is not set:
+                        if {muted::%uuid of arg 1%} is set:
+                            delete {muted::%uuid of arg 1%}
+                            send "&5&l(!) &dYou &dhave been &5unmuted." to arg 1
+                            loop all players:
+                                if loop-player has permission "staff.core":
+                                    send "&5&l(!) &r&l%arg 1%&d has been unmuted." to loop-player
+                        else:
+                            set {muted::%uuid of arg 1%} to true
+                            loop all players:
+                                if loop-player has permission "staff.core":
+                                    send "&5&l(!) &d%arg 1%&d has been permanently muted." to loop-player
+                            send "&5&l(!) &dYou &dhave been &5permanently muted." to arg 1
+                    else:
+                        set {ismuted::%uuid of arg 1%} to true
+                        set {muted::%uuid of arg 1%} to arg 2
+                        set {muted.time::%uuid of arg 1%} to now
+                        send "&5&l(!) &dYou &dhave been muted for &5%arg 2%&7." to arg 1
+                        loop all players:
+                            if loop-player has permission "staff.core":
+                                send "&5&l(!) &r&l%arg 1%&d has been muted for &5%arg 2%&7." to loop-player
+                else:
+                    send "&5&l(!) &r&l%arg 1% &dcould not be found."
+            else:
+                send "&5&l(!) &dYou cannot mute yourself."    

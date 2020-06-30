@@ -1,0 +1,422 @@
+command /mines:
+    trigger:
+        open chest with 6 rows named "&7&lMines:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 10 of player with stone named "&dA &7Mine" with lore "&7Click me to go to &dA &7Mine" to run "gotomine %player% A"
+        format slot 11 of player with stone named "&dB &7Mine" with lore "&7Click me to go to &dB &7Mine" to run "gotomine %player% B"
+        format slot 12 of player with coal ore named "&dC &7Mine" with lore "&7Click me to go to &dC &7Mine" to run "gotomine %player% C"
+             
+        format slot 13 of player with coal ore named "&dD &7Mine" with lore "&7Click me to go to &dD &7Mine" to run "gotomine %player% D"
+             
+        format slot 14 of player with coal block named "&dE &7Mine" with lore "&7Click me to go to &dE &7Mine" to run "gotomine %player% E"
+             
+        format slot 15 of player with coal block named "&dF &7Mine" with lore "&7Click me to go to &dF &7Mine" to run "gotomine %player% F"
+            
+        format slot 16 of player with iron ore named "&dG &7Mine" with lore "&7Click me to go to &dG &7Mine" to run "gotomine %player% G"
+             
+        format slot 19 of player with iron block named "&dH &7Mine" with lore "&7Click me to go to &dH &7Mine" to run "gotomine %player% H"
+             
+        format slot 20 of player with iron block named "&dI &7Mine" with lore "&7Click me to go to &dI &7Mine" to run "gotomine %player% I"
+             
+        format slot 21 of player with gold ore named "&dJ &7Mine" with lore "&7Click me to go to &dJ &7Mine" to run "gotomine %player% J"
+             
+        format slot 22 of player with gold block named "&dK &7Mine" with lore "&7Click me to go to &dK &7Mine" to run "gotomine %player% K"
+             
+        format slot 23 of player with lapis lazuli ore named "&dL &7Mine" with lore "&7Click me to go to &dL &7Mine" to run "gotomine %player% L"
+             
+        format slot 24 of player with lapis lazuli block named "&dM &7Mine" with lore "&7Click me to go to &dM &7Mine" to run "gotomine %player% M"
+             
+        format slot 25 of player with lapis lazuli block named "&dN &7Mine" with lore "&7Click me to go to &dN &7Mine" to run "gotomine %player% n"
+             
+        format slot 28 of player with redstone ore named "&dO &7Mine" with lore "&7Click me to go to &dO &7Mine" to run "gotomine %player% o"
+             
+        format slot 29 of player with redstone block named "&dP &7Mine" with lore "&7Click me to go to &dP &7Mine" to run "gotomine %player% p"
+             
+        format slot 30 of player with redstone block named "&dQ &7Mine" with lore "&7Click me to go to &dQ &7Mine" to run "gotomine %player% q"
+             
+        format slot 31 of player with diamond ore named "&dR &7Mine" with lore "&7Click me to go to &dR &7Mine" to run "gotomine %player% r"
+             
+        format slot 32 of player with diamond block named "&dS &7Mine" with lore "&7Click me to go to &dS &7Mine" to run "gotomine %player% s"
+             
+        format slot 33 of player with diamond block named "&dT &7Mine" with lore "&7Click me to go to &dT &7Mine" to run "gotomine %player% t"
+             
+        format slot 34 of player with emerald ore named "&dU &7Mine" with lore "&7Click me to go to &dU &7Mine" to run "gotomine %player% u"
+             
+        format slot 37 of player with emerald ore named "&dV &7Mine" with lore "&7Click me to go to &dV &7Mine" to run "gotomine %player% v"
+             
+        format slot 38 of player with emerald block named "&dW &7Mine" with lore "&7Click me to go to &dW &7Mine" to run "gotomine %player% w"
+             
+        format slot 39 of player with emerald block named "&dX &7Mine" with lore "&7Click me to go to &dX &7Mine" to run "gotomine %player% x"
+             
+        format slot 40 of player with quartz block named "&dY &7Mine" with lore "&7Click me to go to &dY &7Mine" to run "gotomine %player% y"
+             
+        format slot 41 of player with nether bricks named "&dZ &7Mine" with lore "&7Click me to go to &dZ &7Mine" to run "gotomine %player% z"
+        if {prestige::%player's uuid%} is more than 0:
+            format slot 42 of player with green stained glass pane named "&2Prestige &7Mines" with lore "&7Click me to see prestige mines" to run "prestigemines %player%"
+        if player has permission "milkyway.core" or "space.core" or "galaxy.core" or "universe.core" or "cosmo.core" or "divine.core":
+            format slot 43 of player with pink stained glass pane named "&dDonor &7Mines" with lore "&7Click me to see donor mines" to run "donormines %player%"
+                 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+command /prestigemines [<player>]:
+    permission: god.core
+    trigger:
+        open chest with 3 rows named "&2Prestige &7&lMines:" to arg-1
+        wait 1 ticks
+        loop integers between 0 and menu size of arg-1's current inventory - 1:
+            format slot loop-number of arg-1 with black glass pane named "&8" to close
+        format slot 10 of arg-1 with green stained glass pane named "&2P1+ &7Mine" with lore "&7Click me to go to &2P1+ &7Mine" to run "gotomine %arg-1% p5"
+        format slot 11 of arg-1 with cyan stained glass pane named "&2P100+ &7Mine" with lore "&7Click me to go to &2P100+ &7Mine" to run "gotomine %arg-1% p15"
+        format slot 12 of arg-1 with purple stained glass pane named "&2P200+ &7Mine" with lore "&7Click me to go to &2P200+ &7Mine" to run "gotomine %arg-1% p25"
+        format slot 13 of arg-1 with red stained glass pane named "&2P300+ &7Mine" with lore "&7Click me to go to &2P300+ &7Mine" to run "gotomine %arg-1% p35"
+        format slot 14 of arg-1 with black stained glass pane named "&2P400+ &7Mine" with lore "&7Click me to go to &2P400+ &7Mine" to run "gotomine %arg-1% p45"
+        format slot 15 of arg-1 with brown stained glass pane named "&2P500+ &7Mine" with lore "&7Click me to go to &2P500+ &7Mine" to run "gotomine %arg-1% p50"
+
+
+
+
+
+
+
+
+command /mine:
+    trigger:
+        if player has permission "milkyway.core":
+            teleport player to {%{rank::%player's uuid%}%-minespawn}
+        if player does not have permission "milkyway.core":
+            teleport player to {%{level::%player's uuid%}%-minespawn}
+
+
+
+
+
+
+command /donormines [<player>]:
+    permission: god.core
+    trigger:
+        open chest with 3 rows named "&dDonor &7&lMines:" to arg-1
+        wait 1 ticks
+        loop integers between 0 and menu size of arg-1's current inventory - 1:
+            format slot loop-number of arg-1 with black glass pane named "&8" to close
+        format slot 16 of arg-1 with light blue stained glass pane named "&b&lDivine &7Mine" with lore "&7Click me to go to &b&lDivine &7Mine" to run "gotomine %arg-1% Divine"
+                   
+        format slot 10 of arg-1 with white stained glass pane named "&r&lMilkyway &7Mine" with lore "&7Click me to go to &r&lMilkyway &7Mine" to run "gotomine %arg-1% milkyway"
+            
+        format slot 11 of arg-1 with blue stained glass pane named "&9&lSpace &7Mine" with lore "&7Click me to go to &9&lSpace &7Mine" to run "gotomine %arg-1% space"
+             
+        format slot 12 of arg-1 with orange stained glass pane named "&6&lGalaxy &7Mine" with lore "&7Click me to go to &6&lGalaxy &7Mine" to run "gotomine %arg-1% galaxy"
+            
+        format slot 13 of arg-1 with red stained glass pane named "&c&lCosmo &7Mine" with lore "&7Click me to go to &c&lCosmo &7Mine" to run "gotomine %arg-1% cosmo"
+            
+        format slot 14 of arg-1 with purple stained glass pane named "&5&lUniverse &7Mine" with lore "&7Click me to go to &5&lUniverse &7Mine" to run "gotomine %arg-1% universe"
+        format slot 15 of arg-1 with gray stained glass pane named "&8&lVoid &7Mine" with lore "&7Click me to go to &8&lVoid &7Mine" to run "gotomine %arg-1% void"
+
+
+
+
+
+
+
+
+
+
+
+command /gotomine [<player>] [<text>]:
+    permission: god.core
+    trigger:
+        if arg-2 is "milkyway":
+            if arg-1 has permission "milkyway.core":
+                teleport arg-1 to {milkyway-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &r&lMilkyway+ for that!" to arg-1
+        if arg-2 is "space":
+            if arg-1 has permission "space.core":
+                teleport arg-1 to {space-minespawn}
+                send "&5&l(!) &dYou have been teleported to &9&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &9&lSpace+ for that!" to arg-1
+        if arg-2 is "galaxy":
+            if arg-1 has permission "galaxy.core":
+                teleport arg-1 to {galaxy-minespawn}
+                send "&5&l(!) &dYou have been teleported to &6&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &6&lGalaxy+ for that!" to arg-1
+        if arg-2 is "cosmo":
+            if arg-1 has permission "cosmo.core":
+                teleport arg-1 to {cosmo-minespawn}
+                send "&5&l(!) &dYou have been teleported to &c&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &c&lCosmo+ for that!" to arg-1
+        if arg-2 is "universe":
+            if arg-1 has permission "universe.core":
+                teleport arg-1 to {universe-minespawn}
+                send "&5&l(!) &dYou have been teleported to &5&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &5&lUniverse for that!" to arg-1
+        if arg-2 is "p1":
+            if {prestige::%arg-1's uuid%} is more than 0:
+                teleport arg-1 to {p1-minespawn}
+                send "&5&l(!) &dYou have been teleported to &2&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &2P1+ &dfor that!" to arg-1
+        if arg-2 is "p100":
+            if {prestige::%arg-1's uuid%} is more than 99:
+                teleport arg-1 to {p100-minespawn}
+                send "&5&l(!) &dYou have been teleported to &2&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &2P100+ &dfor that!" to arg-1
+        if arg-2 is "p200":
+            if {prestige::%arg-1's uuid%} is more than 199:
+                teleport arg-1 to {p200-minespawn}
+                send "&5&l(!) &dYou have been teleported to &2&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &2P200+&d for that!" to arg-1
+        if arg-2 is "p300":
+            if {prestige::%arg-1's uuid%} is more than 299:
+                teleport arg-1 to {p300-minespawn}
+                send "&5&l(!) &dYou have been teleported to &2&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &2P300+ &dfor that!" to arg-1
+        if arg-2 is "p400":
+            if {prestige::%arg-1's uuid%} is more than 399:
+                teleport arg-1 to {p400-minespawn}
+                send "&5&l(!) &dYou have been teleported to &2&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &2P400+&d for that!" to arg-1
+        if arg-2 is "p500":
+            if {prestige::%arg-1's uuid%} is more than 499:
+                teleport arg-1 to {p500-minespawn}
+                send "&5&l(!) &dYou have been teleported to &2&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &2P500+ &dfor that!" to arg-1
+        if arg-2 is "void":
+            if arg-1 has permission "void.core":
+                teleport arg-1 to {void-minespawn}
+                send "&5&l(!) &dYou have been teleported to &5&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &8&lVoid for that!" to arg-1
+        if arg-2 is "divine":
+            if arg-1 has permission "divine.core":
+                teleport arg-1 to {divine-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou must be &r&lDivine+ for that!" to arg-1
+
+        if arg-2 is "A":
+            teleport arg-1 to {a-minespawn}
+        if arg-2 is "B":
+            if {level::%arg-1's uuid%} is not "A":
+                teleport arg-1 to {b-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "C":
+            if {level::%arg-1's uuid%} is not "A" or "B":
+                teleport arg-1 to {c-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "D":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C":
+                teleport arg-1 to {d-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "E":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D":
+                teleport arg-1 to {e-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "F":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E":
+                teleport arg-1 to {f-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "G":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F":
+                teleport arg-1 to {g-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "H":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G":
+                teleport arg-1 to {H-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "I":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H":
+                teleport arg-1 to {I-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "j":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I":
+                teleport arg-1 to {j-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "k":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J":
+                teleport arg-1 to {K-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "l":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k":
+                teleport arg-1 to {L-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "m":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l":
+                teleport arg-1 to {m-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "n":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m":
+                teleport arg-1 to {n-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "o":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n":
+                teleport arg-1 to {o-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "p":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o":
+                teleport arg-1 to {p-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "q":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p":
+                teleport arg-1 to {q-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "r":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q":
+                teleport arg-1 to {r-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "s":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r":
+                teleport arg-1 to {s-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "t":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r" or "S":
+                teleport arg-1 to {T-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "u":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r" or "S" or "t":
+                teleport arg-1 to {u-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "v":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r" or "S" or "t" or "u":
+                teleport arg-1 to {v-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "w":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r" or "S" or "t" or "u" or "v":
+                teleport arg-1 to {w-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "x":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r" or "S" or "t" or "u" or "v" or "w":
+                teleport arg-1 to {x-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "y":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r" or "S" or "t" or "u" or "v" or "w" or "x":
+                teleport arg-1 to {y-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+        if arg-2 is "z":
+            if {level::%arg-1's uuid%} is not "A" or "B" or "C" or "D" or "E" or "F" or "G" or "H" or "I" or "J" or "k" or "l" or "m" or "n" or "o" or "p" or "q" or "r" or "S" or "t" or "u" or "v" or "w" or "x" or "y":
+                teleport arg-1 to {z-minespawn}
+                send "&5&l(!) &dYou have been teleported to &r&l%uppercase arg-2%&d Mine" to arg-1
+            else:
+                send "&5&l(!) &dYou are not high enough level for that!" to arg-1
+
+
+command /minespawn [<text>]:
+    permission: fuck.core
+    trigger:
+        if arg-1 is set:
+            set {%arg-1%-minespawn} to player's location
+            send "&aYou set mine-%arg-1%&a's spawn to %player's location%"
+
+command /mineclear [<text>]:
+    permission: fuck.core
+    trigger:
+        if arg-1 is set:
+            clear {%arg-1%-minespawn} 
+            send "&aYou cleared mine-%arg-1%&a's spawn"
+
+
+
+command /reset [<text>]:
+    permission: universe.core
+    trigger:
+        if arg-1 is not set:
+            send "&5&l(!) &dPlease choose a mine to reset"
+        if arg-1 is set:
+            execute command "mrl reset universe-mine -s"
+            send "&5&l(!) &dYou reset &r&l%uppercase arg-1% &dmine"
+
+            
+
+
+
+
+

@@ -1,0 +1,30 @@
+command /bartender [<integer>]:
+    permission: god.core
+    usage: &5&l(!) &dUsage: &r&l/bartender (amount)
+    trigger:
+        if arg-1 is not set:
+            send "&5&l(!) &dUsage: &r&l/bartender (amount)"
+        if arg-1 is less than 10000000:
+            send "&5&l(!) &dThe minimum amount is &r&l10M&d!"
+        if arg-1 is more or equal to 10000000:
+            if {balance::%player's uuid%} is less than arg-1:
+                send "&5&l(!) &dYou don't have enough for that!"
+                stop
+            remove arg-1 from {balance::%player's uuid%}
+            execute command "/scoreboardrl %player%"
+            set {random::%player%} to random integer between 1 and 2
+            if {random::%player%} is 1:
+                wait 2 seconds
+                set {bartender::%player%} to arg-1
+                set {bartender::%player%} to {bartender::%player%}*2
+                add {bartender::%player%} to {balance::%player's uuid%}
+                execute command "/scoreboardrl %player%"
+                send "&5&l(!) &dYou won &r&l$%formatNum({bartender::%player%})%"
+            if {random::%player%} is 2:
+                wait 2 seconds
+                set {bartender::%player%} to arg-1
+                send "&5&l(!) &dYou won &r&l$%formatNum({bartender::%player%})%"
+                remove arg-1 from {balance::%player's uuid%}
+                execute command "/scoreboardrl %player%"
+ 
+         

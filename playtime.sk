@@ -1,0 +1,35 @@
+every second:
+    loop all players:
+        add 1 to {s::%loop-player's uuid%}
+        if {s::%loop-player's uuid%} > 59:
+            remove 60 from {s::%loop-player's uuid%} 
+            add 1 to {m::%loop-player's uuid%}
+        if {m::%loop-player's uuid%} > 59:
+            remove 60 from {m::%loop-player's uuid%}
+            add 1 to {h::%loop-player's uuid%}
+        if {h::%loop-player's uuid%} > 23:
+            remove 24 from {h::%loop-player's uuid%}
+            add 1 to {d::%loop-player's uuid%}
+
+command /playtime [<offlineplayer>]:
+    trigger:
+        arg isn't set:
+            wait 1 tick
+            send ""
+            send "&5&l    PLAYTIME &f&l(&7&l%player%&f&l)"
+            send ""
+            send "&d&l  SECONDS:&7 %{s::%player's uuid%}%"
+            send "&d&l  MINUTES:&7 %{m::%player's uuid%}%"
+            send "&d&l  HOURS:&7 %{h::%player's uuid%}%"
+            send "&d&l  DAYS:&7 %{d::%player's uuid%}%"
+            send ""
+        else:
+            wait 1 tick
+            send ""
+            send "&5&l    PLAYTIME OF &7&l%arg%"
+            send ""
+            send "&d&l  SECONDS:&7 %{s::%arg's uuid%}%"
+            send "&d&l  MINUTES:&7 %{m::%arg's uuid%}%"
+            send "&d&l  HOURS:&7 %{h::%arg's uuid%}%"
+            send "&d&l  DAYS:&7 %{d::%arg's uuid%}%"
+            send ""

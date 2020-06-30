@@ -1,0 +1,32 @@
+
+
+
+
+
+
+
+command /eventset:
+    permission: god.core
+    trigger:
+        set {eventspawn} to player's location
+        send "&aset event spawn to %player's location%"
+
+command /eventon:
+    permission: op
+    trigger:
+        set {event} to 1
+
+command /eventoff:
+    permission: op
+    trigger:
+        clear {event}
+
+
+command /event:
+    trigger:
+        if {event} is 1:
+            if 
+            teleport player to {eventspawn}
+      
+           
+   

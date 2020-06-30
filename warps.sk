@@ -1,0 +1,46 @@
+command /warps:
+    trigger:
+        open chest with 3 rows named "&7&lWarps:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 10 of player with grass block named "&dSpawn" with lore "&7Click me to go to &dSpawn" to run "spawnplayer %player%"
+        format slot 13 of player with sandstone named "&dPlots" with lore "&7Click me to go to &dPlots &d(Requires &2P1+&d)" to run "gotoplots %player%"
+        format slot 16 of player with sponge named "&dPvP Mine" with lore "&7Click me to go to the &dPvP Mine &d(Requires &2P1+&d)" to run "gotopvp %player%"
+
+
+
+
+command /spawnplayer [<player>]:
+    permission: op.core
+    trigger:
+        if arg-1 is set:
+            teleport arg-1 to {spawn-minespawn}
+
+command /gotoplots [<player>]:
+    permission: op.core
+    trigger:
+        if {prestige::%arg-1's uuid%} is more than 0:
+            teleport arg-1 to {plots-minespawn}
+        if {prestige::%arg-1's uuid%} is less than 1:
+            send "&5&l(!) &dYou are not high enough prestige!"
+
+command /gotopvp [<player>]:
+    permission: op.core
+    trigger:
+        if {prestige::%arg-1's uuid%} is more than 0:
+            teleport arg-1 to {pvp-minespawn}
+        if {prestige::%arg-1's uuid%} is less than 1:
+            send "&5&l(!) &dYou are not high enough prestige!"
+        if arg-1's flight mode is true:
+            set arg-1's flight mode to false
+
+
+
+command /ec:
+    trigger:
+        send "No!"
+
+command /enderchest:
+    trigger:
+        send "No!"

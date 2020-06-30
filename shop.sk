@@ -1,0 +1,310 @@
+command /shop:
+    trigger:
+        if {prestige::%player's uuid%} is less than 1:
+            send "&5&l(!) &dYou must be &2Prestige 1+ &dto do this"
+        if {prestige::%player's uuid%} is more than 0:
+            open chest with 3 rows named "&7&lShop:" to player
+            wait 1 ticks
+            loop integers between 0 and menu size of player's current inventory - 1:
+                format slot loop-number of player with black glass pane named "&8" to close
+            format slot 10 of player with grass block named "&dBlocks" with lore "&7Click me to go to see the &dBlocks &7you can buy" to run "blocksshop %player%"
+            format slot 16 of player with diamond pickaxe named "&dTools" with lore "&7Click me to go to see the &dTools &7you can buy" to run "toolsshop %player%"
+            format slot 13 of player with enchanting table named "&dMisc" with lore "&7Click me to go to see the &dMiscellaneous &7items &7you can buy" to run "miscshop %player%"
+
+
+
+
+command /blocksshop [<player>]:
+    trigger:
+        if {prestige::%arg-1's uuid%} is less than 1:
+            send "&5&l(!) &dYou must be &2Prestige 1+ &dto do this" to arg-1
+        if {prestige::%arg-1's uuid%} is more than 0:
+            open chest with 6 rows named "&7&l&dBlock Shop:" to arg-1
+            wait 1 ticks
+            loop integers between 0 and menu size of arg-1's current inventory - 1:
+                format slot loop-number of arg-1 with black glass pane named "&8" to close
+            format slot 0 of arg-1 with grass named "&d64x Grass" with lore "&7Cost: $1,000" to run "buystuff %arg-1% grass"
+            format slot 1 of arg-1 with dirt named "&d64x Dirt" with lore "&7Cost: $500" to run "buystuff %arg-1% dirt"
+            format slot 2 of arg-1 with stone bricks named "&d64x Stone Bricks" with lore "&7Cost: $5,000" to run "buystuff %arg-1% stonebricks"
+            format slot 3 of arg-1 with oak log named "&d64x Oak Logs" with lore "&7Cost: $10,000" to run "buystuff %arg-1% oaklog"
+            format slot 4 of arg-1 with spruce log named "&d64x Spruce Logs" with lore "&7Cost: $10,000" to run "buystuff %arg-1% sprucelog"
+            format slot 5 of arg-1 with dark oak log named "&d64x Dark Oak Logs" with lore "&7Cost: $10,000" to run "buystuff %arg-1% darkoaklog"
+            format slot 6 of arg-1 with jungle log named "&d64x Jungle Logs" with lore "&7Cost: $10,000" to run "buystuff %arg-1% junglelog"
+            format slot 7 of arg-1 with birch log named "&d64x Birch Logs" with lore "&7Cost: $10,000" to run "buystuff %arg-1% birchlog"
+            format slot 8 of arg-1 with acacia log named "&d64x Acacia Logs" with lore "&7Cost: $10,000" to run "buystuff %arg-1% acacialog"
+            format slot 9 of arg-1 with glass named "&d64x Glass Blocks" with lore "&7Cost: $50,000" to run "buystuff %arg-1% glass"
+            format slot 10 of arg-1 with quartz block named "&d64x Quartz Block" with lore "&7Cost: $50,000" to run "buystuff %arg-1% quartz block"
+            format slot 11 of arg-1 with iron block named "&d32x Iron Block" with lore "&7Cost: $5,000,000" to run "buystuff %arg-1% iron block"
+            format slot 12 of arg-1 with sand named "&d64x Sand" with lore "&7Cost: $500" to run "buystuff %arg-1% sand"
+            format slot 13 of arg-1 with gravel named "&d64x Gravel" with lore "&7Cost: 500" to run "buystuff %arg-1% gravel"
+            format slot 14 of arg-1 with stone named "&d64x Stone" with lore "&dCost: 500" to run "buystuff %arg-1% stone"
+            format slot 15 of arg-1 with light gray terracotta named "&d64x Light Gray Terracotta" with lore "&dCost: 1000" to run "buystuff %arg-1% light gray terracotta"
+            format slot 16 of arg-1 with gray terracotta named "&d64x Gray Terracotta" with lore "&dCost: 1000" to run "buystuff %arg-1% gray terracotta"
+            format slot 17 of arg-1 with cyan terracotta named "&d64x Cyan Terracotta" with lore "&dCost: 1000" to run "buystuff %arg-1% cyan terracotta"
+
+
+
+command /toolsshop [<player>]:
+    trigger:
+        if {prestige::%arg-1's uuid%} is less than 1:
+            send "&5&l(!) &dYou must be &2Prestige 1+ &dto do this" to arg-1
+        if {prestige::%arg-1's uuid%} is more than 0:
+            open chest with 6 rows named "&7&l&dTools Shop:" to arg-1
+            wait 1 ticks
+            loop integers between 0 and menu size of arg-1's current inventory - 1:
+                format slot loop-number of arg-1 with black glass pane named "&8" to close
+            format slot 0 of arg-1 with diamond axe named "&dDiamond Axe" with lore "&7Cost: $1,000,000" to run "buystuff %arg-1% diamondaxe"
+            format slot 1 of arg-1 with diamond shovel named "&dDiamond Shovel" with lore "&7Cost: $1,000,000" to run "buystuff %arg-1% diamondshovel"
+
+
+command /miscshop [<player>]:
+    trigger:
+        if {prestige::%arg-1's uuid%} is less than 1:
+            send "&5&l(!) &dYou must be &2Prestige 1+ &dto do this" to arg-1
+        if {prestige::%arg-1's uuid%} is more than 0:
+            open chest with 6 rows named "&7&l&dMisc Shop:" to arg-1
+            wait 1 ticks
+            loop integers between 0 and menu size of arg-1's current inventory - 1:
+                format slot loop-number of arg-1 with black glass pane named "&8" to close
+            format slot 0 of arg-1 with enchanting table named "&dEnchantment table" with lore "&7Cost: $5,000,000" to run "buystuff %arg-1% enchanttable"
+            format slot 1 of arg-1 with experience bottle named "&d32x XP Bottle" with lore "&7Cost: $1,000,000" to run "buystuff %arg-1% xpbottle"
+            set {lapiscost::%player%} to 90*{multiplier::%arg-1's uuid%}
+            format slot 2 of arg-1 with lapis lazuli named "&d64x Lapis" with lore "&7Cost: $%{lapiscost::%player%}%" to run "buystuff %arg-1% lapis"
+            format slot 3 of arg-1 with anvil named "&dAnvil" with lore "&7Cost: $3,000,000" to run "buystuff %arg-1% anvil"
+            format slot 4 of arg-1 with bookshelf named "&dx32 Book Shelf" with lore "&7Cost: $1,000,000" to run "buystuff %arg-1% bookshelf"
+            format slot 5 of arg-1 with water bucket named "&dx1 Water Bucket" with lore "&7Cost: $1,000,000" to run "buystuff %arg-1% water bucket"
+            format slot 6 of arg-1 with beacon named "&dx1 Beacon" with lore "&7Cost: 50,000,000" to run "buystuff %arg-1% beacon"
+
+
+command /buystuff [<player>] [<text>]:
+    permission: no.core
+    trigger:
+        if arg-2 is set:
+            if arg-2 is "grass":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000:
+                    give arg-1 64 grass block
+                    remove 1000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Grass Block (Cost: $1,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "dirt":
+                if {balance::%arg-1's uuid%} is more than or equal to 500:
+                    give arg-1 64 dirt
+                    remove 500 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Dirt (Cost: $500)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 500:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "stonebricks":
+                if {balance::%arg-1's uuid%} is more than or equal to 5000:
+                    give arg-1 64 stone bricks
+                    remove 5000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Stone Bricks (Cost: $5,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 5000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "oaklog":
+                if {balance::%arg-1's uuid%} is more than or equal to 10000:
+                    give arg-1 64 oak log
+                    remove 10000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Oak Logs (Cost: $10,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 10000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "birchlog":
+                if {balance::%arg-1's uuid%} is more than or equal to 10000:
+                    give arg-1 64 Birch log
+                    remove 10000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Birch Logs (Cost: $10,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 10000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "sprucelog":
+                if {balance::%arg-1's uuid%} is more than or equal to 10000:
+                    give arg-1 64 Spruce log
+                    remove 10000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Spruce Logs (Cost: $10,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 10000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "junglelog":
+                if {balance::%arg-1's uuid%} is more than or equal to 10000:
+                    give arg-1 64 Jungle log
+                    remove 10000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Jungle Logs (Cost: $10,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 10000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "acacialog":
+                if {balance::%arg-1's uuid%} is more than or equal to 10000:
+                    give arg-1 64 Acacia log
+                    remove 10000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Acacia Logs (Cost: $10,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 10000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "darkoaklog":
+                if {balance::%arg-1's uuid%} is more than or equal to 10000:
+                    give arg-1 64 Dark oak log
+                    remove 10000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Dark Oak Logs (Cost: $10,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 10000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "glass":
+                if {balance::%arg-1's uuid%} is more than or equal to 50000:
+                    give arg-1 64 glass
+                    remove 50000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Glass Blocks (Cost: $50,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 50000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "diamondshovel":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000000:
+                    give arg-1 diamond shovel
+                    remove 1000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought a Diamond Shovel (Cost: $1,000,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "diamondaxe":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000000:
+                    give arg-1 diamond axe
+                    remove 1000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought a Diamond Axe (Cost: $1,000,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "enchanttable":
+                if {balance::%arg-1's uuid%} is more than or equal to 5000000:
+                    give arg-1 enchanting table
+                    remove 5000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought a Enchantment table (Cost: $5,000,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 5000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "xpbottle":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000000:
+                    give arg-1 32 experience bottle
+                    remove 1000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 32x XP Bottle (Cost: $1,000,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "lapis":
+                set {lapiscost::%arg-1%} to 90*{multiplier::%arg-1's uuid%}
+                if {balance::%arg-1's uuid%} is more than or equal to {lapiscost::%arg-1%}:
+                    give arg-1 64 lapis lazuli
+                    remove {lapiscost::%player%} from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Lapis (Cost: $%{lapiscost::%arg-1%}%&d)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than {lapiscost::%arg-1%}:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "anvil":
+                if {balance::%arg-1's uuid%} is more than or equal to 3000000:
+                    give arg-1 anvil
+                    remove 3000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought an anvil (Cost: $3,000,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 3000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "bookshelf":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000000:
+                    give arg-1 32 bookshelf
+                    remove 1000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 32x Book Shelves (Cost: $1,000,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "water bucket":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000000:
+                    give arg-1 1 water bucket
+                    remove 1000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 1x Water Bucket (Cost: $1,000,000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "quartz block":
+                if {balance::%arg-1's uuid%} is more than or equal to 50000:
+                    give arg-1 64 quartz block
+                    remove 50000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Quartz Block (Cost: $50000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 50000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "iron block":
+                if {balance::%arg-1's uuid%} is more than or equal to 5000000:
+                    give arg-1 32 iron block
+                    remove 500 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 32x Iron Block (Cost: $5000000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 5000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "sand":
+                if {balance::%arg-1's uuid%} is more than or equal to 500:
+                    give arg-1 64 sand
+                    remove 500 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Sand (Cost: $500)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 500:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "gravel":
+                if {balance::%arg-1's uuid%} is more than or equal to 500:
+                    give arg-1 64 gravel
+                    remove 500 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x gravel (Cost: $500)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 500:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "stone":
+                if {balance::%arg-1's uuid%} is more than or equal to 500:
+                    give arg-1 64 stone
+                    remove 500 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x stone (Cost: $500)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 500:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "beacon":
+                if {balance::%arg-1's uuid%} is more than or equal to 50000000:
+                    give arg-1 1 beacon
+                    remove 50000000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 1x beacon (Cost: $50000000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 50000000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "light gray terracotta":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000:
+                    give arg-1 64 light gray terracotta
+                    remove 1000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 1x Light Gray Terracotta (Cost: $1000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "Gray Terracotta":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000:
+                    give arg-1 64 gray terracotta
+                    remove 1000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Gray Terracotta (Cost: $1000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+            if arg-2 is "Cyan Terracotta":
+                if {balance::%arg-1's uuid%} is more than or equal to 1000:
+                    give arg-1 64 cyan terracotta
+                    remove 1000 from {balance::%arg-1's uuid%}
+                    send "&5&l(!) &dYou bought 64x Cyan Terracotta (Cost: $1000)" to arg-1
+                    execute command "scoreboardrl %arg-1%"
+                if {balance::%arg-1's uuid%} is less than 1000:
+                    send "&5&l(!) &dYou don't have enough to buy that!" to arg-1
+
+
+
+
+
+
+
+
+
+
+

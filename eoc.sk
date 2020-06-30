@@ -1,0 +1,98 @@
+command /eco [<text>] [<offline player>] [<number>]:
+    permission: eco.core
+    trigger:
+        if arg-3 is not set:
+            send " &7&l----- &5&lEco Manager &7&l ----- %nl% &5&l(!) &d/eco give &d(player) (amount) %nl% &5&l(!) &d/eco take (player) (amount) %nl% &5&l(!) &d/eco set (player) (amount)"
+        if arg-3 is set:
+            if arg-1 is "set":
+                set {balance::%arg-2's uuid%} to arg-3
+                send "&r&5&l%arg-2%&5&ls &dbalance is now $%{balance::%arg-2's uuid%}%"
+                execute command "/scoreboardrl %arg-2%"
+            if arg-1 is "give":
+                add arg-3 to {balance::%arg-2's uuid%}
+                send "&r&5&l%arg-2%&5&l's &dbalance is now $%{balance::%arg-2's uuid%}%"
+                execute command "/scoreboardrl %arg-2%"
+            if arg-1 is "take":
+                remove arg-3 from {balance::%arg-2's uuid%}
+                send "&r&5&l%arg-2%'&5&ls &dbalance is now $%{balance::%arg-2's uuid%}%"
+                execute command "/scoreboardrl %arg-2%"
+
+
+command /token [<text>] [<offline player>] [<number>]:
+    permission: token.core
+    trigger:
+        if arg-3 is not set:
+            send "&7&l----- &5&lToken Manager &7&l ----- %nl% &5&l(!) &d/token give &d(player) (amount) %nl% &5&l(!) &d/token take (player) (amount) %nl% &5&l(!) &d/token set (player) (amount)"
+        if arg-3 is set:
+            if arg-1 is "set":
+                set {token::%arg-2's uuid%} to arg-3
+                send "&5&l%arg-2%&5&l's &dtoken balance is now %{token::%arg-2's uuid%}%"
+                execute command "/scoreboardrl %arg-2%"
+            if arg-1 is "give":
+                add arg-3 to {token::%arg-2's uuid%}
+                send "&r&5&l%arg-2%&5&l's &dtoken balance is now %{token::%arg-2's uuid%}%"
+                execute command "/scoreboardrl %arg-2%"
+            if arg-1 is "take":
+                remove arg-3 from {token::%arg-2's uuid%}
+                send "&r&5&l%arg-2%&5&l's &dtoken balance is now %{token::%arg-2's uuid%}%"
+                execute command "/scoreboardrl %arg-2%"
+
+
+
+
+command /pay [<offline player>] [<number>]
+    trigger:
+        if arg-1 is not set:
+            send "&5&l(!) &dPlease input a player!"
+        if arg-1 is set:
+            if {balance::%arg-1's uuid%} is not set:
+                send "&5&l(!) &dThat person has never played here!"
+                stop
+            if arg-2 is not set:
+                send "&5&l(!) &dPlease choose an amount!""
+            if arg-2 is set:
+                if arg-2 is less than 1:
+                    send "&5&l(!) &dThe minimum amount is &r&l$1&d!"
+                if arg-2 is more than or equal to 1:
+                    if {balance::%player's uuid%} is more than or equal to arg-2:
+                        remove arg-2 from {balance::%player's uuid%}
+                        add arg-2 to {balance::%arg-1's uuid%}
+                        send "&5&l(!) &dYou payed &a&l$%formatNum(%arg-2%)% &dto &r&l%arg-1%&d!"
+                        send "&5&l(!) &r&l%player% payed &a&l$%formatNum(%arg-2%)%!" to arg-1
+
+
+
+
+command /tokenpay [<offline player>] [<number>]
+    trigger:
+        if arg-1 is not set:
+            send "&5&l(!) &dPlease input a player!"
+        if arg-1 is set:
+            if {balance::%arg-1's uuid%} is not set:
+                send "&5&l(!) &dThat person has never played here!"
+                stop
+            if arg-2 is not set:
+                send "&5&l(!) &dPlease choose an amount!""
+            if arg-2 is set:
+                if arg-2 is less than 1:
+                    send "&5&l(!) &dThe minimum amount is &r&l1&d!"
+                if arg-2 is more than or equal to 1:
+                    if {token::%player's uuid%} is more than or equal to arg-2:
+                        remove arg-2 from {token::%player's uuid%}
+                        add arg-2 to {token::%arg-1's uuid%}
+                        send "&5&l(!) &dYou payed &a&l$%formatNum(%arg-2%)% &dtoken(s) &dto &r&l%arg-1%&d!"
+                        send "&5&l(!) &r&l%player% payed &a&l$%formatNum(%arg-2%)% &dtoken(s)!" to arg-1
+
+
+
+
+
+
+
+
+on join:
+    if {balance::%player's uuid%} is not set:
+        set {balance::%player's uuid%} to 0
+    if {token::%player's uuid%} is not set:
+        set {token::%player's uuid%} to 0
+

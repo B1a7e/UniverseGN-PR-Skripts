@@ -1,0 +1,182 @@
+on join:
+    if {botcheck} is "enabled":
+        close inventory of player
+        open virtual chest with 3 rows named "&cBot Check" to player
+        set {verifying::%player%} to 1
+        set {_cake} to a random integer between 0 and 26
+        format gui slot {_cake} of player with cake named "&aClick me!" to run:
+            clear {verifying::%player%} 
+            send title "&5&l(!) &dYou passed!" to player
+            close inventory of player
+        wait 30 seconds
+        if {verifying::%player%} is set:
+            kick the player due to "&cTook too long to do the bot check!"
+            loop all players:
+                if loop-player has permission "staff.core":
+                    send "&6&lSTAFF &8» &c%player% &7failed the bot check (time)" to loop-player
+            
+
+
+command /botcheck: 
+    permission: god.core
+    trigger:
+        if {botcheck} is not set:
+            set {botcheck} to "enabled"
+            send title "&aEnabled" 
+            stop
+        if {botcheck} is set:
+            clear {botcheck} 
+            clear {verifying::*}
+            send title "&cDisabled" 
+            stop
+         
+
+
+on inventory close:
+    if {verifying::%player%} is 1:
+        kick the player due to "&cFailed the bot check!"
+        loop all players:
+            if loop-player has permission "staff.core":
+                send "&6&lSTAFF &8» &c%player% &7failed the bot check!" to loop-player
+        clear {verifying::%player%} 
+
+
+
+
+
+
+
+
+
+options:
+    prefix: &d&lUniverse&5&lGN &8»
+
+
+command /checkip [<player>]:
+    permission: admin.core
+    trigger:
+        if arg-1 is set:
+            send "&5&l(!) &dIP of &r&l%arg-1%&d: &5%ip of arg-1%"
+
+
+on join:
+    loop all players: 
+        if ip of loop-player is equal to ip of player:
+            if loop-player is equal to player:
+                stop
+            execute command "/staffbroadcast &c%player% &7joined on the same ip as &c%loop-player%&7!" 
+
+command /staffbroadcast [<text>]:
+    permission: admin.core
+    trigger:
+        if arg-1 is set:
+            if executor is console:
+                loop all players: 
+                    if loop-player has permission "staff.core":
+                        send "&6&lSTAFF &8» %colored arg-1%" to loop-player
+            if executor is player:
+                loop all players: 
+                    if loop-player has permission "staff.core":
+                        send "&6&lSTAFF BC &c%player% &8» &7%colored arg-1%" to loop-player
+                
+
+on chat:
+    if {lastchatmessage::%player%} is not set:
+        if player has permission "mod.core":
+            stop
+        set {lastchatmessage::%player%} to the chat message
+        set {lastchatmessagetimer::%player%} to 5
+        while {lastchatmessagetimer::%player%} is set:
+            wait 1 second
+            remove 1 from {lastchatmessagetimer::%player%}
+            if {lastchatmessagetimer::%player%} is 0: 
+                clear {lastchatmessagetimer::%player%}
+                clear {lastchatmessage::%player%}
+                stop
+    if {lastchatmessage::%player%} is set:
+        if {lastchatmessage::%player%} is equal to the chat message: 
+            send "&5&l(!) &dYou cannot type the same thing again!"
+            cancel event
+    if player does not have permission "staff.core":
+        if length of the message is more than 100:
+            cancel event
+            send "&5&l(!) &dYou cannot send more than 100 characters in a message."
+            loop all players:
+                if loop-player has permission "staff.core":
+                    send "&c&lSTAFF &8» &6%player% &7tried to send over 100 characters be ready to mute!" to loop-player
+
+on chat:
+    if player has permission "mod.core":
+        stop
+    set {_i} to length of regex replace "[^A-Z]" with "" in the chat message
+    if {_i} > 6:
+        cancel event
+        send "&5&l(!) &dYou cannot use that many caps!"
+
+
+
+
+on chat:
+    if {slowchat} is set:
+        if {slowed::%player%} is not set:
+            set {slowed::%player%} to {slowchat}
+            while {slowed::%player%} is set:
+                wait 1 second
+                if {slowchat} is not set:
+                    clear {slowed::%player%}
+                    stop
+                remove 1 from {slowed::%player%}
+                if {slowed::%player%} is 0:
+                    clear {slowed::%player%}
+        if {slowed::%player%} is set:
+            cancel event
+            send "&5&l(!) &dSlow Chat is enabled! You must wait another %{slowed::%player%}% &dseconds&d!"
+
+
+command /slowchat [<text>] [<integer>]:
+    permission: mod.core
+    trigger:
+        if arg-1 is not set:
+            send "&5&l(!) &dCorrect usage: &r/slowchat start (number)"
+            send "&5&l(!) &dCorrect usage: &r/slowchat stop"
+        if arg-1 is "stop":
+            if {slowchat} is not set:
+                send "&5&l(!) &dThe chat is not slowed!"
+                stop
+            clear {slowed::*}
+            clear {slowchat}
+            broadcast "{@prefix} &r&l%player% &dhas turned off slow chat!"
+        if arg-1 is "start":
+            set {slowchat} to arg-2
+            broadcast "{@prefix} &r&l%player% &dhas turned on slow chat!"
+
+
+on world change:
+    if world of player is "crate":
+        stop
+    if player does not have permission "essentials.warps.penisland":
+        teleport player to {spawn-minespawn}
+
+
+command /helpop [<text>]:
+    trigger:
+        if arg-1 is not set:
+            send "&5&l(!) &dWhat do you want to tell all staff online?"
+        if arg-1 is set:
+            if {cooldown::%player%} is not set:
+                loop all players:
+                    if loop-player has permission "staff.core":
+                        send "&6HELPOP &8» &c%player% &7issued HELPOP: &c%arg-1%" to loop-player
+                send "&5&l(!) &dYour message has been set to all online staff members!"
+                set {cooldown::%player%} to 60
+                wait 60 seconds
+                clear {cooldown::%player%}
+            if {cooldown::%player%} is set:
+                send "&5&l(!) &dYou must wait before sending another helpop!"
+                
+
+
+
+
+
+            

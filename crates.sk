@@ -1,0 +1,717 @@
+﻿options:
+    prefix: &d&lUniverse&5&lPR &8»
+
+
+
+command /key [<text>] [<player>] [<text>] [<integer>] [<text>]:
+    permission: admin.core
+    trigger: 
+        if arg-5 is "silent":
+            if arg-3 is "Common":
+                send "&5&l(!) &dCrate Finder gave you a &a&lCommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&a&lCommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Uncommon":
+                send "&5&l(!) &dCrate Finder gave you a &8&lUncommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&8&lUncommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Rare":
+                send "&5&l(!) &dCrate Finder gave you a &9&lRare &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&9&lRare &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Epic":
+                send "&5&l(!) &dCrate Finder gave you a &d&lEpic &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&d&lEpic &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Legendary":
+                send "&5&l(!) &dCrate Finder gave you a &6&lLegendary &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&6&lLegendary &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            stop
+        if arg-5 is "prestige":
+            if arg-3 is "Common":
+                send "&5&l(!) &dYou got &d%arg-4% &a&lCommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&a&lCommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Uncommon":
+                send "&5&l(!) &dYou got &d%arg-4% &8&lUncommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&8&lUncommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Rare":
+                send "&5&l(!) &dYou got &d%arg-4% &9&lRare &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&9&lRare &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Epic":
+                send "&5&l(!) &dYou got &d%arg-4% &d&lEpic &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&d&lEpic &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Legendary":
+                send "&5&l(!) &dYou got &d%arg-4% &6&lLegendary &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&6&lLegendary &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Universe":
+                send "&5&l(!) &dYou got &d%arg-4% &5&lUniverse &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&5&lUniverse &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            stop
+        if arg-5 is "crates":
+            if arg-3 is "Common":
+                send "&5&l(!) &dYou &r&lwon &d%arg-4% &a&lCommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&a&lCommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Uncommon":
+                send "&5&l(!) &dYou &r&lwon &d%arg-4% &8&lUncommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&8&lUncommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Rare":
+                send "&5&l(!) &dYou &r&lwon &d%arg-4% &9&lRare &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&9&lRare &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Epic":
+                send "&5&l(!) &dYou &r&lwon &d%arg-4% &d&lEpic &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&d&lEpic &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Legendary":
+                send "&5&l(!) &dYou &r&lwon &d%arg-4% &6&lLegendary &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&6&lLegendary &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Universe":
+                send "&5&l(!) &dYou &r&lwon &d%arg-4% &5&lUniverse &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&5&lUniverse &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            stop
+        if executor is console:
+            if arg-3 is "Common":
+                send "&5&l(!) &r&lBuycraft &dgave you &d%arg-4% &a&lCommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&a&lCommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Uncommon":
+                send "&5&l(!) &r&lBuycraft &dgave you &d%arg-4% &8&lUncommon &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&8&lUncommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Rare":
+                send "&5&l(!) &r&lBuycraft &dgave you &d%arg-4% &9&lRare &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&9&lRare &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Epic":
+                send "&5&l(!) &r&lBuycraft &dgave you &d%arg-4% &d&lEpic &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&d&lEpic &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Legendary":
+                send "&5&l(!) &r&lBuycraft &dgave you &d%arg-4% &6&lLegendary &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&6&lLegendary &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-3 is "Universe":
+                send "&5&l(!) &r&lBuycraft &dgave you &d%arg-4% &5&lUniverse &7Key(s)" to arg-2
+                loop arg-4 times:
+                    give arg-2 glowing tripwire hook named "&5&lUniverse &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            stop
+        if arg-1 is not set:
+            send "&7&l----- &5&lCrate Manager &7&l -----"
+            send "&5&l(!) &d/key give (player) (key) (amount)"
+            send "&5&l(!) &dCrate Types:"
+            send "&5&l(!) &dCommon"
+            send "&5&l(!) &dUncommon"
+            send "&5&l(!) &dRare"
+            send "&5&l(!) &dEpic"
+            send "&5&l(!) &dLegendary"
+            send "&5&l(!) &dUniverse"
+        if arg-1 is set:
+            if arg-1 is not "give":
+                send "&7&l----- &5&lCrate Manager &7&l -----"
+                send "&5&l(!) &d/key give (player) (key) (amount)"
+                send "&5&l(!) &dCrate Types:"
+                send "&5&l(!) &dCommon"
+                send "&5&l(!) &dUncommon"
+                send "&5&l(!) &dRare"
+                send "&5&l(!) &dEpic"
+                send "&5&l(!) &dLegendary"
+                send "&5&l(!) &dUniverse"
+            if arg-1 is "give":
+                if arg-2 is not set:
+                    send "&5&l(!) &dPlease specify a player"
+                if arg-2 is set:
+                    if arg-3 is not set:
+                        send "&5&l(!) &dPlease specify a key"
+                    if arg-3 is set:
+                        if arg-4 is not set:
+                            send "&5&l(!) &dPlease specify an amount"
+                        if arg-4 is set:
+                            if arg-4 is more than 32:
+                                send "&5&l(!) &dPlease choose a lower amount"
+                            if arg-4 is less than 33:
+
+                                if arg-3 is "Common":
+                                    send "&5&l(!) &dYou have given &r&l%arg-2% &d%arg-4% &a&lCommon &7Key(s)"
+                                    send "&5&l(!) &r&l%player% &dgave you &d%arg-4% &a&lCommon &7Key(s)" to arg-2
+                                    loop arg-4 times:
+                                        give arg-2 glowing tripwire hook named "&a&lCommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+                                if arg-3 is "Uncommon":
+                                    send "&5&l(!) &dYou have given &r&l%arg-2% &d%arg-4% &8&lUncommon &7Key(s)"
+                                    send "&5&l(!) &r&l%player% &dgave you &d%arg-4% &8&lUncommon &7Key(s)" to arg-2
+                                    loop arg-4 times:
+                                        give arg-2 glowing tripwire hook named "&8&lUncommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+                                if arg-3 is "Rare":
+                                    send "&5&l(!) &dYou have given &r&l%arg-2% &d%arg-4% &9&lRare &7Key(s)"
+                                    send "&5&l(!) &r&l%player% &dgave you &d%arg-4% &9&lRare &7Key(s)" to arg-2
+                                    loop arg-4 times:
+                                        give arg-2 glowing tripwire hook named "&9&lRare &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+                                if arg-3 is "Epic":
+                                    send "&5&l(!) &dYou have given &r&l%arg-2% &d%arg-4% &d&lEpic &7Key(s)"
+                                    send "&5&l(!) &r&l%player% &dgave you &d%arg-4% &d&lEpic &7Key(s)" to arg-2
+                                    loop arg-4 times:
+                                        give arg-2 glowing tripwire hook named "&d&lEpic &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+                                if arg-3 is "Legendary":
+                                    send "&5&l(!) &dYou have given &r&l%arg-2% &d%arg-4% &6&lLegendary &7Key(s)"
+                                    send "&5&l(!) &r&l%player% &dgave you &d%arg-4% &6&lLegendary &7Key(s)" to arg-2
+                                    loop arg-4 times:
+                                        give arg-2 glowing tripwire hook named "&6&lLegendary &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+                                if arg-3 is "Universe":
+                                    send "&5&l(!) &dYou have given &r&l%arg-2% &d%arg-4% &5&lUniverse &7Key(s)"
+                                    send "&5&l(!) &r&l%player% &dgave you &d%arg-4% &5&lUniverse &7Key(s)" to arg-2
+                                    loop arg-4 times:
+                                        give arg-2 glowing tripwire hook named "&5&lUniverse &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+                                if arg-3 is "special":
+                                    send "&5&l(!) &dYou have given &r&l%arg-2% &d%arg-4% &r&k&ltt &r&lSpecial &k&ltt &7Key(s)"
+                                    send "&5&l(!) &r&l%player% &dgave you &d%arg-4% &r&k&ltt &r&lSpecial &k&ltt &7Key(s)" to arg-2
+                                    loop arg-4 times:
+                                        give arg-2 glowing tripwire hook named "&r&k&ltt &r&lSpecial &k&ltt &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+
+
+                
+
+          
+
+COMMAND /KEYALL [<text>] [<text>] [<text>]:
+    permission: admin.core
+    trigger:
+        if arg-2 is "buycraft":
+            if arg-1 is "Common":
+                broadcast "&d&lUniverse&5&lPR &8» &r&lBuycraft &ddid a &a&lCommon &dkeyall"
+                loop all players:
+                    give loop-player glowing tripwire hook named "&a&lCommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-1 is "Uncommon":
+                broadcast "&d&lUniverse&5&lPR &8» &r&lBuycraft &ddid a &8&lUncommon &dkeyall"
+                loop all players:
+                    give loop-player glowing tripwire hook named "&8&lUncommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-1 is "Rare":
+                broadcast "&d&lUniverse&5&lPR &8» &r&lBuycraft &ddid a &9&lRare &dkeyall"
+                loop all players:
+                    give loop-player glowing tripwire hook named "&9&lRare &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-1 is "Epic":
+                broadcast "&d&lUniverse&5&lPR &8» &r&lBuycraft &ddid a &d&lEpic &dkeyall"
+                loop all players:
+                    give loop-player glowing tripwire hook named "&d&lEpic &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-1 is "Legendary":
+                broadcast "&d&lUniverse&5&lPR &8» &r&lBuycraft &ddid a &6&lLegendary &dkeyall"
+                loop all players:
+                    give loop-player glowing tripwire hook named "&6&lLegendary &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            if arg-1 is "Universe":
+                broadcast "&d&lUniverse&5&lPR &8» &r&lBuycraft &ddid a &5&lUniverse &dkeyall"
+                loop all players:
+                    give loop-player glowing tripwire hook named "&5&lUniverse &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+            stop
+        if arg-2 is not "NoToPhilipe":
+            stop
+        if arg-1 is "Common":
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &ddid a &a&lCommon &dkeyall"
+            loop all players:
+                give loop-player glowing tripwire hook named "&a&lCommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+        if arg-1 is "Uncommon":
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &ddid a &8&lUncommon &dkeyall"
+            loop all players:
+                give loop-player glowing tripwire hook named "&8&lUncommon &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+        if arg-1 is "Rare":
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &ddid a &9&lRare &dkeyall"
+            loop all players:
+                give loop-player glowing tripwire hook named "&9&lRare &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+        if arg-1 is "Epic":
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &ddid a &d&lEpic &dkeyall"
+            loop all players:
+                give loop-player glowing tripwire hook named "&d&lEpic &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+        if arg-1 is "Legendary":
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &ddid a &6&lLegendary &dkeyall"
+            loop all players:
+                give loop-player glowing tripwire hook named "&6&lLegendary &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+        if arg-1 is "Universe":
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &ddid a &5&lUniverse &dkeyall"
+            loop all players:
+                give loop-player glowing tripwire hook named "&5&lUniverse &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+        if arg-1 is "Special":
+            broadcast "&d&lUniverse&5&lPR &8» &r&l%player% &ddid a &r&k&ltt &r&lSpecial &k&ltt &dkeyall"
+            loop all players:
+                give loop-player glowing tripwire hook named "&r&k&ltt &r&lSpecial &k&ltt &7Key" with lore "&5&l(!) &dOpen me at &r/crates"
+
+
+on rightclick on chest:
+    if world of player is "Worldd":
+        cancel event
+
+on leftclick on chest:
+    if player's gamemode is creative:
+        cancel event
+        if player is sneaking:
+            uncancel event
+        if player is not sneaking:
+            send title "&c&lShift" with subtitle "&cleft-click to break" to player
+
+# command /setcrate [<text>]:
+   # permission: op
+  #  trigger:
+      #  if arg-1 is set:
+           # set {%arg-1%crate} to location of target block
+            #send "location has been set!" to player
+
+
+command /spawn [<player>]:
+    trigger:
+        if arg-1 is not set:
+            teleport player to {spawn-minespawn}
+            send "&5&l(!) &dYou have been teleported to &r&lSPAWN"
+        if arg-1 is set:
+            if player has permission "admin.core":
+                teleport arg-1 to {spawn-minespawn}   
+                send "&5&l(!) &dYou have teleported &5&l%arg-1% &dto &r&lSPAWN"
+        
+
+
+command /crates:
+    trigger:
+        teleport player to {crates-minespawn}
+        send "&5&l(!) &dYou have been teleported to &r&lCRATES"
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Uncommon Crate
+
+on rightclick on chest:
+    if location of event-block is {uncommoncrate}:
+        cancel event
+        if name of player's tool is "&8&lUncommon &7Key":
+            if player is not sneaking:
+                remove 1 of tool from player's tool
+                set {uncommonchance::%player%} to random integer between 1 and 100
+                if {uncommonchance::%player%} is between 1 and 15:
+                    execute command "/key give %player% uncommon 2 crates"
+                if {uncommonchance::%player%} is between 16 and 45:
+                    execute command "/token give %player% 600000"
+                    send "&5&l(!) &dYou won &r&l600,000 &dtokens!"
+                if {uncommonchance::%player%} is between 46 and 70:
+                    execute command "/token give %player% 800000"
+                    send "&5&l(!) &dYou won &r&l800,000 &dtokens!"
+                if {uncommonchance::%player%} is between 71 and 90:
+                    execute command "/token give %player% 1000000"
+                    send "&5&l(!) &dYou won &r&l1,000,000 &dtokens!"
+                if {uncommonchance::%player%} is between 91 and 100:
+                    execute command "/key give %player% rare 1 crates"
+                clear {uncommonchance::%player%}
+            if player is sneaking:
+                set {amountofuncommon::%player%} to amount of player's held item in player's inventory
+                loop {amountofuncommon::%player%} times:
+                    remove 1 of tool from player's tool
+                    set {uncommonchance::%player%} to random integer between 1 and 100
+                    if {uncommonchance::%player%} is between 1 and 15:
+                        execute command "/key give %player% uncommon 2 crates"
+                    if {uncommonchance::%player%} is between 16 and 45:
+                        execute command "/token give %player% 600000"
+                        send "&5&l(!) &dYou won &r&l600,000 &dtokens!"
+                    if {uncommonchance::%player%} is between 46 and 70:
+                        execute command "/token give %player% 800000"
+                        send "&5&l(!) &dYou won &r&l800,000 &dtokens!"
+                    if {uncommonchance::%player%} is between 71 and 90:
+                        execute command "/token give %player% 1000000"
+                        send "&5&l(!) &dYou won &r&l1,000,000 &dtokens!"
+                    if {uncommonchance::%player%} is between 91 and 100:
+                        execute command "/key give %player% rare 1 crates"
+                    clear {uncommonchance::%player%}
+        else:
+            send "&5&l(!) &dYou must have a &8&lUncommon &7Key &dto open this"    
+
+On leftclick on chest:
+    If location of event-block is {uncommoncrate}:
+        open chest with 3 rows named "&8&lUncommon &7Crate:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 11 of player with tripwire hook named "&d1x &9&lRare &7Key(s)" with lore "&710%%" to close
+        format slot 12 of player with tripwire hook named "&d2x &8&lUncommon &7Key(s)" with lore "&715%%" to close
+        format slot 13 of player with magma cream named "&d600000x Tokens" with lore "&730%%" to close
+        format slot 14 of player with magma cream named "&d800000x Tokens" with lore "&725%%" to close
+        format slot 15 of player with magma cream named "&d1000000x Tokens" with lore "&720%%" to close
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Rare Crate
+
+on rightclick on chest:
+    if location of event-block is {rarecrate}:
+        cancel event
+        if name of player's tool is "&9&lRare &7Key":
+            if player is not sneaking:
+                remove 1 of tool from player's tool
+                set {rarechance::%player%} to random integer between 1 and 100
+                if {rarechance::%player%} is between 1 and 15:
+                    execute command "/key give %player% rare 2 crates"
+                if {rarechance::%player%} is between 16 and 45:
+                    execute command "/token give %player% 1100000"
+                    send "&5&l(!) &dYou won &r&l1,100,000 &dtokens!"
+                if {rarechance::%player%} is between 46 and 70:
+                    execute command "/token give %player% 1300000"
+                    send "&5&l(!) &dYou won &r&l1,300,000 &dtokens!"
+                if {rarechance::%player%} is between 71 and 90:
+                    execute command "/token give %player% 1500000"
+                    send "&5&l(!) &dYou won &r&l1.500,000 &dtokens!"
+                if {rarechance::%player%} is between 91 and 100:
+                    execute command "/key give %player% epic 1 crates"
+                clear {rarechance::%player%}
+            if player is sneaking:
+                set {amountofrare::%player%} to amount of player's held item in player's inventory
+                loop {amountofrare::%player%} times:
+                    remove 1 of tool from player's tool
+                    set {rarechance::%player%} to random integer between 1 and 100
+                    if {rarechance::%player%} is between 1 and 15:
+                        execute command "/key give %player% rare 2 crates"
+                    if {rarechance::%player%} is between 16 and 45:
+                        execute command "/token give %player% 1100000"
+                        send "&5&l(!) &dYou won &r&l1,100,000 &dtokens!"
+                    if {rarechance::%player%} is between 46 and 70:
+                        execute command "/token give %player% 1300000"
+                        send "&5&l(!) &dYou won &r&l1,300,000 &dtokens!"
+                    if {rarechance::%player%} is between 71 and 90:
+                        execute command "/token give %player% 1500000"
+                        send "&5&l(!) &dYou won &r&l1,500,000 &dtokens!"
+                    if {rarechance::%player%} is between 91 and 100:
+                        execute command "/key give %player% epic 1 crates"
+                clear {rarechance::%player%}
+        else:
+            send "&5&l(!) &dYou must have a &9&lRare &7Key &dto open this"    
+
+On leftclick on chest:
+    If location of event-block is {rarecrate}:
+        open chest with 3 rows named "&9&lRare &7Crate:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 11 of player with tripwire hook named "&d1x &d&lEpic &7Key(s)" with lore "&710%%" to close
+        format slot 12 of player with tripwire hook named "&d2x &9&lRare&7Key(s)" with lore "&715%%" to close
+        format slot 13 of player with magma cream named "&d1100000x Tokens" with lore "&730%%" to close
+        format slot 14 of player with magma cream named "&d1300000x Tokens" with lore "&725%%" to close
+        format slot 15 of player with magma cream named "&d1500000x Tokens" with lore "&720%%" to close
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Common Crate
+
+on rightclick on chest:
+    if location of event-block is {commoncrate}:
+        cancel event
+        if name of player's tool is "&a&lCommon &7Key":
+            if player is not sneaking:
+                remove 1 of tool from player's tool
+                set {commonchance::%player%} to random integer between 1 and 100
+                if {commonchance::%player%} is between 1 and 15:
+                    execute command "/key give %player% common 2 crates"
+                if {commonchance::%player%} is between 16 and 45:
+                    execute command "/token give %player% 100000"
+                    send "&5&l(!) &dYou won &r&l100,000 &dtokens!"
+                if {commonchance::%player%} is between 46 and 70:
+                    execute command "/token give %player% 300000"
+                    send "&5&l(!) &dYou won &r&l300,000 &dtokens!"
+                if {commonchance::%player%} is between 71 and 90:
+                    execute command "/token give %player% 500000"
+                    send "&5&l(!) &dYou won &r&l500,000 &dtokens!"
+                if {commonchance::%player%} is between 91 and 100:
+                    execute command "/key give %player% uncommon 1 crates"
+                clear {commonchance::%player%}
+            if player is sneaking:
+                set {amountofcommon::%player%} to amount of player's held item in player's inventory
+                loop {amountofcommon::%player%} times:
+                    remove 1 of tool from player's tool
+                    set {commonchance::%player%} to random integer between 1 and 100
+                    if {commonchance::%player%} is between 1 and 15:
+                        execute command "/key give %player% common 2 crates"
+                    if {commonchance::%player%} is between 16 and 45:
+                        execute command "/token give %player% 100000"
+                        send "&5&l(!) &dYou won &r&l100,000 &dtokens!"
+                    if {commonchance::%player%} is between 46 and 70:
+                        execute command "/token give %player% 300000"
+                        send "&5&l(!) &dYou won &r&l300,000 &dtokens!"
+                    if {commonchance::%player%} is between 71 and 90:
+                        execute command "/token give %player% 500000"
+                        send "&5&l(!) &dYou won &r&l500,000 &dtokens!"
+                    if {commonchance::%player%} is between 91 and 100:
+                        execute command "/key give %player% uncommon 1 crates"
+                    clear {commonchance::%player%}
+        else:
+            send "&5&l(!) &dYou must have a &a&lCommon &7Key &dto open this"    
+
+On leftclick on chest:
+    If location of event-block is {commoncrate}:
+        open chest with 3 rows named "&a&lCommon &7Crate:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 11 of player with tripwire hook named "&d1x &8&lUncommon &7Key(s)" with lore "&710%%" to close
+        format slot 12 of player with tripwire hook named "&d2x &a&lCommon &7Key(s)" with lore "&715%%" to close
+        format slot 13 of player with magma cream named "&d100000x Tokens" with lore "&730%%" to close
+        format slot 14 of player with magma cream named "&d300000x Tokens" with lore "&725%%" to close
+        format slot 15 of player with magma cream named "&d500000x Tokens" with lore "&720%%" to close
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Epic Crates
+
+on rightclick on chest:
+    if location of event-block is {epiccrate}:
+        cancel event
+        if name of player's tool is "&d&lEpic &7Key":
+            if player is not sneaking:
+                remove 1 of tool from player's tool
+                set {epicchance::%player%} to random integer between 1 and 100
+                if {epicchance::%player%} is between 1 and 15:
+                    execute command "/key give %player% epic 2 crates"
+                if {epicchance::%player%} is between 16 and 45:
+                    execute command "/token give %player% 1600000"
+                    send "&5&l(!) &dYou won &r&l1,600,000 &dtokens!"
+                if {epicchance::%player%} is between 46 and 70:
+                    execute command "/token give %player% 1800000"
+                    send "&5&l(!) &dYou won &r&l1,800,000 &dtokens!"
+                if {epicchance::%player%} is between 71 and 90:
+                    execute command "/token give %player% 2000000"
+                    send "&5&l(!) &dYou won &r&l2,000,000 &dtokens!"
+                if {epicchance::%player%} is between 91 and 100:
+                    execute command "/key give %player% legendary 1 crates"
+                clear {epicchance::%player%}
+            if player is sneaking:
+                set {amountofepic::%player%} to amount of player's held item in player's inventory
+                loop {amountofepic::%player%} times:
+                    remove 1 of tool from player's tool
+                    set {epicchance::%player%} to random integer between 1 and 100
+                    if {epicchance::%player%} is between 1 and 15:
+                        execute command "/key give %player% epic 2 crates"
+                    if {epicchance::%player%} is between 16 and 45:
+                        execute command "/token give %player% 1600000"
+                        send "&5&l(!) &dYou won &r&l1,600,000 &dtokens!"
+                    if {epicchance::%player%} is between 46 and 70:
+                        execute command "/token give %player% 1800000"
+                        send "&5&l(!) &dYou won &r&l1,800,000 &dtokens!"
+                    if {epicchance::%player%} is between 71 and 90:
+                        execute command "/token give %player% 2000000"
+                        send "&5&l(!) &dYou won &r&l2,000,000 &dtokens!"
+                    if {epicchance::%player%} is between 91 and 100:
+                        execute command "/key give %player% legendary 1 crates"
+                clear {epicchance::%player%}
+        else:
+            send "&5&l(!) &dYou must have a &d&lEpic &7Key &dto open this"    
+
+On leftclick on chest:
+    If location of event-block is {epiccrate}:
+        open chest with 3 rows named "&d&lEpic &7Crate:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 11 of player with tripwire hook named "&d1x &6&lLegendary &7Key(s)" with lore "&710%%" to close
+        format slot 12 of player with tripwire hook named "&d2x &a&lEpic &7Key(s)" with lore "&715%%" to close
+        format slot 13 of player with magma cream named "&d1600000x Tokens"  with lore "&730%%" to close
+        format slot 14 of player with magma cream named "&d1800000x Tokens" with lore "&725%%" to close
+        format slot 15 of player with magma cream named "&d2000000x Tokens" with lore "&720%%" to close
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Legendary Crate
+
+on rightclick on chest:
+    if location of event-block is {legendarycrate}:
+        cancel event
+        if name of player's tool is "&6&lLegendary &7Key":
+            if player is not sneaking:
+                remove 1 of tool from player's tool
+                set {legendarychance::%player%} to random integer between 1 and 101
+                if {legendarychance::%player%} is between 1 and 15:
+                    execute command "/key give %player% legendary 2 crates"
+                if {legendarychance::%player%} is between 16 and 45:
+                    execute command "/token give %player% 2100000"
+                    send "&5&l(!) &dYou won &r&l2,100,000 &dtokens!"
+                if {legendarychance::%player%} is between 46 and 70:
+                    execute command "/token give %player% 2300000"
+                    send "&5&l(!) &dYou won &r&l2,300,000 &dtokens!"
+                if {legendarychance::%player%} is between 71 and 90:
+                    execute command "/token give %player% 2500000"
+                    send "&5&l(!) &dYou won &r&l2,500,000 &dtokens!"
+                if {legendarychance::%player%} is between 91 and 100:
+                    execute command "/key give %player% universe 1 crates"
+                if {legendarychance::%player%} is 101:
+                    give player dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"
+                    send "&5&l(!) &dYou won a &r&l1 &dGenerator!"
+                clear {legendarychance::%player%}
+            if player is sneaking:
+                set {amountoflegendary::%player%} to amount of player's held item in player's inventory
+                loop {amountoflegendary::%player%} times:
+                    remove 1 of tool from player's tool
+                    set {legendarychance::%player%} to random integer between 1 and 101
+                    if {legendarychance::%player%} is between 1 and 15:
+                        execute command "/key give %player% legendary 2 crates"
+                    if {legendarychance::%player%} is between 16 and 45:
+                        execute command "/token give %player% 2100000"
+                        send "&5&l(!) &dYou won &r&l2,100,000 &dtokens!"
+                    if {legendarychance::%player%} is between 46 and 70:
+                        execute command "/token give %player% 2300000"
+                        send "&5&l(!) &dYou won &r&l2,300,000 &dtokens!"
+                    if {legendarychance::%player%} is between 71 and 90:
+                        execute command "/token give %player% 2500000"
+                        send "&5&l(!) &dYou won &r&l2,500,000 &dtokens!"
+                    if {legendarychance::%player%} is between 91 and 100:
+                        execute command "/key give %player% universe 1 crates"
+                    if {legendarychance::%player%} is 101:
+                        give player dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"
+                        send "&5&l(!) &dYou won a &r&l1 &dGenerator!"
+                clear {legendarychance::%player%}
+        else:
+            send "&5&l(!) &dYou must have a &6&lLegendary &7Key &dto open this"    
+
+On leftclick on chest:
+    If location of event-block is {legendarycrate}:
+        open chest with 3 rows named "&6&lLegendary &7Crate:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 11 of player with tripwire hook named "&d1x &5&lUniverse &7Key(s)" with lore "&710%%" to close
+        format slot 12 of player with tripwire hook named "&d2x &6&lLegendary &7Key(s)" with lore "&715%%" to close
+        format slot 13 of player with magma cream named "&d2100000x Tokens" with lore "&730%%" to close
+        format slot 14 of player with magma cream named "&d2300000x Tokens" with lore "&725%%" to close
+        format slot 15 of player with magma cream named "&d2500000x Tokens" with lore "&720%%" to close
+        format slot 16 of player with dead brain coral block named "&r&l1 &dGenerator" with lore "&71%%" to close
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Universe Crates
+
+on rightclick on chest:
+    if location of event-block is {universecrate}:
+        cancel event
+        if name of player's tool is "&5&lUniverse &7Key":
+            if player is not sneaking:
+                remove 1 of tool from player's tool
+                set {universechance::%player%} to random integer between 1 and 102
+                if {universechance::%player%} is between 1 and 15:
+                    execute command "/key give %player% universe 1 crates"
+                if {universechance::%player%} is between 16 and 45:
+                    execute command "/token give %player% 2600000"
+                    send "&5&l(!) &dYou won &r&l2,600,000 &dtokens!"
+                if {universechance::%player%} is between 46 and 70:
+                    execute command "/token give %player% 2800000"
+                    send "&5&l(!) &dYou won &r&l2,800,000 &dtokens!"
+                if {universechance::%player%} is between 71 and 90:
+                    execute command "/token give %player% 3000000"
+                    send "&5&l(!) &dYou won &r&l3,000,000 &dtokens!"
+                if {universechance::%player%} is between 91 and 100:
+                    execute command "/key give %player% universe 2 crates"
+                    if {universechance::%player%} is between 101 and 102:
+                        give player dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"
+                        send "&5&l(!) &dYou won a &r&l1 &dGenerator!"
+                clear {universechance::%player%}
+            if player is sneaking:   
+                set {amountofuniverse::%player%} to amount of player's held item in player's inventory
+                loop {amountofuniverse::%player%} times:
+                    remove 1 of tool from player's tool
+                    set {universechance::%player%} to random integer between 1 and 102
+                    if {universechance::%player%} is between 1 and 15:
+                        execute command "/key give %player% universe 1 crates"
+                    if {universechance::%player%} is between 16 and 45:
+                        execute command "/token give %player% 2600000"
+                        send "&5&l(!) &dYou won &r&l2,600,000 &dtokens!"
+                    if {universechance::%player%} is between 46 and 70:
+                        execute command "/token give %player% 2800000"
+                        send "&5&l(!) &dYou won &r&l2,800,000 &dtokens!"
+                    if {universechance::%player%} is between 71 and 90:
+                        execute command "/token give %player% 3000000"
+                        send "&5&l(!) &dYou won &r&l3,000,000 &dtokens!"
+                    if {universechance::%player%} is between 91 and 100:
+                        execute command "/key give %player% universe 2 crates"
+                    if {universechance::%player%} is between 101 and 102:
+                        give player dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"
+                        send "&5&l(!) &dYou won a &r&l1 &dGenerator!"
+                clear {universechance::%player%}
+        else:
+            send "&5&l(!) &dYou must have a &5&lUniverse &7Key &dto open this"    
+
+On leftclick on chest:
+    If location of event-block is {universecrate}:
+        open chest with 3 rows named "&5&lUniverse &7Crate:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 11 of player with tripwire hook named "&d3x &5&lUniverse &7Key(s)" with lore "&710%%" to close
+        format slot 12 of player with tripwire hook named "&d2x &5&lUniverse &7Key(s)" with lore "&715%%" to close
+        format slot 13 of player with magma cream named "&d2600000x Tokens" with lore "&730%%" to close
+        format slot 14 of player with magma cream named "&d2800000x Tokens" with lore "&725%%" to close
+        format slot 15 of player with magma cream named "&d3000000x Tokens" with lore "&720%%" to close
+        format slot 16 of player with dead brain coral block named "&r&l1 &dGenerator" with lore "&72%%" to close
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Special Crates
+
+
+on rightclick on chest:
+    if location of event-block is {specialcrate}:
+        cancel event
+        if name of player's tool is "&r&k&ltt &r&lSpecial &k&ltt &7Key":
+            if player is not sneaking:
+                remove 1 of tool from player's tool
+                set {specialchance::%player%} to random integer between 1 and 105
+                if {specialchance::%player%} is between 1 and 20:
+                    execute command "/key give %player% universe 15 crates"
+                if {specialchance::%player%} is between 21 and 54:
+                    execute command "/token give %player% 5000000"
+                    send "&5&l(!) &dYou won &r&l5,000,000 &dtokens!"
+                if {specialchance::%player%} is between 55 and 79:
+                    execute command "/token give %player% 10000000"
+                    send "&5&l(!) &dYou won &r&l10,000,000 &dtokens!"
+                if {specialchance::%player%} is between 80 and 99:
+                    execute command "/token give %player% 15000000"
+                    send "&5&l(!) &dYou won &r&l15,000,000 &dtokens!"
+                if {specialchance::%player%} is 100:
+                    execute command "/rank %player% milkyway"
+                    broadcast "{@prefix} &r&l%player% &dhas won &r&lMilkyWay &dfrom &r&k&ltt &r&lSpecial &k&ltt &dCrate"
+                if {specialchance::%player%} is between 101 and 105:
+                    give player dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"
+                    send "&5&l(!) &dYou won a &r&l1 &dGenerator!"
+            clear {specialchance::%player%}
+            if player is sneaking:   
+                set {amountofspecial::%player%} to amount of player's held item in player's inventory
+                loop {amountofspecial::%player%} times:
+                    remove 1 of tool from player's tool
+                    set {specialchance::%player%} to random integer between 1 and 105
+                    if {specialchance::%player%} is between 1 and 20:
+                        execute command "/key give %player% universe 15 crates"
+                    if {specialchance::%player%} is between 21 and 54:
+                        execute command "/token give %player% 7000000"
+                        send "&5&l(!) &dYou won &r&l7,000,000 &dtokens!"
+                    if {specialchance::%player%} is between 55 and 79:
+                        execute command "/token give %player% 10000000"
+                        send "&5&l(!) &dYou won &r&l10,000,000 &dtokens!"
+                    if {specialchance::%player%} is between 80 and 99:
+                        execute command "/token give %player% 15000000"
+                        send "&5&l(!) &dYou won &r&l15,000,000 &dtokens!"
+                    if {specialchance::%player%} is 100:
+                        execute command "/rank %player% milkyway"
+                        broadcast "{@prefix} &r&l%player% &dhas won &r&lMilkyWay &dfrom &r&k&ltt &r&lSpecial &k&ltt &dCrate"
+                    if {specialchance::%player%} is between 101 and 105:
+                        give player dead brain coral block named "&8Generator" with lore "&7Automatically generates tokens for you!" and "&7Place anywhere at your plot and right click to claim tokens/upgrade!"
+                        send "&5&l(!) &dYou won a &r&l1 &dGenerator!"
+                clear {specialchance::%player%}
+        else:
+            send "&5&l(!) &dYou must have a &r&k&ltt &r&lSpecial &k&ltt &7Key &dto open this"    
+
+On leftclick on chest:
+    If location of event-block is {specialcrate}:
+        open chest with 3 rows named "&r&k&ltt &r&lSpecial &k&ltt &7Crate:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format slot loop-number of player with black glass pane named "&8" to close
+        format slot 11 of player with glowing paper named "&r&lMilkyway Rank &d(Only for the season)" with lore "&71%%" to close
+        format slot 12 of player with tripwire hook named "&d10x &5&lUniverse &7Key(s)" with lore "&720%%" to close
+        format slot 13 of player with magma cream named "&d7000000x Tokens" with lore "&734%%" to close
+        format slot 14 of player with magma cream named "&d10000000x Tokens" with lore "&725%%" to close
+        format slot 15 of player with magma cream named "&d15000000x Tokens" with lore "&720%%" to close
+        format slot 16 of player with dead brain coral block named "&r&l1 &dGenerator" with lore "&75%%" to close

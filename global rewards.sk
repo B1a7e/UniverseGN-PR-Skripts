@@ -1,0 +1,16 @@
+on block break:
+    if "%region at event-block%" contains "mine":
+        if {globalrewardscounter} is not set:
+            set [globalrewardscounter] to 1
+        if {globalrewards} is equal to 5000000*{globalrewardscounter}:
+            execute command "/keyall globalrewards"
+            add 1 to {globalrewardscounter}
+            stop
+
+
+
+
+
+on block break:
+    if "%region at event-block%" contains "mine":
+        

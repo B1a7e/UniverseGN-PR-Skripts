@@ -1,0 +1,31 @@
+command /commandspy [<player>] [<text>]:
+    aliases: /commands, /cspy
+    trigger:
+        if player doesn't have permission "admin.core":
+            send "&8[&d&lCOMMANDSPY&8] &7You don't have access to use this account."
+        else:
+            if arg 1 is set:
+                if arg 2 is not set:
+                    if {cs::%uuid of arg 1%} is set:
+                        clear {cs::%uuid of arg 1%}
+                        send "&8[&d&lCOMMANDSPY&8] &7Command spy has been &cdisabled &7for %arg 1%&7."
+                        send "&8[&d&lCOMMANDSPY&8] &7Your command spy has been &cdisabled&7." to arg 1
+                    else:
+                        set {cs::%uuid of arg 1%} to true
+                        send "&8[&d&lCOMMANDSPY&8] &7Your command spy has been &aenabled&7." to arg 1
+                        send "&8[&d&lCOMMANDSPY&8] &7Command spy has been &aenabled &7for %arg 1%&7."
+            else:
+                if arg 2 is not set:
+                    if {cs::%uuid of player%} is set:
+                        clear {cs::%uuid of player%}
+                        send "&8[&d&lCOMMANDSPY&8] &7Your command spy has been &cdisabled&7."
+                    else:
+                        set {cs::%uuid of player%} to true
+                        send "&8[&d&lCOMMANDSPY&8] &7Your command spy has been &aenabled&7&7."
+
+on command:
+    if sender is a player:
+        loop all players:
+            if {cs::%uuid of loop-player%} is set:
+                if player has permission "staff.core":
+                    send "&8[&d&lCOMMANDSPY&8] &a%player% &7executed the command &c&n/%complete command%&7." to loop-player

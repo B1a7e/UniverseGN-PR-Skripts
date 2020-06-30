@@ -1,0 +1,109 @@
+options:
+    basecost: 500000000
+    multiplier: .25
+    cost: 30
+
+
+
+
+
+
+
+
+
+
+command /prestige:
+    trigger:
+        if {level::%player's uuid%} is "Z":
+            if {prestige::%player's uuid%} is 0:
+                if {balance::%player's uuid%} is more than or equal to {@basecost}:
+                    set {prestige::%player's uuid%} to 1
+                    set {level::%player's uuid%} to "A"
+                    add {@multiplier} to {multiplier::%player's uuid%}
+                    remove {@firstcost} from {balance::%player's uuid%}
+                    execute command "/scoreboardrl %player%"
+                    execute command "nametagedit player %player% suffix &7 [&2%{prestige::%player's uuid%}%&7]"
+                    send "&5&l(!) &dYou are now &r&lPrestige 1 &d(Cost: 250M)"
+                    execute command "/key give %player% Epic 1 prestige"
+                    execute command "nametagedit player %player% prefix &7%{prefix::%player's uuid%}% &7"
+                    set tablist name of player to "%{prefix::%player's uuid%}% &7%player% &7 [&2%{prestige::%player's uuid%}%&7] &7"
+                    if player does not have permission "milkyway.core":
+                        teleport player to {p1-minespawn}
+                    stop
+                if {balance::%player's uuid%} is less than {@firstcost}:
+                    send "&5&l(!) &dInsufficient funds! (Cost: 250M)"
+                    stop
+            if {prestige::%player's uuid%} is more than 0:
+                if {balance::%player's uuid%} is more than or equal to {@basecost}*{prestige::%player's uuid%}*{@cost}:
+                    set {prestigecost::%player's uuid%} to 50000000*{prestige::%player's uuid%}*{@cost}
+                    set {newprestige::%player%} to {prestige::%player's uuid%} + 1
+                    send "&5&l(!) &dYou are now &r&lPrestige %{newprestige::%Player%}% &d(Cost: %formatNum({prestigecost::%player's uuid%})%&d)"
+                    set {prestige::%player's uuid%} to {prestige::%player's uuid%} + 1
+                    add {@multiplier} to {multiplier::%player's uuid%}
+                    remove {prestigecost::%player's uuid%} from {balance::%player's uuid%}
+                    execute command "/scoreboardrl %player%"
+                    clear {prestigecost::%player's uuid%} 
+                    execute command "nametagedit player %player% prefix &7%{prefix::%player's uuid%}% &7"
+
+                    execute command "nametagedit player %player% suffix &7 [&2%{prestige::%player's uuid%}%&7]"
+                    clear {newprestige::%player%} 
+                    set tablist name of player to "%{prefix::%player's uuid%}% &7%player% &7[&2%{prestige::%player's uuid%}%&7] &7"
+                    set {level::%player's uuid%} to "A"
+                    execute command "/key give %player% rare 1 prestige"
+                
+
+                    stop
+                if {balance::%player's uuid%} is less than {@basecost}*{prestige::%player's uuid%}*{@cost}:
+                    set {prestigecost::%player's uuid%} to {@basecost}*{prestige::%player's uuid%}*{@cost}
+                    send "&5&l(!) &dInsufficient funds! &d(Cost: %formatNum({prestigecost::%player's uuid%})%&d)"
+                    stop
+        if {level::%player's uuid%} is not "Z":
+            send "&5&l(!) &dYou must be Level Z to prestige!"
+
+command /multiplier [<text>] [<offline player>] [<number>]:
+    permission: admin.core
+    trigger:
+        if arg-1 is "add":
+            if arg-3 is set:
+                add arg-3 to {multiplier::%arg-2's uuid%}
+                execute command "/scoreboardrl %arg-2%"
+                send "&5&l(!) &dYou added &r%arg-2%&r's &dmultiplier to &5%arg-3%"
+        if arg-1 is "set":
+            if arg-3 is set:
+                set {multiplier::%arg-2's uuid%} to arg-3
+                execute command "/scoreboardrl %arg-2%"
+                send "&5&l(!) &dYou set &r%arg-2%&r's &dmultiplier to &5%arg-3%"
+
+
+
+
+every 1 minute:
+    loop all players:
+        if {balance::%loop-player's uuid%} is less than 0:
+            set {balancE::%loop-player's uuid%} to 0
+            execute command "/scoreboardrl %loop-player%"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+command /autoprestige:
+    permission: milkyway.core 
+    trigger:
+        if {autoprestige::%player's uuid%} is not set:
+            set {autoprestige::%player's uuid%} to "true" 
+            send "&5&l(!) &a&lEnabled&d!"
+            stop
+        if {autoprestige::%player's uuid%} is "true":
+            clear {autoprestige::%player's uuid%} 
+            send "&5&l(!) &c&lDisabled&d!"
+            stop

@@ -1,0 +1,268 @@
+options:
+    prefix: &d&lUniversal&5&lPR &8»
+
+command /seen [<offline player>]:
+    permission: milkyway.core
+    permission message: &5&l(!) &dYou need &r&lMilkyWay&r&l+ &dfor that!  
+    trigger:
+        if {online::%arg-1's uuid%} is not set:
+            send "&5&l(!) &dThis player has never joined the server"
+            stop
+        if {online::%arg-1's uuid%} is "true":
+            send "&5&l(!) %{prefix::%arg-1's uuid%}% &7%arg-1% &dhas been &aonline &dsince &r%{lastjoined::%arg-1's uuid%}% &r(GMT)"
+        if {online::%arg-1's uuid%} is "false":
+            send "&5&l(!) %{prefix::%arg-1's uuid%}% &7%arg-1% &dhas been &coffline &dsince &r%{lastseen::%arg-1's uuid%}% &r(GMT)"
+
+command /speed [<text>] [<integer>]:
+    permission: universe.core
+    permission message: &5&l(!) &dYou need &5&lUniverse &dfor that!  
+    trigger:
+        if arg-1 is not "walk" or "fly":
+            send "&6Please choose between &cwalk &6and &cfly"       
+        if arg-1 is "walk":
+            if arg-2 is 1:
+                set walk speed of player to .2
+                send "&6Set &cwalk &6speed to &61"
+            if arg-2 is more than 10:
+                send "&6Max speed is 10"
+                stop
+            if arg-2 is more than 1:
+                set walk speed of player to arg-2
+                send "&6Set &cwalk &6speed to &6%arg-2%"
+        if arg-1 is "fly":
+            if arg-2 is 1:
+                set fly speed of player to .2
+                send "&6Set &cfly &6speed to &61"
+            if arg-2 is more than 10:
+                send "&6Max speed is 10"
+                stop
+            if arg-2 is more than 1:
+                set fly speed of player to arg-2
+                send "&6Set &cfly &6speed to &6%arg-2%"
+            
+        
+
+
+command /hat:
+    permission: space.core
+    permission message: &5&l(!) &dYou need &9&lSpace&r&l+ &dfor that!  
+    trigger:
+        if player's tool is not air:
+            if helmet of player is air:
+                send "&5&l(!) &dYou have equipped &5%player's tool%"
+                set helmet of player to player's tool
+                delete player's held item
+                set {hat::%player's uuid%} to "true"
+                stop
+            if helmet of player is not air:
+                send "&5&l(!) &dYou have a hat equipped"
+                stop
+        if player's tool is air:
+            send "&5&l(!) &dYou must have a item in your hand"
+            
+
+on join:
+    set {lastjoined::%player's uuid%} to now
+    clear {lastseen::%player's uuid%}
+    set {online::%player's uuid%} to "true"
+
+on quit:
+    set {lastseen::%player's uuid%} to now
+    set {online::%player's uuid%} to "false"
+
+command /rank [<offline player>] [<text>]:
+    permission: owner.core
+    trigger:
+        if arg-2 is set:
+            set {rank::%arg-1's uuid%} to arg-2
+            send "&5You have set &d%arg-1%&d's &5rank to &r&l%arg-2%"
+            execute command "/rankcheck %arg-1%"
+
+on join:
+    if {rank::%player's uuid%} is not set:
+        set {rank::%player's uuid%} to "default"
+        execute command "/rankcheck %player%"
+    if player has permission "*":
+        wait 10 ticks
+        make player execute command "/heal %player%"
+
+command /rankcheck [<offline player>]:
+    permission: console.core
+    trigger:
+        if arg-1 is set:
+            if {rank::%arg-1's uuid%} is "default":
+                set {prefix::%arg-1's uuid%} to "&dBreaker"
+            if {rank::%arg-1's uuid%} is "dev":
+                set {prefix::%arg-1's uuid%} to "&5&lDeveloper"
+                execute command "/pex user %arg-1% group set Dev"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &5&lDeveloper" to arg-1
+            if {rank::%arg-1's uuid%} is "owner":
+                set {prefix::%arg-1's uuid%} to "&c&lOwner"
+                execute command "/pex user %arg-1% group set owner"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &c&lOwner" to arg-1
+            if {rank::%arg-1's uuid%} is "jr.mod":
+                set {prefix::%arg-1's uuid%} to "&eJr.Mod"
+                execute command "/pex user %arg-1% group set jr.mod"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &eJr.Mod" to arg-1
+            if {rank::%arg-1's uuid%} is "mod":
+                set {prefix::%arg-1's uuid%} to "&eMod"
+                execute command "/pex user %arg-1% group set mod"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &eMod" to arg-1
+            if {rank::%arg-1's uuid%} is "admin":
+                set {prefix::%arg-1's uuid%} to "&3&lAdmin"
+                execute command "/pex user %arg-1% group set admin"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &3&lAdmin" to arg-1
+            if {rank::%arg-1's uuid%} is "builder":
+                set {prefix::%arg-1's uuid%} to "&a&lBuilder"
+                execute command "/pex user %arg-1% group set builder"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &a&lBuilder" to arg-1
+            if {rank::%arg-1's uuid%} is "manager":
+                set {prefix::%arg-1's uuid%} to "&d&lManager"
+                execute command "/pex user %arg-1% group set manager"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &d&lManager" to arg-1
+            if {rank::%arg-1's uuid%} is "milkyway":
+                set {prefix::%arg-1's uuid%} to "&r&lMilkyWay"
+                execute command "/pex user %arg-1% group set milkyway"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &r&lMilkyWay" to arg-1
+            if {rank::%arg-1's uuid%} is "space":
+                set {prefix::%arg-1's uuid%} to "&9&lSpace"
+                execute command "/pex user %arg-1% group set space"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &9&lSpace" to arg-1
+            if {rank::%arg-1's uuid%} is "galaxy":
+                set {prefix::%arg-1's uuid%} to "&6&lGalaxy"
+                execute command "/pex user %arg-1% group set galaxy"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &6&lGalaxy" to arg-1
+            if {rank::%arg-1's uuid%} is "Cosmo":
+                set {prefix::%arg-1's uuid%} to "&4&lCosmo"
+                execute command "/pex user %arg-1% group set cosmo"
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &4&lCosmo" to arg-1
+            if {rank::%arg-1's uuid%} is "Universe":
+                set {prefix::%arg-1's uuid%} to "&5&lUniverse"
+                execute command "/pex user %arg-1% group set universe"               
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &5&lUniverse" to arg-1
+            if {rank::%arg-1's uuid%} is "Void":
+                set {prefix::%arg-1's uuid%} to "&8&lVoid"
+                execute command "/pex user %arg-1% group set void"               
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &8&lVoid" to arg-1
+            if {rank::%arg-1's uuid%} is "Divine":
+                set {prefix::%arg-1's uuid%} to "&b&lDivine"
+                execute command "/pex user %arg-1% group set Divine"               
+                send actionbar "&8[&c&lRANKS&8] &7Your rank has been set to &b&lDivine" to arg-1
+            execute command "scoreboardrl %arg-1%"
+            execute command "nametagedit player %arg-1% suffix &7 [&2%{prestige::%arg-1's uuid%}%&7]"
+            execute command "nametagedit player %arg-1% prefix &7%{prefix::%arg-1's uuid%}% &7"
+            set tablist name of arg-1 to "%{prefix::%arg-1's uuid%}% &7%arg-1% &7[&2%{prestige::%arg-1's uuid%}%&7] &7"
+
+
+
+command /tablistname [<offline player>] [<text>]:
+    permission: god.core
+    trigger:
+        if arg-2 is set:
+            set tablist name of arg-1 to colored arg-2
+            set arg-1's display name to colored arg-2
+            send "&5&l(!) &dSet to %colored arg-2%"
+
+
+
+
+on join:
+    wait 5 ticks
+    execute command "nametagedit player %player% suffix &7 [&2%{prestige::%player's uuid%}%&7]"
+    execute command "nametagedit player %player% prefix &7%{prefix::%player's uuid%}% &7"
+    set tablist name of player to "%{prefix::%player's uuid%}% &7%player% &7[&2%{prestige::%player's uuid%}%&7] &7"
+
+command /fly:
+   permission: galaxy.core  
+   permission message: &5&l(!) &dYou need &6&lGalaxy&r&l+ &dfor that!  
+   trigger:
+      if player's flight mode is false:
+         set player's flight mode to true
+         send "&6Fly mode &aenabled &6for %{prefix::%player's uuid%}% &7%player%"
+         stop
+      if player's flight mode is true:
+         set player's flight mode to false
+         send "&6Fly mode &cdisabled &6for %{prefix::%player's uuid%}% &7%player%"
+
+
+command /sfly:
+   permission: staff.core  
+   permission message: &5&l(!) &dYou need &6&lGalaxy&r&l+ &dfor that!  
+   trigger:
+      if player's flight mode is false:
+         set player's flight mode to true
+         send "&6Fly mode &aenabled &6for %{prefix::%player's uuid%}% &7%player%"
+         stop
+      if player's flight mode is true:
+         set player's flight mode to false
+         send "&6Fly mode &cdisabled &6for %{prefix::%player's uuid%}% &7%player%"
+
+
+
+
+
+
+#&dBreaker
+#Jr.Mod
+#Mod
+#Admin
+#Manager
+#Developer 
+#Owner
+
+
+on chat:
+    if {staffchat::%player's uuid%} is set:
+        cancel event
+        loop all players:
+            if loop-player has permission "staff.core":
+                send "&8[&5&lSTAFF&8] &d%player% &8» &b%message%" to loop-value 
+                send "&8[&5&lSTAFF&8] &d%player% &8» &b%message%" 
+                stop
+    if {adminchat::%player's uuid%} is set:
+        cancel event
+        loop all players:
+            if loop-player is op:
+                send "&8[&3&lADMIN&8] &d%player% &8» &4%message%" to loop-value
+                stop
+
+    if {chat} is 1:
+        if player has permission "staff.core":
+            If {prestige::%player's uuid%} is more than 0:
+                set chat format to "&7[P%{prestige::%player's uuid%}%&7] [%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player% &8» &f%message%"
+            If {prestige::%player's uuid%} is 0:
+                set chat format to "&7[%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player% &8» &f%message%"
+        if player does not have permission "staff.core":
+            send "{@prefix} &7Chat is muted"
+            stop
+    if {chat} is not set:
+        if {staffchat::%player's uuid%} is not set:
+            If {prestige::%player's uuid%} is more than 0:
+                set chat format to "&7[P%{prestige::%player's uuid%}%&7] [%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player% &8» &f%message%"
+            If {prestige::%player's uuid%} is 0:
+                set chat format to "&7[%{level::%player's uuid%}%&7] %{prefix::%player's uuid%}% &7%player% &8» &f%message%"
+
+command /me:
+    trigger:
+        send "&cno"
+
+command /minecraft:me:
+    trigger:
+        send "&cno"
+
+command /group [<text>] [<text>] [<text>]:
+    permission: owner.core
+    trigger:
+        if arg-3 is set:
+            make player execute command "/pex group %arg-1% %arg-2% %arg-3%"
+        if arg-1 is "staff":
+            make player execute command "/pex group jr.mod %arg-2% %arg-3%"
+            make player execute command "/pex group mod %arg-2% %arg-3%"
+            make player execute command "/pex group admin %arg-2% %arg-3%"
+              
+
+
+
+
+
+

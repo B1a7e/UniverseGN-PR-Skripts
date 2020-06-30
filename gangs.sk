@@ -1,0 +1,395 @@
+command /gang [<text>] [<text>] [<text>] [<text>] [<number>]:
+    aliases: /g
+    trigger:
+        if arg-1 is not set:
+            send "&7&l----- &5&lGang Info &7&l-----%nl%&5&l(!) &d/gang create &7(gang)%nl%&5&l(!) &d/gang invite &7(player)%nl%&5&l(!) &d/gang join &7(gang)%nl%&5&l(!) &d/gang deposit &7(amount)%nl%&5&l(!) &d/gang bank%nl%&5&l(!) &d/gang levelup%nl%&5&l(!) &d/gang leave &7(gang)%nl%&5&l(!) &d/gang disband &7(gang)%nl%&7&l----- &5&lGang Info &7&l-----"
+        if arg-1 is "create":
+            if arg-2 is not set:
+                send "&5&l(!) &dPlease choose a name for your gang!"
+                stop
+            if {ingang::%player's uuid%} is "true":
+                send "&5&l(!) &dYou are already in a gang!"
+                stop
+            if {ingang::%player's uuid%} is not set:
+                if {prestige::%player's uuid%} is less than 2:
+                    send "&5&l(!) &dYou must be Prestige &r&l2+ &dto create a gang!"
+                if {prestige::%player's uuid%} is more than 1:
+                    if {gangss::%arg-2%} is set:
+                        send "&5&l(!) &dThere is already a gang with that name!"
+                        stop
+                    if arg-2 is not alphanumeric:
+                        send "&5&l(!) &dPlease only use letters and numbers! (No spaces, special characters, etc.)"
+                        stop
+                    if length of arg-2 is more than 13:
+                        send "&5&l(!) &dMax Characters is 10!"
+                        stop
+                    set {ingang::%player's uuid%} to "true"
+
+                    set {gang::%player's uuid%} to arg-2
+                    set {gangss::%arg-2%} to 1
+                    add player to {gangmembers::%{gang::%player's uuid%}%::*}
+                    add arg-2 to {gangs::*}
+                    set {ingangs::%player%} to "true"
+                    set {%arg-2%owner::gangs} to player
+                    set {gangcount::%arg-2%} to 1
+                    set {gangbalance::%arg-2%} to 0
+                    set {ganglevel::%arg-2%} to 1
+                    send "&5&l(!) &dYou have created the gang &r&l%arg-2%"
+                    execute command "/scoreboardrl %player%"
+        if arg-1 is "disband":
+            if {ingang::%player's uuid%} is not set:
+                send "&5&l(!) &dYou are not in a gang!"
+                stop
+            if {ingang::%player's uuid%} is set:
+                set {player::%player%} to player
+                if "%{%{gang::%player's uuid%}%owner::gangs}%" is equal to {player::%player%}:
+                    loop {gangmembers::%{gang::%player's uuid%}%::*}:
+                        clear {ingang::%loop-value's uuid%}
+                        remove {gang::%player's uuid%} from {gangs::*}
+                        clear {gangcount::%{gang::%player's uuid%}%}
+                        send "&5&l(!) &dYour owner has disbanded your gang!" to loop-value
+                        execute command "/scoreboardrl %loop-value%"
+                        clear {ingangs::%loop-value%} 
+                    clear {ingangs::%player%} 
+                    clear {gangbalance::%arg-2%}
+                    clear {ganglevel::%arg-2%}
+                    clear {gangmembers::%{gang::%player's uuid%}%::*}
+                    clear {gangss::%{gang::%player's uuid%}%} 
+                    clear {ingang::%player's uuid%}
+                    clear {gang::%player's uuid%}
+                    wait 1 tick
+                    execute command "/scoreboardrl %player%"
+
+                else:
+                    send "&5&l(!) &dYou must be the owner of your gang to do that!"
+        if arg-1 is "invite":
+            if {ingang::%player's uuid%} is not set:
+                send "&5&l(!) &dYou must be in a gang to invite someone!"
+                stop
+            if {ingang::%player's uuid%} is "true":
+                set {player::%player%} to player
+                if "%{%{gang::%player's uuid%}%owner::gangs}%" is equal to {player::%player%}:
+                    if {gangcount::%{gang::%player's uuid%}%} is 5:
+                        send "&5&l(!) &dThe max amount of player's you can have is 5!"
+                        stop
+                    set {_p::%player%} to arg-2 parsed as an offline player
+                    if {_p::%player%} is online:
+                        send "&5&l(!) &dYou have invited &r&l%arg-2%" 
+                        send "&5&l(!) &dYou have been invited to &r&l%{gang::%player's uuid%}%" to {_p::%player%}
+                        set {invitegang::%{gang::%player's uuid%}%::%{_p::%player%}%} to "true"
+                        wait 60 seconds
+                        clear {invitegang::%{gang::%player's uuid%}%::%{_p::%player%}%}
+        if arg-1 is "join": 
+            if arg-2 is not set:
+                send "&5&l(!) &d/g join &7(gang)"
+            if arg-2 is set:
+                if {invitegang::%arg-2%::%player%} is "true":
+                    if {ingang::%player's uuid%} is "true":
+                        send "&5&l(!) &dYou are already in a gang!"
+                        clear {invitegang::%{gang::%player's uuid%}%::%{_p::%player%}%}
+                        stop
+                    if {ingang::%player's uuid%} is not set:
+                        if {gangcount::%arg-2%} is 5:
+                            send "&5&l(!) &dThe max amount of player's you can have is 5!"
+                            stop
+                        if {gangcount::%arg-2%} is less than 5:
+                            set {ingang::%player's uuid%} to "true"
+                            set {gang::%player's uuid%} to arg-2
+                            set {ingangs::%player%} to "true"
+                            add 1 to {gangcount::%arg-2%} 
+                            loop {gangmembers::%{gang::%player's uuid%}%::*}:
+                                send "&5&l(!) &r&l%player% &dhas joined your gang!" to loop-value
+                            add player to {gangmembers::%arg-2%::*}
+                            send "&5&l(!) &dYou joined &r&l%{gang::%player's uuid%}%&d!"
+                            execute command "/scoreboardrl %player%"
+                            clear {invitegang::%{gang::%player's uuid%}%::%{_p::%player%}%}
+        if arg-1 is "leave": 
+            if arg-2 is not set:
+                send "&5&l(!) &d/g leave &7(gang)"
+            if arg-2 is set:
+                if {ingang::%player's uuid%} is not set:
+                    send "&5&l(!) &dYou are not in a gang!"
+                    stop
+                if {gangcount::%arg-2%} is more than 1:
+                    set {player::%player%} to player
+                    if "%{%{gang::%player's uuid%}%owner::gangs}%" is equal to {player::%player%}: 
+                        send "&5&l(!) &dYou cannot leave your own gang!"
+                        stop
+                    else:
+                        clear {ingang::%player's uuid%} 
+                        clear {gang::%player's uuid%}
+                        clear {ingangs::%player%}
+                        remove 1 from {gangcount::%arg-2%} 
+                        remove player from {gangmembers::%arg-2%::*}
+                        loop {gangmembers::%arg-2%::*}:
+                            send "&5&l(!) &r&l%player% &dhas left your gang!" to loop-value
+                        send "&5&l(!) &dYou left &r&l%arg-2%&d!"
+                        execute command "/scoreboardrl %player%"
+        if arg-1 is "info":
+            if arg-2 is set:
+                if {gangss::%arg-2%} is not set:
+                    send "&5&l(!) &dThere is not a gang with that name!"
+                    stop
+                if {gangss::%arg-2%} is set:
+                    send "&7-----  &5Info about &r&l%arg-2% &7-----"
+                    send "&5&l(!) &dBank: $&d%formatNum({gangbalance::%arg-2%})%"
+                    send "&5&l(!) &dOwner: %{%arg-2%owner::gangs}%"
+                    send "&5&l(!) &dMembers: (%{gangcount::%arg-2%}%&d/5) %{gangmembers::%arg-2%::*}% "
+                    send "&5&l(!) &dLevel: %{ganglevel::%arg-2%}%"
+            if arg-2 is not set:
+                if {ingang::%player's uuid%} is set:
+                    send "&7-----  &5Info about &r&l%{gang::%player's uuid%}% &7-----"
+                    send "&5&l(!) &dBank: $&d%formatNum({gangbalance::%{gang::%player's uuid%}%})%"
+                    send "&5&l(!) &dOwner: %{%{gang::%player's uuid%}%owner::gangs}%"
+                    send "&5&l(!) &dMembers: (%{gangcount::%{gang::%player's uuid%}%}%&d/5) %{gangmembers::%{gang::%player's uuid%}%::*}% "
+                    send "&5&l(!) &dLevel: %{ganglevel::%{gang::%player's uuid%}%}%"
+        if arg-1 is "kick": 
+            if arg-2 is not set:
+                send "&5&l(!) &d/g kick &7(name)"
+            if arg-2 is set:
+                if {ingang::%player's uuid%} is not set:
+                    send "&5&l(!) &dYou are not in a gang!"
+                    stop
+                set {player::%player%} to player
+                if "%{%{gang::%player's uuid%}%owner::gangs}%" is equal to {player::%player%}: 
+                    if arg-2 is equal to {player::%player%}:
+                        send "&5&l(!) &dYou cannot kick yourself!"
+                        stop
+                    set {_p::%player%} to arg-2 parsed as an offline player
+                    if {gangmembers::%{gang::%player's uuid%}%::*} contains {_p::%player%}:
+                        set {_puuid::%player%} to uuid of {_p::%player%}
+                        clear {ingang::%{_puuid::%player%}%} 
+                        clear {gang::%{_puuid::%player%}%}
+                        clear {ingangs::%arg-2%}
+                        remove 1 from {gangcount::%{gang::%player's uuid%}%} 
+                        remove {_p::%player%} from {gangmembers::%{gang::%player's uuid%}%::*}
+                        loop {gangmembers::%{gang::%player's uuid%}%::*}:
+                            send "&5&l(!) &r&l%arg-2% &dhas been kicked from your gang!" to loop-value
+                        send "&5&l(!) &dYou have been kicked from &r&l%arg-2%&d!" to {_p::%player%}
+                        execute command "/scoreboardrl %arg-2%"
+                        stop
+                    if {gangmembers::%{gang::%player's uuid%}%} does not contain {_p::%player%}:
+                        send "&5&l(!) &dThey are not in your gang!"
+                else:
+                    send "&5&l(!) &dOnly the owner can kick people!"
+                    stop
+        if arg-1 is "bank":
+            if {ingang::%player's uuid%} is "true":
+                send "&5&l(!) &dBank: $%{gangbalance::%{gang::%player's uuid%}%}%"
+            if {ingang::%player's uuid%} is not set:
+                send "&5&l(!) &dYou are not in a gang!"
+        if arg-1 is "deposit":
+            if {ingang::%player's uuid%} is not set:
+                send "&5&l(!) &dYou are not in a gang!"
+            if {ingang::%player's uuid%} is "true":
+                if arg-2 is not set:
+                    send "&5&l(!) &dPlease choose an amount to deposit! (Warning! You cant take it out)"
+                set {depositamount::%player%} to arg-2 parsed as a number
+                if {depositamount::%player%} is more than or equal to 1000:
+                    if {balance::%player's uuid%} is more than or equal to {depositamount::%player%}:
+                        add {depositamount::%player%} to {gangbalance::%{gang::%player's uuid%}%}
+                        send "&5&l(!) &dYou deposited $%arg-2% &d(Now: $%formatNum({gangbalance::%{gang::%player's uuid%}%})%&d)"
+                        remove {depositamount::%player%} from {balance::%player's uuid%}
+                        execute command "/scoreboardrl %player%" 
+                        stop
+                    if {balance::%player's uuid%} is less than {depositamount::%player%}:
+                        send "&5&l(!) &dYou don't have enough for that!"
+                        stop
+                if {depositamount::%player%} is less than 1000:
+                    send "&5&l(!) &dThe minimum deposit amount is $1000"
+        if arg-1 is "levelup":
+            if arg-2 is not set:
+                if "%{%{gang::%player's uuid%}%owner::gangs}%" is equal to "%player%": 
+                    set {levelupcost::%player%} to 20000000*30.90457439057439085743095743095743905437509437590435743905743905734905743590437503745937294575903*{ganglevel::%{gang::%player's uuid%}%}
+                    if {gangbalance::%{gang::%player's uuid%}%} is more than or equal to {levelupcost::%player%}:
+                        add 1 to {ganglevel::%{gang::%player's uuid%}%}
+                        remove {levelupcost::%player%} from {gangbalance::%{gang::%player's uuid%}%}
+                        loop {gangmembers::%{gang::%player's uuid%}%::*}:
+                            send "&5&l(!) &r&l%player% &dhas upgraded your gang to &5Level &l%{ganglevel::%{gang::%player's uuid%}%}% &d(Cost: %formatNum({levelupcost::%player%})%&d)" to loop-value
+                    if {gangbalance::%{gang::%player's uuid%}%} is less than {levelupcost::%player%}:
+                        send "&5&l(!) &dYour Gang Bank does not have enough money! &d(Cost: %formatNum({levelupcost::%player%})%&d)"
+                    stop
+                else:
+                    send "&5&l(!) &dOnly the owner can do this!" 
+            set {levelupnumber::%player%} to arg-2 parsed as a number
+            if {levelupnumber::%player%} is more than 1:
+                if "%{%{gang::%player's uuid%}%owner::gangs}%" is equal to player: 
+                    if {ganglevel::%{gang::%player's uuid%}%} is less than 10:
+                        send "&5&l(!) &dYour gang must be level 10+ to do this!" to player
+                        stop
+                    set {levelupnumber1::%Player%} to 1*{ganglevel::%{gang::%player's uuid%}%}
+                    set {levelupnumber1::%Player%} to {levelupnumber1::%Player%} + {levelupnumber::%player%}
+                    set {levelupcost::%player%} to 20000000*30.90457439057439085743095743095743905437509437590435743905743905734905743590437503745937294575903*{levelupnumber1::%player%}
+                    if {gangbalance::%{gang::%player's uuid%}%} is more than or equal to {levelupcost::%player%}:
+                        add arg-2 to {ganglevel::%{gang::%player's uuid%}%}
+                        remove {levelupcost::%player%} from {gangbalance::%{gang::%player's uuid%}%}
+                        loop {gangmembers::%{gang::%player's uuid%}%::*}:
+                            send "&5&l(!) &r&l%player% &dhas upgraded your gang to &5Level &l%{ganglevel::%{gang::%player's uuid%}%}% &d(Cost: %formatNum({levelupcost::%player%})%&d)" to loop-value
+                        stop
+                    if {gangbalance::%{gang::%player's uuid%}%} is less than {levelupcost::%player%}:
+                        send "&5&l(!) &dYour Gang Bank does not have enough money! &d(Cost: %formatNum({levelupcost::%player%})%&d)"
+                else:
+                    send "&5&l(!) &dOnly the owner can do this!" 
+
+
+on drop:
+    if {rank::%player's uuid%} is "dev":
+        stop
+    event-item is diamond pickaxe:
+        cancel event 
+        send "&5&l(!) &dYou cannot drop your pick" to player
+        stop
+    if {drop::%player's uuid%} is not set: 
+        send "&5&l(!) &dYou may not drop items right now (/drop)" to player
+        cancel event
+
+on join:
+    wait 10 ticks
+    make player execute command "/drop"
+on quit:
+    set {drop::%player's uuid%} to 1
+    
+
+command /drop:
+    trigger:
+        if {drop::%player's uuid%} is not set:
+            set {drop::%player's uuid%} to 1
+            send "&5&l(!) &dYou may now drop items"
+            stop
+        if {drop::%player's uuid%} is set:
+            clear {drop::%player's uuid%}
+            send "&5&l(!) &dYou may now not drop items"
+            stop
+
+on swap item:
+
+    cancel event
+    send "&5&l(!) &dOffhand is disabled! (Dont try! Your item may be deleted!)"
+
+
+
+
+on place of dead brain coral block:
+    cancel event
+    if player's tool is dead brain coral block:
+        uncancel event
+    else:
+        stop
+    if {genlvl::%uuid of player%} is not set:
+        set {genlvl::%uuid of player%} to 1
+    if {generatorincome::%player's uuid%} is not set:
+        set {generatorincome::%player's uuid%} to 10000
+    if {claimabletokens::%player's uuid%} is not set:
+        set {claimabletokens::%player's uuid%} to 0
+    if {genmulti::%uuid of player%} is not set:
+        set {genmulti::%uuid of player%} to 1
+    if {placedgen::%uuid of player%::*} is not set:
+        add location of event-block to {placedgen::%uuid of player%::*}
+        remove 1 of player's held item from player's inventory
+        set {activegen::%player's uuid%} to 1
+        send "&5&l(!) &dGenerator placed!"
+    else if {placedgen::%uuid of player%::*} is set:
+        cancel event
+        send "&5&l(!) &dYou already have a generator placed! &5(&d%{placedgen::%uuid of player%::*}%&5)" to player
+
+
+
+
+
+
+
+                        
+                        
+            
+            
+            
+
+        
+on swap item:
+
+    cancel event
+    send "&5&l(!) &dOffhand is disabled! (Dont try! Your item may be deleted!)"
+
+
+
+
+on place of dead brain coral block:
+    cancel event
+    if player's tool is dead brain coral block:
+        uncancel event
+    else:
+        stop
+    if {genlvl::%uuid of player%} is not set:
+        set {genlvl::%uuid of player%} to 1
+    if {generatorincome::%player's uuid%} is not set:
+        set {generatorincome::%player's uuid%} to 10000
+    if {claimabletokens::%player's uuid%} is not set:
+        set {claimabletokens::%player's uuid%} to 0
+    if {genmulti::%uuid of player%} is not set:
+        set {genmulti::%uuid of player%} to 1
+    if {placedgen::%uuid of player%::*} is not set:
+        add location of event-block to {placedgen::%uuid of player%::*}
+        remove 1 of player's held item from player's inventory
+        set {activegen::%player's uuid%} to 1
+        send "&5&l(!) &dGenerator placed!"
+    else if {placedgen::%uuid of player%::*} is set:
+        cancel event
+        send "&5&l(!) &dYou already have a generator placed! &5(&d%{placedgen::%uuid of player%::*}%&5)" to player
+
+
+
+
+
+
+
+                        
+                        
+            
+            
+            
+
+        
+on swap item:
+
+    cancel event
+    send "&5&l(!) &dOffhand is disabled! (Dont try! Your item may be deleted!)"
+
+
+
+
+on place of dead brain coral block:
+    cancel event
+    if player's tool is dead brain coral block:
+        uncancel event
+    else:
+        stop
+    if {genlvl::%uuid of player%} is not set:
+        set {genlvl::%uuid of player%} to 1
+    if {generatorincome::%player's uuid%} is not set:
+        set {generatorincome::%player's uuid%} to 10000
+    if {claimabletokens::%player's uuid%} is not set:
+        set {claimabletokens::%player's uuid%} to 0
+    if {genmulti::%uuid of player%} is not set:
+        set {genmulti::%uuid of player%} to 1
+    if {placedgen::%uuid of player%::*} is not set:
+        add location of event-block to {placedgen::%uuid of player%::*}
+        remove 1 of player's held item from player's inventory
+        set {activegen::%player's uuid%} to 1
+        send "&5&l(!) &dGenerator placed!"
+    else if {placedgen::%uuid of player%::*} is set:
+        cancel event
+        send "&5&l(!) &dYou already have a generator placed! &5(&d%{placedgen::%uuid of player%::*}%&5)" to player
+
+
+
+
+
+
+
+                        
+                        
+            
+            
+            
+
+        

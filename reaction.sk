@@ -1,0 +1,29 @@
+ options:
+    prefix: &d&lUniverse&5&lPR &8»
+
+
+
+
+command /reaction [<text>]:
+    permission: god.core
+    trigger:
+        if arg-1 is set:
+            if {rank::%player's uuid%} is "owner":
+                stop
+            set {chatreaction} to arg-1
+            broadcast "{@prefix} &dFirst person to say &r&l%arg-1% &dgets a reward!"
+ 
+
+on chat:
+    if {chatreaction} is set:
+        if the chat message is equal to "%{chatreaction}%":
+            clear {chatreaction} 
+            broadcast "{@prefix} &r&l%player% &dwas the first to get it!"
+            set {randomamount} to random integer between 1 and 5
+            execute command "/key give %player% epic %{randomamount}% chat"
+
+
+
+every 5 minutes:
+    set {_chatreaction} to random integer between 1 and 999999
+    execute command "/reaction %{_chatreaction}%"

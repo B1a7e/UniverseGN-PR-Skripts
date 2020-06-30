@@ -1,0 +1,9 @@
+command /payouts:
+    trigger:
+        open virtual chest with 3 rows named "&d&lPayouts:" to player
+        wait 1 ticks
+        loop integers between 0 and menu size of player's current inventory - 1:
+            format gui slot loop-number of player with black glass pane named "&8" to do nothing
+        format gui slot 13 of player with paper named "&5&lPrestige Top Rewards:" lored "&d1st &a$25 Paypal or $50 Buycraft||&d2nd &a$15 Paypal or $30 Buycraft||&d3rd &a$10 Paypal or $20 Buycraft"
+        format gui slot 12 of player with paper named "&5&lGang Top Rewards:" lored "&d1st &a$30 Paypal or $60 Buycraft||&d2nd &a$15 Paypal or $30 Buycraft||&d3rd &a$5 Paypal or $10 Buycraft"
+        format gui slot 14 of player with paper named "&5&lBlocks Broken Top Rewards:" lored "&dComing Soon!"	

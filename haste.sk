@@ -1,0 +1,49 @@
+variables:		
+	{haste.mode.%player%} = "False"
+
+command /haste [<integer>]:
+	aliases: hs
+	permission: space.core
+	permission message: &c&l (!) &7Buy &9&lSpace &7to access this command.
+	trigger:
+		if {haste.mode.%player%} is "False":
+			if arg-1 is not set:
+				message "&5&l(!) &7You have &a&lenabled &7Haste!"
+				set {haste.mode.%player%} to "True"
+				apply haste without particles to the player for 100000 seconds
+			if arg-1 is more than 0:
+				if player has permission "cosmo.core":
+					if arg-1 is less than 11:
+						message "&5&l(!) &7You have &a&lenabled &7Haste!"
+						set {haste.mode.%player%} to "True"
+						apply haste of tier arg-1 without particles to the player for 100000 seconds
+					if arg-1 is less than 0:
+						send "&5&l(!) &dIt must be more than 0!"
+					if arg-1 is more than 5:	
+						send "&5&l(!) &dMax is 5!"
+				if player does not have permission "cosmo.core":
+					send "&5&l(!) &dYou must be &c&lCosmo &dor higher to do that!"
+		else if {haste.mode.%player%} is "True":
+			message "&5&l(!) &7You have &c&ldisabled &7Haste!"
+			set {haste.mode.%player%} to "False"
+			remove haste from the player
+
+
+
+
+variables:
+	{nightvision.mode.%player%} = "False"
+
+command /nightvision:
+	aliases: nv
+	trigger:
+		if {nightvision.mode.%player%} is "False":
+			message "&aEnabled Nightvision!"
+			set {nightvision.mode.%player%} to "True"
+			apply night vision to the player for 100000 seconds
+		else:
+			if {nightvision.mode.%player%} is "True":
+				message "&aDisabled Nightvision"
+				set {nightvision.mode.%player%} to "False"
+				remove night vision from the player
+			

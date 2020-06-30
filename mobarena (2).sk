@@ -1,0 +1,856 @@
+command /mobarena:
+    aliases: /ma
+    trigger:
+        loop {inmobarena::*}:
+            teleport {inmobarena::*} to {mobarena-minespawn}
+            send title "&c&lWave 1 in..." to {inmobarena::*}
+            set health of {inmobarena::*} to 20
+            wait 3 seconds
+            send title "&c&l5" to {inmobarena::*}
+            wait 1 second
+            send title "&c&l4" to {inmobarena::*}
+            wait 1 second
+            send title "&c&l3" to {inmobarena::*}
+            wait 1 second
+            send title "&c&l2" to {inmobarena::*}
+            wait 1 second
+            send title "&c&l1" to {inmobarena::*}
+            wait 1 second
+            send title "&c&lGo!" to {inmobarena::*}
+            stop loop
+        spawn a zombie at {level::1::1}
+        equip the last spawned entity with leather helmet
+        set name of last spawned entity to "&c&lZombie"
+        spawn a zombie at {level::1::2}
+        equip the last spawned entity with leather helmet
+        set name of last spawned entity to "&c&lZombie"
+        spawn a zombie at {level::1::3}
+        equip the last spawned entity with leather helmet
+        set name of last spawned entity to "&c&lZombie"
+        spawn a zombie at {level::1::4}
+        equip the last spawned entity with leather helmet
+        set name of last spawned entity to "&c&lZombie"
+        spawn a zombie at {level::1::5}
+        equip the last spawned entity with leather helmet
+        set name of last spawned entity to "&c&lZombie"
+        set {mobarena::zombies} to 5
+
+command /mobjoin:
+    trigger:
+        add player to {inmobarena::*}
+
+command /mobleave:
+    trigger:
+        remove player from {inmobarena::*}
+
+command /mobclear:
+    trigger:
+        clear {inmobarena::*}
+
+command /moblist:
+    trigger:
+        send "%{inmobarena::*}%"
+
+
+on death:
+    if victim is zombie:
+        cancel drops
+        if name of zombie is "&c&lZombie":
+            remove 1 from {mobarena::zombies}
+            if {mobarena::zombies} is 0:
+                clear {mobarena::zombies}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 2 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a zombie at {level::1::1}
+                equip the last spawned entity with leather helmet
+                equip the last spawned entity with leather boots
+                equip the last spawned entity with leather leggings
+                equip the last spawned entity with leather chestplate
+                set the weapon of the last spawned entity to wooden sword of sharpness 2
+                set name of last spawned entity to "&4&lZombie"
+                spawn a zombie at {level::1::2}
+                equip the last spawned entity with leather helmet
+                equip the last spawned entity with leather boots
+                equip the last spawned entity with leather leggings
+                equip the last spawned entity with leather chestplate
+                set the weapon of the last spawned entity to wooden sword of sharpness 2
+                set name of last spawned entity to "&4&lZombie"
+                spawn a zombie at {level::1::3}
+                equip the last spawned entity with leather helmet
+                equip the last spawned entity with leather boots
+                equip the last spawned entity with leather leggings
+                equip the last spawned entity with leather chestplate
+                set the weapon of the last spawned entity to wooden sword of sharpness 2
+                set name of last spawned entity to "&4&lZombie"
+                spawn a zombie at {level::1::4}
+                equip the last spawned entity with leather helmet
+                equip the last spawned entity with leather boots
+                equip the last spawned entity with leather leggings
+                equip the last spawned entity with leather chestplate
+                set the weapon of the last spawned entity to wooden sword of sharpness 2
+                set name of last spawned entity to "&4&lZombie"
+                spawn a zombie at {level::1::5}
+                equip the last spawned entity with leather helmet
+                equip the last spawned entity with leather boots
+                equip the last spawned entity with leather leggings
+                equip the last spawned entity with leather chestplate
+                set the weapon of the last spawned entity to wooden sword of sharpness 2
+                set name of last spawned entity to "&4&lZombie"
+                set {mobarena::zombies} to 5
+                stop
+        if name of zombie is "&4&lZombie":
+            remove 1 from {mobarena::zombies}
+            if {mobarena::zombies} is 0:
+                clear {mobarena::zombies}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 3 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a skeleton at {level::1::1}
+                equip the last spawned entity with leather helmet of protection 4
+                equip the last spawned entity with leather boots of protection 4
+                equip the last spawned entity with leather leggings of protection 4
+                equip the last spawned entity with leather chestplate of protection 4
+                set the weapon of the last spawned entity to bow of power 3
+                set name of last spawned entity to "&r&lSkeleton"
+                spawn a skeleton at {level::1::2}
+                equip the last spawned entity with leather helmet of protection 4
+                equip the last spawned entity with leather boots of protection 4
+                equip the last spawned entity with leather leggings of protection 4
+                equip the last spawned entity with leather chestplate of protection 4
+                set the weapon of the last spawned entity to bow of power 3
+                set name of last spawned entity to "&r&lSkeleton"
+                spawn a skeleton at {level::1::3}
+                equip the last spawned entity with leather helmet of protection 4
+                equip the last spawned entity with leather boots of protection 4
+                equip the last spawned entity with leather leggings of protection 4
+                equip the last spawned entity with leather chestplate of protection 4
+                set the weapon of the last spawned entity to bow of power 3
+                set name of last spawned entity to "&r&lSkeleton"
+                spawn a skeleton at {level::1::4}
+                equip the last spawned entity with leather helmet of protection 4
+                equip the last spawned entity with leather boots of protection 4
+                equip the last spawned entity with leather leggings of protection 4
+                equip the last spawned entity with leather chestplate of protection 4
+                set the weapon of the last spawned entity to bow of power 3
+                set name of last spawned entity to "&r&lSkeleton"
+                spawn a skeleton at {level::1::5}
+                equip the last spawned entity with leather helmet of protection 4
+                equip the last spawned entity with leather boots of protection 4
+                equip the last spawned entity with leather leggings of protection 4
+                equip the last spawned entity with leather chestplate of protection 4
+                set the weapon of the last spawned entity to bow of power 3
+                set name of last spawned entity to "&r&lSkeleton"
+                set {mobarena::skeletons} to 5
+                stop
+    if victim is skeleton:
+        cancel drops
+        if {inmobarena::*} contains attacker:
+            remove 1 from {mobarena::skeletons}
+            if {mobarena::skeletons} is 0:
+                clear {mobarena::skeleton}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 4 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a skeleton at {level::1::1}
+                equip the last spawned entity with chainmail helmet of protection 4
+                equip the last spawned entity with chainmail boots of protection 4
+                equip the last spawned entity with chainmail leggings of protection 4
+                equip the last spawned entity with chainmail chestplate of protection 4
+                set {_item} to bow
+                enchant {_item} with "Power 6" parsed as an enchantment type
+                enchant {_item} with "Flame 1" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&r&lSkeleton+"
+                spawn a skeleton at {level::1::2}
+                equip the last spawned entity with chainmail helmet of protection 4
+                equip the last spawned entity with chainmail boots of protection 4
+                equip the last spawned entity with chainmail leggings of protection 4
+                equip the last spawned entity with chainmail chestplate of protection 4
+                set {_item} to bow
+                enchant {_item} with "Power 6" parsed as an enchantment type
+                enchant {_item} with "Flame 1" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&r&lSkeleton+"
+                spawn a skeleton at {level::1::3}
+                equip the last spawned entity with chainmail helmet of protection 4
+                equip the last spawned entity with chainmail boots of protection 4
+                equip the last spawned entity with chainmail leggings of protection 4
+                equip the last spawned entity with chainmail chestplate of protection 4
+                set {_item} to bow
+                enchant {_item} with "Power 6" parsed as an enchantment type
+                enchant {_item} with "Flame 1" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&r&lSkeleton+"
+                spawn a skeleton at {level::1::4}
+                equip the last spawned entity with chainmail helmet of protection 4
+                equip the last spawned entity with chainmail boots of protection 4
+                equip the last spawned entity with chainmail leggings of protection 4
+                equip the last spawned entity with chainmail chestplate of protection 4
+                set {_item} to bow
+                enchant {_item} with "Power 6" parsed as an enchantment type
+                enchant {_item} with "Flame 1" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&r&lSkeleton+"
+                spawn a skeleton at {level::1::5}
+                equip the last spawned entity with chainmail helmet of protection 6
+                equip the last spawned entity with chainmail boots of protection 6
+                equip the last spawned entity with chainmail leggings of protection 6
+                equip the last spawned entity with chainmail chestplate of protection 6
+                set {_item} to bow
+                enchant {_item} with "Power 6" parsed as an enchantment type
+                enchant {_item} with "Flame 1" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&r&lSkeleton Boss"
+                set {mobarena::skeletonss} to 5
+                stop
+    if victim is skeleton:
+        cancel drops
+        if {mobarena::skeletonss} is set:
+            remove 1 from {mobarena::skeletonss}
+            if {mobarena::skeletonss} is 0:
+                clear {mobarena::skeleton}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 5 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a vindicator at {level::1::1}
+                equip the last spawned entity with chainmail helmet of protection 5
+                equip the last spawned entity with chainmail boots of protection 5
+                equip the last spawned entity with chainmail leggings of protection 5
+                equip the last spawned entity with chainmail chestplate of protection 5
+                set the weapon of the last spawned entity to iron axe of sharpness 8
+                set name of last spawned entity to "&4&lAxe Murderer"
+                spawn a vindicator at {level::1::2}
+                equip the last spawned entity with chainmail helmet of protection 5
+                equip the last spawned entity with chainmail boots of protection 5
+                equip the last spawned entity with chainmail leggings of protection 5
+                equip the last spawned entity with chainmail chestplate of protection 5
+                set the weapon of the last spawned entity to iron axe of sharpness 8
+                set name of last spawned entity to "&4&lAxe Murderer"
+                spawn a vindicator at {level::1::3}
+                equip the last spawned entity with chainmail helmet of protection 5
+                equip the last spawned entity with chainmail boots of protection 5
+                equip the last spawned entity with chainmail leggings of protection 5
+                equip the last spawned entity with chainmail chestplate of protection 5
+                set the weapon of the last spawned entity to iron axe of sharpness 8
+                set name of last spawned entity to "&4&lAxe Murderer"
+                spawn a vindicator at {level::1::4}
+                equip the last spawned entity with chainmail helmet of protection 5
+                equip the last spawned entity with chainmail boots of protection 5
+                equip the last spawned entity with chainmail leggings of protection 5
+                equip the last spawned entity with chainmail chestplate of protection 5
+                set the weapon of the last spawned entity to iron axe of sharpness 8
+                set name of last spawned entity to "&4&lAxe Murderer"
+                spawn a vindicator at {level::1::5}
+                equip the last spawned entity with chainmail helmet of protection 7
+                equip the last spawned entity with chainmail boots of protection 7
+                equip the last spawned entity with chainmail leggings of protection 7
+                equip the last spawned entity with chainmail chestplate of protection 7
+                set the weapon of the last spawned entity to iron axe of sharpness 8
+                set name of last spawned entity to "&4&lAxe Boss"
+                set {mobarena::vindicator} to 5
+                stop
+    if victim is vindicator:
+        cancel drops
+        if {mobarena::vindicator} is set:
+            remove 1 from {mobarena::vindicator}
+            if {mobarena::vindicator} is 0:
+                clear {mobarena::vindicator}
+                loop {inmobarena::*}:
+                    set health of {inmobarena::*} to 20
+                    send title "&c&lWave 6 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a pillager at {level::1::1}
+                equip the last spawned entity with iron helmet of protection 7
+                equip the last spawned entity with iron boots of protection 7
+                equip the last spawned entity with iron leggings of protection 7
+                equip the last spawned entity with iron chestplate of protection 7
+                set {_item} to crossbow
+                enchant {_item} with "power 10" parsed as an enchantment type
+                enchant {_item} with "multishot 100" parsed as an enchantment type
+                enchant {_item} with "quick charge 5" parsed as an enchantment type
+                enchant {_item} with "piercing 5" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&4&lBandits"
+                spawn a pillager at {level::1::2}
+                equip the last spawned entity with iron helmet of protection 7
+                equip the last spawned entity with iron boots of protection 7
+                equip the last spawned entity with iron leggings of protection 7
+                equip the last spawned entity with iron chestplate of protection 7
+                set {_item} to crossbow
+                enchant {_item} with "power 10" parsed as an enchantment type
+                enchant {_item} with "multishot 100" parsed as an enchantment type
+                enchant {_item} with "quick charge 5" parsed as an enchantment type
+                enchant {_item} with "piercing 5" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&4&lBandits"
+                spawn a pillager at {level::1::3}
+                equip the last spawned entity with iron helmet of protection 7
+                equip the last spawned entity with iron boots of protection 7
+                equip the last spawned entity with iron leggings of protection 7
+                equip the last spawned entity with iron chestplate of protection 7
+                set {_item} to crossbow
+                enchant {_item} with "power 10" parsed as an enchantment type
+                enchant {_item} with "multishot 100" parsed as an enchantment type
+                enchant {_item} with "quick charge 5" parsed as an enchantment type
+                enchant {_item} with "piercing 5" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&4&lBandits"
+                spawn a pillager at {level::1::4}
+                equip the last spawned entity with iron helmet of protection 7
+                equip the last spawned entity with iron boots of protection 7
+                equip the last spawned entity with iron leggings of protection 7
+                equip the last spawned entity with iron chestplate of protection 7
+                set {_item} to crossbow
+                enchant {_item} with "power 10" parsed as an enchantment type
+                enchant {_item} with "multishot 100" parsed as an enchantment type
+                enchant {_item} with "quick charge 5" parsed as an enchantment type
+                enchant {_item} with "piercing 5" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&4&lBandits"
+                spawn a pillager at {level::1::5}
+                equip the last spawned entity with iron helmet of protection 10
+                equip the last spawned entity with iron boots of protection 10
+                equip the last spawned entity with iron leggings of protection 10
+                equip the last spawned entity with iron chestplate of protection 10
+                set {_item} to crossbow
+                enchant {_item} with "power 10" parsed as an enchantment type
+                enchant {_item} with "multishot 100" parsed as an enchantment type
+                enchant {_item} with "quick charge 5" parsed as an enchantment type
+                enchant {_item} with "piercing 5" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&4&lBandit Boss"
+                equip the last spawned entity with iron helmet of protection 10
+                equip the last spawned entity with iron boots of protection 10
+                equip the last spawned entity with iron leggings of protection 10
+                equip the last spawned entity with iron chestplate of protection 10
+                set {mobarena::pillager} to 5
+                stop
+    if victim is pillager:
+        cancel drops
+        if {mobarena::pillager} is set:
+            remove 1 from {mobarena::pillager}
+            if {mobarena::pillager} is 0:
+                clear {mobarena::pillager}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 7 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a wither skeleton at {level::1::1}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::2}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a skeleton at {level::1::3}
+                equip the last spawned entity with chainmail helmet of protection 6
+                equip the last spawned entity with chainmail boots of protection 6
+                equip the last spawned entity with chainmail leggings of protection 6
+                equip the last spawned entity with chainmail chestplate of protection 6
+                set {_item} to bow
+                enchant {_item} with "Power 6" parsed as an enchantment type
+                enchant {_item} with "Flame 1" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&r&lSkeleton Boss"
+                spawn a vindicator at {level::1::4}
+                equip the last spawned entity with chainmail helmet of protection 7
+                equip the last spawned entity with chainmail boots of protection 7
+                equip the last spawned entity with chainmail leggings of protection 7
+                equip the last spawned entity with chainmail chestplate of protection 7
+                set the weapon of the last spawned entity to iron axe of sharpness 8
+                set name of last spawned entity to "&4&lAxe Boss"
+                equip the last spawned entity with iron helmet of protection 10
+                equip the last spawned entity with iron boots of protection 10
+                equip the last spawned entity with iron leggings of protection 10
+                equip the last spawned entity with iron chestplate of protection 10
+                set {_item} to crossbow
+                enchant {_item} with "power 10" parsed as an enchantment type
+                enchant {_item} with "multishot 100" parsed as an enchantment type
+                enchant {_item} with "quick charge 5" parsed as an enchantment type
+                enchant {_item} with "piercing 5" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&4&lBandit Boss"
+                set {mobarena::bosses} to 4
+                stop
+
+
+on death:
+    if victim is not player:
+        cancel drops
+        if {mobarena::bosses} is set:
+            remove 1 from {mobarena::bosses}
+            if {mobarena::bosses} is 0:
+                clear {mobarena::bosses}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 8 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a wither skeleton at {level::1::1}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::2}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::3}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::4}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::5}
+                equip the last spawned entity with diamond helmet of protection 9
+                equip the last spawned entity with diamond boots of protection 12
+                equip the last spawned entity with diamond leggings of protection 12
+                equip the last spawned entity with diamond chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 15" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 3" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                enchant {_item} with "Knockback 2" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted&r&e&l Royal &r&lKnight"
+                set {mobarena::final} to 5
+    if victim is not player:
+        cancel drops
+        if {mobarena::final} is set:
+            remove 1 from {mobarena::final}
+            if {mobarena::final} is 0:
+                clear {mobarena::final}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 10 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l20" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l19" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l18" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l17" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l16" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l15" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l14" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l13" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l12" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l11" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l10" with subtitle "&c&lHealing..." to {inmobarena::*}
+                    set {inmobarena::*}'s max health to 15
+                    set health of {inmobarena::*} to 20
+                    wait 1 second
+                    send title "&c&l9" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l8" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l7" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l6" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                loop 10 times:
+                    spawn a husk at {level::1::1}
+                    equip the last spawned entity with leather helmet of protection 2
+                    equip the last spawned entity with leather boots of protection 2
+                    equip the last spawned entity with leather leggings of protection 2
+                    equip the last spawned entity with leather chestplate of protection 2
+                    set the weapon of the last spawned entity to wooden sword of sharpness 5
+                    set name of last spawned entity to "&c&lZombie &r&lKnights"
+                loop 10 times:
+                    spawn a husk at {level::1::2}
+                    equip the last spawned entity with leather helmet of protection 2
+                    equip the last spawned entity with leather boots of protection 2
+                    equip the last spawned entity with leather leggings of protection 2
+                    equip the last spawned entity with leather chestplate of protection 2
+                    set the weapon of the last spawned entity to wooden sword of sharpness 5
+                    set name of last spawned entity to "&c&lZombie &r&lKnights"
+                loop 10 times:
+                    spawn a husk at {level::1::3}
+                    equip the last spawned entity with leather helmet of protection 2
+                    equip the last spawned entity with leather boots of protection 2
+                    equip the last spawned entity with leather leggings of protection 2
+                    equip the last spawned entity with leather chestplate of protection 2
+                    set the weapon of the last spawned entity to wooden sword of sharpness 5
+                    set name of last spawned entity to "&c&lZombie &r&lKnights"
+                loop 10 times:
+                    spawn a husk at {level::1::4}
+                    equip the last spawned entity with leather helmet of protection 2
+                    equip the last spawned entity with leather boots of protection 2
+                    equip the last spawned entity with leather leggings of protection 2
+                    equip the last spawned entity with leather chestplate of protection 2
+                    set the weapon of the last spawned entity to wooden sword of sharpness 5
+                    set name of last spawned entity to "&c&lZombie &r&lKnights"
+                loop 10 times:
+                    spawn a husk at {level::1::5}
+                    equip the last spawned entity with leather helmet of protection 2
+                    equip the last spawned entity with leather boots of protection 2
+                    equip the last spawned entity with leather leggings of protection 2
+                    equip the last spawned entity with leather chestplate of protection 2
+                    set the weapon of the last spawned entity to wooden sword of sharpness 5
+                    set name of last spawned entity to "&c&lZombie &r&lKnights"
+                loop 10 times:
+                    spawn a pillager at {level::1::5}
+                    equip the last spawned entity with iron helmet of protection 10
+                    equip the last spawned entity with iron boots of protection 10
+                    equip the last spawned entity with iron leggings of protection 10
+                    equip the last spawned entity with iron chestplate of protection 10
+                    set {_item} to crossbow
+                    enchant {_item} with "power 10" parsed as an enchantment type
+                    enchant {_item} with "multishot 100" parsed as an enchantment type
+                    enchant {_item} with "quick charge 5" parsed as an enchantment type
+                    enchant {_item} with "piercing 5" parsed as an enchantment type
+                    set the weapon of the last spawned entity to {_item}
+                    set name of last spawned entity to "&4&lBandit Boss"
+                    equip the last spawned entity with iron helmet of protection 10
+                    equip the last spawned entity with iron boots of protection 10
+                    equip the last spawned entity with iron leggings of protection 10
+                    equip the last spawned entity with iron chestplate of protection 10
+                loop 10 times:
+                    spawn a vindicator at {level::1::2}
+                    equip the last spawned entity with chainmail helmet of protection 7
+                    equip the last spawned entity with chainmail boots of protection 7
+                    equip the last spawned entity with chainmail leggings of protection 7
+                    equip the last spawned entity with chainmail chestplate of protection 7
+                    set the weapon of the last spawned entity to iron axe of sharpness 8
+                    set name of last spawned entity to "&4&lAxe Boss"
+                loop 7 times:
+                    spawn a wither skeleton at {level::1::3}
+                    equip the last spawned entity with iron helmet of protection 12
+                    equip the last spawned entity with iron boots of protection 12
+                    equip the last spawned entity with iron leggings of protection 12
+                    equip the last spawned entity with iron chestplate of protection 12
+                    set {_item} to diamond sword
+                    enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                    enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                    enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                    set the weapon of the last spawned entity to {_item}
+                    set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                loop 5 times:
+                    spawn a wither skeleton at {level::1::4}
+                    equip the last spawned entity with diamond helmet of protection 9
+                    equip the last spawned entity with diamond boots of protection 12
+                    equip the last spawned entity with diamond leggings of protection 12
+                    equip the last spawned entity with diamond chestplate of protection 12
+                    set {_item} to diamond sword
+                    enchant {_item} with "Sharpness 15" parsed as an enchantment type
+                    enchant {_item} with "Fire Aspect 3" parsed as an enchantment type
+                    enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                    enchant {_item} with "Knockback 2" parsed as an enchantment type
+                    set the weapon of the last spawned entity to {_item}
+                    set name of last spawned entity to "&0&l&mCorrupted&r&e&l Royal &r&lKnight"
+                spawn a giant at {level::1::7}
+                equip the last spawned entity with leather helmet of protection 2
+                equip the last spawned entity with leather boots of protection 2
+                equip the last spawned entity with leather leggings of protection 2
+                equip the last spawned entity with leather chestplate of protection 2
+                set the weapon of the last spawned entity to cooked salmon of sharpness 5
+                set name of last spawned entity to "&4&lMob Boss"
+                set the last spawned entity's max health to 5000
+                set {mobarena::finals} to 83
+    if victim is not player:
+        cancel drops
+        if {mobarena::bosses} is set:
+            remove 1 from {mobarena::bosses}
+            if {mobarena::bosses} is 0:
+                clear {mobarena::bosses}
+                loop {inmobarena::*}:
+                    send title "&c&lWave 9 in..." to {inmobarena::*}
+                    wait 3 seconds
+                    send title "&c&l5" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l4" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l3" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l2" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&l1" to {inmobarena::*}
+                    wait 1 second
+                    send title "&c&lGo!" to {inmobarena::*}
+                    stop loop
+                spawn a wither skeleton at {level::1::1}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::2}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::3}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::4}
+                equip the last spawned entity with iron helmet of protection 12
+                equip the last spawned entity with iron boots of protection 12
+                equip the last spawned entity with iron leggings of protection 12
+                equip the last spawned entity with iron chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 12" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 2" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::5}
+                equip the last spawned entity with diamond helmet of protection 9
+                equip the last spawned entity with diamond boots of protection 12
+                equip the last spawned entity with diamond leggings of protection 12
+                equip the last spawned entity with diamond chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 15" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 3" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                enchant {_item} with "Knockback 2" parsed as an enchantment type
+                set name of last spawned entity to "&0&l&mCorrupted &r&lKnights"
+                spawn a wither skeleton at {level::1::9}
+                equip the last spawned entity with diamond helmet of protection 9
+                equip the last spawned entity with diamond boots of protection 12
+                equip the last spawned entity with diamond leggings of protection 12
+                equip the last spawned entity with diamond chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 15" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 3" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                enchant {_item} with "Knockback 2" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted&r&e&l Royal &r&lKnight"
+                spawn a wither skeleton at {level::1::7}
+                equip the last spawned entity with diamond helmet of protection 9
+                equip the last spawned entity with diamond boots of protection 12
+                equip the last spawned entity with diamond leggings of protection 12
+                equip the last spawned entity with diamond chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 15" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 3" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                enchant {_item} with "Knockback 2" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted&r&e&l Royal &r&lKnight"
+                spawn a wither skeleton at {level::1::6}
+                equip the last spawned entity with diamond helmet of protection 9
+                equip the last spawned entity with diamond boots of protection 12
+                equip the last spawned entity with diamond leggings of protection 12
+                equip the last spawned entity with diamond chestplate of protection 12
+                set {_item} to diamond sword
+                enchant {_item} with "Sharpness 15" parsed as an enchantment type
+                enchant {_item} with "Fire Aspect 3" parsed as an enchantment type
+                enchant {_item} with "Sweeping 100" parsed as an enchantment type
+                enchant {_item} with "Knockback 2" parsed as an enchantment type
+                set the weapon of the last spawned entity to {_item}
+                set name of last spawned entity to "&0&l&mCorrupted&r&e&l Royal &r&lKnight"
+                set {mobarena::final} to 8
+
+
+on death:
+    if victim is not player:
+        cancel drops
+        if {mobarena::finals} is set:
+            remove 1 from {mobarena::finals}
+            if {mobarena::finals} is 0:
+                clear {mobarena::finals}
+                loop {inmobarena::*}:
+                    send "&8" to {inmobarena::*}
+                    send "&d&lUniverse&5&lPR &8» &dThe &c&lMob Arena &dhas been &4&n&lDefeated&d!" to {inmobarena::*}
+                    send "&8" to {inmobarena::*}
+                    set {inmobarena::*}'s max health to 10
+                    clear {inmobarena::*}
+              
+command /mobarenastop:
+    permission: god.core
+    trigger:
+        clear {mobarena::finals}
+        clear {mobarena::pillager}
+        clear {mobarena::final}
+        clear {mobarena::finals}
+        clear {mobarena::skeleton}
+        clear {mobarena::skeletons}
+        clear {mobarena::vindicator}
+        clear {mobarena::zombie}
+        clear {mobarena::zombiess}
+
+
+
+on death:
+    if victim is player:
+        if {inmobarena::*} contains player:
+            remove player from {inmobarena::*}
+            set player's max health to 10
+            
+on join:
+    teleport player to spawn
+
+
+command /mobarenamobspawn [<integer>] [<integer>]:
+    permission: god.core
+    aliases: /mams
+    trigger:
+        if arg-2 is set:
+            set {level::%arg-1%::%arg-2%} to player's location
+            send "&aYou set level %arg-1% &amob ##%arg-2%&a's spawn to %player's location%"
+            

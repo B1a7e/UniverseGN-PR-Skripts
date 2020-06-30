@@ -1,0 +1,9 @@
+command /help:
+    trigger:
+        send "&7----- &5&lHelp &7----- %nl% &5&l(!) &7Do /pickaxe if you dont got a pickaxe! %nl% &5&l(!) &7Do /mines to access the mines! %nl% &5&l(!) &7Right click your pickaxe to upgrade it! %nl% &5&l(!) &7Get crate keys from crate finder or events! %nl% &5&l(!) &7Get tokens from mining! %nl% &5&l(!) &7Enjoy the help page! %nl% &7-----&5&l Help &r&7-----"
+
+
+
+
+
+

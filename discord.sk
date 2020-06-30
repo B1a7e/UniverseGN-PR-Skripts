@@ -1,0 +1,3 @@
+command /discord:
+        trigger: 
+                send formatted "&d&lUniversePR&7 | &7To join our discord, you can click here: <link:https://discord.gg/dcjgBFB>&d&lHERE<reset>"
