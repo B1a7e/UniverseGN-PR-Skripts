@@ -1,4 +1,4 @@
-
+#Didnt realize TuSKe had a better way :|
 command /efficiency [<player>] [<text>]:
     permission: admin.core
     trigger:
